@@ -22,7 +22,7 @@ Hecho en Unity (6.3.2f1)
 - [PlayerPrefs Editor](https://assetstore.unity.com/packages/tools/utilities/playerprefs-editor-167903)
 - [Odin Inspector](https://odininspector.com)
 
-### Assets
+### Assets Externos
 
 -
 
@@ -30,6 +30,7 @@ Hecho en Unity (6.3.2f1)
 
 **[Página de itch.io](https://freyzerfault.itch.io/malagajam-no-tiene-nombre-todava-xd)**
 **[Drive de Recursos del Equipo](https://drive.google.com/drive/folders/1ebrdOPo1HzK1WtupgQm10i9NcSqFzKJy)**
+**[Hack n Plan](https://app.hacknplan.com/p/232649/dashboards/personal?scope=board&boardId=656259)**
 
 ### Para Unity
 
