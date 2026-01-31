@@ -3,12 +3,12 @@ using Utils;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
-    public event Action<AnimalType> OnDialogueStart;
-    public event Action<AnimalType> OnDialogueEnd;
+    public event Action<DialogueTag> OnDialogueStart;
+    public event Action<DialogueTag> OnDialogueEnd;
     
-    public enum AnimalType { Perro, Faisan, Macaco }
+    public enum DialogueTag { None = -1, Perro, Faisan, Macaco }
 
-    private AnimalType currentDialogueAnimal;
+    private DialogueTag currentDialogueAnimal;
     
     public bool dialogueOnCourse = false;
     public void StartDialogue()

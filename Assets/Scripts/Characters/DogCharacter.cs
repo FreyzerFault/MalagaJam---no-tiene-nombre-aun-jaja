@@ -7,9 +7,9 @@ namespace Characters
             DialogueManager.Instance.OnDialogueEnd += OnDialogueEnd;
         }
 
-        public override void OnDialogueEnd(DialogueManager.AnimalType currentDialogue)
+        public override void OnDialogueEnd(DialogueManager.DialogueTag currentDialogue)
         {
-            if (currentDialogue != DialogueManager.AnimalType.Perro) return;
+            if (currentDialogue != DialogueManager.DialogueTag.Perro) return;
             
             // TODO Darle la mascara
         }

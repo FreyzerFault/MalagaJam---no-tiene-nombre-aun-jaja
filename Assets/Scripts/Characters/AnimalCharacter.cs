@@ -24,6 +24,6 @@ namespace Characters
             //quitar dibujo
         }
 
-        public abstract void OnDialogueEnd(DialogueManager.AnimalType currentDialogue);
+        public abstract void OnDialogueEnd(DialogueManager.DialogueTag currentDialogue);
     }
 }

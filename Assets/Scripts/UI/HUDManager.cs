@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
@@ -7,10 +6,16 @@ namespace UI
 {
     public class HUDManager : Singleton<HUDManager>
     {
-        private void Start()
+        private void Start() => ResetHUD();
+
+        private void ResetHUD()
         {
+            HideDialogue();
             UpdateMaskFragments();
             ToggleInput(InputTypes.Mask, false);
+
+            DialogueManager.Instance.OnDialogueStart += ShowDialogue;
+            DialogueManager.Instance.OnDialogueEnd += HideDialogue;
         }
 
         #region INPUT PANEL
@@ -60,9 +65,13 @@ namespace UI
         // DIALOGUE
         [SerializeField] private GameObject dialoguePanel;
         
-        public void ShowDialogue() => dialoguePanel.SetActive(true);
-        public void HideDialogue() => dialoguePanel.SetActive(false);
-        public void ToggleDialogue(bool value) => dialoguePanel.SetActive(value);
+        public void ShowDialogue(DialogueManager.DialogueTag dialogueTag = DialogueManager.DialogueTag.None) 
+            => dialoguePanel.SetActive(true);
+        public void HideDialogue(DialogueManager.DialogueTag dialogueTag = DialogueManager.DialogueTag.None) 
+            => dialoguePanel.SetActive(false);
+        
+        public void ToggleDialogue(bool value, DialogueManager.DialogueTag dialogueTag = DialogueManager.DialogueTag.None) 
+            => dialoguePanel.SetActive(value);
         
         #endregion
     }
