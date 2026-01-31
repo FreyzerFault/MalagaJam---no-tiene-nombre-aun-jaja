@@ -1,27 +1,18 @@
-using UnityEngine;
-
-public class MaskScript : MonoBehaviour, IInteractable
+public class MaskScript : Interactable
 {
-    public Material brightMaterial;
-
     public void OnPlayerNear()
     {
-        //Iluminar efectos
-   
+        //Iluminar efectos para que llame la atención del player
     }
 
-    public void OnInteract()
+    public override void OnInteract()
     {
-        // TODO animacion
-        Debug.Log("ME HAS COGIDO");
+        base.OnInteract();
         
         GameManager.Instance.OnPlayerTakeMask();
-
+        
+        // TODO Animacion coger Máscara
+        
         Destroy(gameObject);
-    }
-
-    private void StartBrightVFX()
-    {
-        // TODO
     }
 }
