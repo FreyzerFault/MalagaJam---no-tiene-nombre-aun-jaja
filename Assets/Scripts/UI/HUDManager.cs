@@ -1,10 +1,18 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 using Utils;
 
 namespace UI
 {
     public class HUDManager : Singleton<HUDManager>
     {
+        private void Start()
+        {
+            UpdateMaskFragments();
+            ToggleInput(InputTypes.Mask, false);
+        }
+
         #region INPUT PANEL
 
         public enum InputTypes { Mask, Interact }
@@ -12,14 +20,14 @@ namespace UI
         // Panel de Inputs (poner máscara, y lo que sea...)
         [SerializeField] private GameObject[] inputPanels;
         
-        public void ShowInput(InputTypes inputType)
+        public void ToggleInput(InputTypes inputType, bool active)
         {
             inputPanels[inputType switch
             {
                 InputTypes.Mask => 0,
                 InputTypes.Interact => 1,
                 _ => 0
-            }].SetActive(true);
+            }].SetActive(active);
         }
 
         #endregion
@@ -29,12 +37,20 @@ namespace UI
 
         // Fragmentos de Máscara Malvada
         [SerializeField] private Sprite[] sprites;
-        [SerializeField] private SpriteRenderer maskFragmentsSprite;
+        [SerializeField] private Image maskFragmentsSprite;
         
         private static int NumMasks => GameManager.Instance.maskFragments;
 
-        public void UpdateMaskFragments() => 
-            maskFragmentsSprite.sprite = NumMasks == 0 ? null : sprites[NumMasks - 1];
+        public void UpdateMaskFragments()
+        {
+            if (NumMasks == 0)
+                maskFragmentsSprite.color = new Color(0, 0, 0, 0);
+            else
+            {
+                maskFragmentsSprite.color = Color.white;
+                maskFragmentsSprite.sprite = sprites[NumMasks - 1];
+            }
+        }
 
         #endregion
         

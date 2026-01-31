@@ -1,9 +1,9 @@
 using UI;
-using UnityEngine;
 using Utils;
 
 public class GameManager : Singleton<GameManager>
 {
+
     #region PLAYER MASK
 
     private bool hasMask;
@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     
     public void OnPlayerTakeMask() {
         hasMask = true;
-        HUDManager.Instance.ShowInput(HUDManager.InputTypes.Mask);
+        HUDManager.Instance.ToggleInput(HUDManager.InputTypes.Mask, true);
     }
 
     #endregion

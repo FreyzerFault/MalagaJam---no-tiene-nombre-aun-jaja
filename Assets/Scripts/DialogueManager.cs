@@ -1,7 +1,4 @@
 using System;
-using Characters;
-using Sirenix.Utilities;
-using UnityEngine;
 using Utils;
 
 public class DialogueManager : Singleton<DialogueManager>
