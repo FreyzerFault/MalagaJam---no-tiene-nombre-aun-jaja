@@ -1,5 +1,4 @@
-using Controllers;
-using Dialogue;
+using Dialogue.Dialogue;
 
 namespace Characters
 {
@@ -10,11 +9,11 @@ namespace Characters
             DialogueManager.Instance.OnDialogueEnd += OnDialogueEnd;
         }
 
-        public override void OnDialogueEnd(DialogueManager.DialogueTag currentDialogue)
+        public override void OnDialogueEnd()
         {
-            if (currentDialogue != DialogueManager.DialogueTag.Perro) return;
+            if (DialogueManager.Instance.CurrentCharacter != DialogueManager.Dialogue.Character.Perro) return;
             
-            GameManager.Instance.OnPlayerTakeMask();
+            GameManager.Instance.AddMaskFragment();
         }
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using Dialogue;
+using Dialogue.Dialogue;
 using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,7 +37,7 @@ namespace Controllers
             HUDManager.Instance.ToggleInput(HUDManager.InputTypes.Mask, false);
         }
 
-        private void OnDialogueEnd(DialogueManager.DialogueTag currentDialogue) => ResetSanity();
+        private void OnDialogueEnd() => ResetSanity();
 
         private void Update()
         {

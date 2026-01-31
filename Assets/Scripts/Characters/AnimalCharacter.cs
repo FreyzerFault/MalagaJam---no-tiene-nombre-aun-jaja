@@ -1,23 +1,18 @@
+using Dialogue;
 using UnityEngine;
 using Dialogue;
+using Dialogue.Dialogue;
 
 namespace Characters
 {
     public abstract class AnimalCharacter : MonoBehaviour
     {
+        public DialogueSequence sequence;
+        
         public virtual void OnPlayerNear()
         {
             if (!DialogueManager.Instance.dialogueOnCourse) 
-                DialogueManager.Instance.StartDialogue();
-        }
-
-        public void OnMaskOn()
-        {
-            //poner dibujo
-            if (!DialogueManager.Instance.dialogueOnCourse)
-            {
-                DialogueManager.Instance.StartDialogue();
-            }
+                DialogueManager.Instance.StartDialogue(sequence);
         }
 
         public void OnMaskOff()
@@ -25,6 +20,6 @@ namespace Characters
             //quitar dibujo
         }
 
-        public abstract void OnDialogueEnd(DialogueManager.DialogueTag currentDialogue);
+        public abstract void OnDialogueEnd();
     }
 }

@@ -1,54 +1,72 @@
 using System;
 using Controllers;
+using UI;
+using UnityEngine;
 using Utils;
 namespace Dialogue{ 
-public class DialogueManager : Singleton<DialogueManager>
+
+namespace Dialogue
 {
-    public event Action<DialogueTag> OnDialogueStart;
-    public event Action<DialogueTag> OnDialogueEnd;
-    
-    public enum DialogueTag { None = -1, Perro, Faisan, Macaco }
-
-    
-    public DialogueList CurrentList;
-    public bool dialogueOnCourse = false;
-    public void StartDialogue(DialogueList Lista)
+    public class DialogueManager : Singleton<DialogueManager>
     {
-            CurrentList= Lista;
-        // TODO
-        // if (playerTieneQueQuedarseQuieto)
-        PlayerController.Instance.enabled = false;
-        
-        OnDialogueStart?.Invoke(Lista);
-    }
-
-    public void ContinueDialogue()
-    {
-        // TODO Dialogo
-        // Recorrer Dialogos
-    
-        if (Input.GetKeyDown(KeyCode.E)){
-            index++;
+        [Serializable]
+        public struct Dialogue 
+        {
+            public enum Character { Macaco, Faisan, Perro, Momotaro, Ogro, Unknown }
+            public enum Mood { Angry = 0, Shocked = 1, } // TODO Añadir todos
+            
+            public Character character;
+            public Mood mood;
+            public string text;
         }
 
-        // Despues del ultimo dialogo
-        if (index >= CurrentList.ListaDialogos.Count()){
-            EndDialogue();
-            return;
-        }
-         
         
-        Dialogue dialogue = CurrentList[index];
-        HUDManager.Instance.UpdateDialogue(dialogue);
-    }
+        public event Action OnDialogueStart;
+        public event Action OnDialogueEnd;
+    
+        public enum DialogueTag { None = -1, Perro, Faisan, Macaco }
 
-    public void EndDialogue()
-    {
-        // animals.ForEach((animal) => animal.OnDialogueEnd(currentDialogue));
-        
-        // TODO finalizar dialogo en UI
-        
-        OnDialogueEnd?.Invoke(currentDialogueAnimal);
+        public DialogueSequence currentDialogueSequence;
+        private int dialogueIndex;
+        public bool dialogueOnCourse = false;
+
+        public Dialogue CurrentDialogue => currentDialogueSequence.dialogues[dialogueIndex];
+        public Dialogue.Character CurrentCharacter => CurrentDialogue.character;
+        public Dialogue.Mood CurrentMood => CurrentDialogue.mood;
+
+        public void StartDialogue(DialogueSequence dialogueSequence)
+        {
+            currentDialogueSequence = dialogueSequence;
+            // TODO
+            // if (playerTieneQueQuedarseQuieto)
+            PlayerController.Instance.enabled = false;
+            
+            OnDialogueStart?.Invoke();
+        }
+
+        public void ContinueDialogue()
+        {
+            if (Input.GetKeyDown(KeyCode.E)){
+                dialogueIndex++;
+            }
+
+            // Despues del ultimo dialogo
+            if (dialogueIndex >= currentDialogueSequence.dialogues.Count)
+            {
+                EndDialogue();
+                return;
+            }
+            
+            Dialogue dialogue = currentDialogueSequence.dialogues[dialogueIndex];
+            HUDManager.Instance.UpdateDialogue(dialogue);
+        }
+
+        public void EndDialogue()
+        {
+            PlayerController.Instance.enabled = true;
+            HUDManager.Instance.OnEndDialogue();
+            OnDialogueEnd?.Invoke();
+        }
     }
 }
 }

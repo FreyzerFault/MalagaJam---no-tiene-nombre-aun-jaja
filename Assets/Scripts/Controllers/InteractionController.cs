@@ -1,4 +1,4 @@
-using StateDriven_FSM.States;
+using Interactibles;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils;

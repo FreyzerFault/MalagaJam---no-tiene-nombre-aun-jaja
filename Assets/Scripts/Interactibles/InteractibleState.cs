@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-namespace StateDriven_FSM
+namespace Interactibles
 {
     [Serializable]
     public abstract class InteractibleState<T> where T : Interactible
     {
-        private const bool DebugLogState = true; // Si false no muestra nada por consola cuando cambia de Estado
+        private const bool DebugLogState = false; // Si false no muestra nada por consola cuando cambia de Estado
 
         public override string ToString() => "State";
 

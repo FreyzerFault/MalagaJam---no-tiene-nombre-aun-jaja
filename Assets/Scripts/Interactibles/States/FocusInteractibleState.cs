@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StateDriven_FSM.States
+namespace Interactibles.States
 {
     public class FocusInteractibleState: InteractibleState<Interactible>
     {
