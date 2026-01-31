@@ -338,7 +338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &330283733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,7 +839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &968518980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,6 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7d136cd14bff247b46838210765c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DogCharacter
+  sequence: {fileID: 11400000, guid: 4f29bfa453327b04181a950af5fbe1ff, type: 2}
 --- !u!4 &1933206154
 Transform:
   m_ObjectHideFlags: 0
@@ -1812,6 +1813,14 @@ PrefabInstance:
       propertyPath: 'inputPanels.Array.data[1]'
       value: 
       objectReference: {fileID: 1953462865}
+    - target: {fileID: 1605062572800665637, guid: ad2fbee9754375a44b2d1c7d1c3b5c2b, type: 3}
+      propertyPath: spriteDictionary._serializedList.Array.data[0].Value.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605062572800665637, guid: ad2fbee9754375a44b2d1c7d1c3b5c2b, type: 3}
+      propertyPath: 'spriteDictionary._serializedList.Array.data[0].Value.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 72abbac7c06c895469bd9c73d30b10a9, type: 3}
     - target: {fileID: 3770102306205073811, guid: ad2fbee9754375a44b2d1c7d1c3b5c2b, type: 3}
       propertyPath: m_Name
       value: HUD

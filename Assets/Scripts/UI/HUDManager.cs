@@ -22,6 +22,7 @@ namespace UI
             MaskController.Instance.OnMaskOff += OnMaskOff;
 
             DialogueManager.Instance.OnDialogueStart += ShowDialogue;
+            DialogueManager.Instance.OnDialogueContinue += UpdateDialogue;
             DialogueManager.Instance.OnDialogueEnd += HideDialogue;
         }
         private void OnDisable()
@@ -30,6 +31,7 @@ namespace UI
             MaskController.Instance.OnMaskOff -= OnMaskOff;
             
             DialogueManager.Instance.OnDialogueStart -= ShowDialogue;
+            DialogueManager.Instance.OnDialogueContinue -= UpdateDialogue;
             DialogueManager.Instance.OnDialogueEnd -= HideDialogue;
         }
 
@@ -128,8 +130,6 @@ namespace UI
             characterImage.sprite = spriteList[character == Character.Unknown ? 0 : (int)mood];
             dialogueTxt.text = frase;
         }
-        
-        public void OnEndDialogue() => HideDialogue();
 
         #endregion
 

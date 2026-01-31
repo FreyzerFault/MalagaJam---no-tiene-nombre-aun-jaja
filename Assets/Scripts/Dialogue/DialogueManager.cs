@@ -13,7 +13,7 @@ namespace Dialogue
         public struct Dialogue 
         {
             public enum Character { Macaco, Faisan, Perro, Momotaro, Ogro, Unknown }
-            public enum Mood { Angry = 0, Shocked = 1, } // TODO Añadir todos
+            public enum Mood { Default = 0, Enfadado = 1, Asustado = 2, Feliz = 3, Molesto = 4, } // TODO Añadir todos
             
             public Character character;
             public Mood mood;
@@ -22,17 +22,26 @@ namespace Dialogue
 
         
         public event Action OnDialogueStart;
+        public event Action<Dialogue> OnDialogueContinue;
         public event Action OnDialogueEnd;
     
         public enum DialogueTag { None = -1, Perro, Faisan, Macaco }
 
-        public DialogueSequence currentDialogueSequence;
+        private DialogueSequence currentDialogueSequence;
+        [HideInInspector] public bool dialogueOnCourse = false;
         private int dialogueIndex;
-        public bool dialogueOnCourse = false;
 
         public Dialogue CurrentDialogue => currentDialogueSequence.dialogues[dialogueIndex];
         public Dialogue.Character CurrentCharacter => CurrentDialogue.character;
         public Dialogue.Mood CurrentMood => CurrentDialogue.mood;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space))
+            {
+                ContinueDialogue();
+            }
+        }
 
         public void StartDialogue(DialogueSequence dialogueSequence)
         {
@@ -40,15 +49,12 @@ namespace Dialogue
             // TODO
             // if (playerTieneQueQuedarseQuieto)
             PlayerController.Instance.enabled = false;
-            
             OnDialogueStart?.Invoke();
         }
 
         public void ContinueDialogue()
         {
-            if (Input.GetKeyDown(KeyCode.E)){
-                dialogueIndex++;
-            }
+            dialogueIndex++;
 
             // Despues del ultimo dialogo
             if (dialogueIndex >= currentDialogueSequence.dialogues.Count)
@@ -58,13 +64,12 @@ namespace Dialogue
             }
             
             Dialogue dialogue = currentDialogueSequence.dialogues[dialogueIndex];
-            HUDManager.Instance.UpdateDialogue(dialogue);
+            OnDialogueContinue?.Invoke(dialogue);
         }
 
         public void EndDialogue()
         {
             PlayerController.Instance.enabled = true;
-            HUDManager.Instance.OnEndDialogue();
             OnDialogueEnd?.Invoke();
         }
     }

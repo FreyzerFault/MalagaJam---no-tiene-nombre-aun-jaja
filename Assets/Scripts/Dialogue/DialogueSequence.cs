@@ -17,7 +17,7 @@ namespace Dialogue
             //Forma de añadir posicion
             dialogues.Add(new DialogueManager.Dialogue {
                 character = Character.Macaco,
-                mood =  Mood.Angry,
+                mood =  Mood.Enfadado,
                 text = "LOREM IPSUM MECAGO MUCHO SOCORROOOOOO"
             });
         }
