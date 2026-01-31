@@ -616,7 +616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 712971258}
-  - component: {fileID: 712971254}
+  - component: {fileID: 712971259}
   - component: {fileID: 712971257}
   - component: {fileID: 712971256}
   - component: {fileID: 712971255}
@@ -626,30 +626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &712971254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712971253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b080df50d1e4acb4388a147e99bfcae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MaskScript
-  brightnessEffectIntensityTarget:
-    _serializedList:
-    - Key: 0
-      Value: 0.1
-    - Key: 1
-      Value: 0.6
-    - Key: 2
-      Value: 0.9
-    - Key: 3
-      Value: 0
-  brightIntensityAnimDuration: 0.3
+  m_IsActive: 1
 --- !u!135 &712971255
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -743,6 +720,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &712971259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712971253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b080df50d1e4acb4388a147e99bfcae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MaskScript
+  brightnessTargetValues:
+    _serializedList:
+    - Key: Active
+      Value: 0.1
+    - Key: Focus
+      Value: 0.6
+    - Key: Interacting
+      Value: 0.8
+    - Key: Inactive
+      Value: 0
 --- !u!1 &925467708
 GameObject:
   m_ObjectHideFlags: 0

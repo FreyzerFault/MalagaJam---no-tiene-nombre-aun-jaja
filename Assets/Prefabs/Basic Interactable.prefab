@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 701007629766328435}
-  - component: {fileID: 9083706768110221854}
+  - component: {fileID: 6085818614778502681}
   - component: {fileID: 5706260517256280120}
   - component: {fileID: 1626762013436294696}
   - component: {fileID: 6157823670935987193}
@@ -35,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9083706768110221854
+--- !u!114 &6085818614778502681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,18 +46,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d47aee0d1f3642338bdc1aeaf26092fc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  brightnessEffectIntensityTarget:
+  m_EditorClassIdentifier: Assembly-CSharp::Interactible
+  brightnessTargetValues:
     _serializedList:
-    - Key: 0
-      Value: 0.1
-    - Key: 1
-      Value: 0.6
-    - Key: 2
-      Value: 0.8
-    - Key: 3
-      Value: 0
-  brightIntensityAnimDuration: 0.5
+    - Value: 0.1
+    - Value: 0.6
+    - Value: 0.8
+    - Value: 0
 --- !u!33 &5706260517256280120
 MeshFilter:
   m_ObjectHideFlags: 0

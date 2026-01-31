@@ -1,4 +1,4 @@
-using System;
+using StateDriven_FSM.States;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils;
@@ -10,43 +10,51 @@ namespace Controllers
         private static LayerMask InteractibleLayerMask => LayerMask.GetMask("Interactable");
         private static Camera Cam => Camera.main;
         
-        public Interactable focusedInteractable;
+        public Interactible focusedInteractible;
 
         private void Update()
         {
             if (Physics.Raycast(Cam.transform.position, Cam.transform.forward, out RaycastHit hit, 10f, InteractibleLayerMask.value))
             {
-                Interactable interactable = hit.transform.GetComponent<Interactable>();
-                if (interactable == null) return;
+                Interactible interactible = hit.transform.GetComponent<Interactible>();
                 
-                focusedInteractable = interactable;
+                if (!interactible) return;
                 
-                // Activar el Focus
-                if (focusedInteractable.State == Interactable.InteractableState.Base)
-                {
-                    interactable.OnFocus();
-                }
+                if (focusedInteractible != interactible)
+                    LoseFocus();
+                
+                Focus(interactible);
             }
-            else
+            else // No mira ningun Interactuable
             {
-                // Pierde el focus si lo tenía en un Interactable
-                if (focusedInteractable)
-                {
-                    focusedInteractable.OnFocusLost();
-                    focusedInteractable = null;
-                }
+                if (focusedInteractible)
+                    LoseFocus();
             }
+        }
+
+        private void Focus(Interactible interactible)
+        {
+            focusedInteractible = interactible;
+            
+            if (!interactible.IsFocused)
+                interactible.SwitchState(Interactible.FocusState);
+        }
+        
+        private void LoseFocus()
+        {
+            if (!focusedInteractible) return;
+            
+            focusedInteractible.SwitchState(Interactible.ActiveState);
+            focusedInteractible = null;
         }
 
         private void OnInteract(InputValue value)
         {
             bool holdInteractionInput = value.isPressed;
-            Debug.Log(holdInteractionInput ? "Interacting" : "NOT Interacting");
-            if (focusedInteractable)
-                focusedInteractable.State = 
-                    holdInteractionInput
-                        ? Interactable.InteractableState.Active 
-                        : Interactable.InteractableState.Hover;
+            if (focusedInteractible)
+                focusedInteractible.SwitchState(holdInteractionInput
+                    ? Interactible.InteractingState
+                    : Interactible.FocusState);
         }
     }
 }

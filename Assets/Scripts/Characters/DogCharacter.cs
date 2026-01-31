@@ -1,3 +1,5 @@
+using Controllers;
+
 namespace Characters
 {
     public class DogCharacter : AnimalCharacter
@@ -11,7 +13,7 @@ namespace Characters
         {
             if (currentDialogue != DialogueManager.DialogueTag.Perro) return;
             
-            // TODO Darle la mascara
+            GameManager.Instance.OnPlayerTakeMask();
         }
     }
 }
