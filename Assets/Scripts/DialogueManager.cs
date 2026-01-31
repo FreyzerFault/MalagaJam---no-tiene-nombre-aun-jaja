@@ -1,4 +1,5 @@
 using System;
+using Controllers;
 using Utils;
 
 public class DialogueManager : Singleton<DialogueManager>
@@ -15,7 +16,7 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         // TODO
         // if (playerTieneQueQuedarseQuieto)
-        PlayerControllerCc.Instance.enabled = false;
+        PlayerController.Instance.enabled = false;
         
         OnDialogueStart?.Invoke(currentDialogueAnimal);
     }

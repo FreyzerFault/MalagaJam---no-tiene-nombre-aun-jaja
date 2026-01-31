@@ -1,3 +1,4 @@
+using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
@@ -6,7 +7,12 @@ namespace UI
 {
     public class HUDManager : Singleton<HUDManager>
     {
-        private void Start() => ResetHUD();
+        private void Start()
+        {
+            ResetHUD();
+            MaskController.Instance.OnMaskOn += OnMaskOn;
+            MaskController.Instance.OnMaskOff += OnMaskOff;
+        }
 
         private void ResetHUD()
         {
@@ -25,6 +31,7 @@ namespace UI
         // Panel de Inputs (poner máscara, y lo que sea...)
         [SerializeField] private GameObject[] inputPanels;
         
+        
         public void ToggleInput(InputTypes inputType, bool active)
         {
             inputPanels[inputType switch
@@ -33,6 +40,16 @@ namespace UI
                 InputTypes.Interact => 1,
                 _ => 0
             }].SetActive(active);
+        }
+
+        private void OnMaskOn()
+        {
+            
+        }
+        
+        private void OnMaskOff()
+        {
+            
         }
 
         #endregion
