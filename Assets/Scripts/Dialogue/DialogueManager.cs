@@ -1,7 +1,7 @@
 using System;
 using Controllers;
 using Utils;
-
+namespace Dialogue{ 
 public class DialogueManager : Singleton<DialogueManager>
 {
     public event Action<DialogueTag> OnDialogueStart;
@@ -9,26 +9,37 @@ public class DialogueManager : Singleton<DialogueManager>
     
     public enum DialogueTag { None = -1, Perro, Faisan, Macaco }
 
-    private DialogueTag currentDialogueAnimal;
     
+    public DialogueList CurrentList;
     public bool dialogueOnCourse = false;
-    public void StartDialogue()
+    public void StartDialogue(DialogueList Lista)
     {
+            CurrentList= Lista;
         // TODO
         // if (playerTieneQueQuedarseQuieto)
         PlayerController.Instance.enabled = false;
         
-        OnDialogueStart?.Invoke(currentDialogueAnimal);
+        OnDialogueStart?.Invoke(Lista);
     }
 
     public void ContinueDialogue()
     {
         // TODO Dialogo
         // Recorrer Dialogos
-        
-        
+    
+        if (Input.GetKeyDown(KeyCode.E)){
+            index++;
+        }
+
         // Despues del ultimo dialogo
-        EndDialogue();
+        if (index >= CurrentList.ListaDialogos.Count()){
+            EndDialogue();
+            return;
+        }
+         
+        
+        Dialogue dialogue = CurrentList[index];
+        HUDManager.Instance.UpdateDialogue(dialogue);
     }
 
     public void EndDialogue()
@@ -39,4 +50,5 @@ public class DialogueManager : Singleton<DialogueManager>
         
         OnDialogueEnd?.Invoke(currentDialogueAnimal);
     }
+}
 }

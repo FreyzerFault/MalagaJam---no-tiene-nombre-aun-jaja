@@ -2,6 +2,7 @@ using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
+using Dialogue;
 
 namespace UI
 {
@@ -89,6 +90,26 @@ namespace UI
         
         public void ToggleDialogue(bool value, DialogueManager.DialogueTag dialogueTag = DialogueManager.DialogueTag.None) 
             => dialoguePanel.SetActive(value);
+        
+[SerializeField, SerializedDictionary("Nombre", "Sprite")]
+        private SerializedDictionary<string, Sprite> spriteDictionary = new(
+            new List<KeyValuePair<string, Sprite>>
+            {
+                new("Perro", null),
+                new("Faisan", null),
+                new("Mono", null),
+                new("Momotaro", null),
+                new("Ogro", null),
+            });
+
+        public void UpdateDialogue (Dialogue.Dialogue dialogue) {
+            string nombreImagen = dialogue.Imagen;
+            string frase = dialogue.Frase;
+
+            dialogueImage.sprite = spriteDictionary[nombreImagen];
+            dialogueText.text = frase;
+        }
+       
         
         #endregion
     }

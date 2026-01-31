@@ -1,4 +1,5 @@
 using Controllers;
+using Dialogue;
 
 namespace Characters
 {
