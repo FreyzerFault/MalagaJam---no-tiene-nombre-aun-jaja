@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2bcd2660ca9b64942af0de543d8d7100
+guid: bee23f94071294a488a253d32eb3c5da
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -12,10 +12,3 @@ ScriptedImporter:
   wrapperCodePath: 
   wrapperClassName: 
   wrapperCodeNamespace: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 330976
-  packageName: 2D Lighting for Pixel Art| Project files
-  packageVersion: 1.0
-  assetPath: Assets/InputSystem_Actions.inputactions
-  uploadId: 787818

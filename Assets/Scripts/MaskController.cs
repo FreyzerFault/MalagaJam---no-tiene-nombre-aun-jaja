@@ -20,6 +20,30 @@ public class MaskController: MonoBehaviour
 
     private void Update()
     {
+        // TODO Esto funciona pero el Input Moderno NO ¿POR QUEEEEE? NOSE
+        // if (Input.GetKey(KeyCode.LeftShift))
+        // {
+        //     bool newMaskOn = true;
+        //
+        //     if (maskOn != newMaskOn && newMaskOn)
+        //         OnPutMask();
+        //     else if (maskOn != newMaskOn && !newMaskOn)
+        //         OnRemoveMask();
+        //
+        //     maskOn = newMaskOn;
+        // }
+        // else
+        // {
+        //     bool newMaskOn = false;
+        //
+        //     if (maskOn != newMaskOn && newMaskOn)
+        //         OnPutMask();
+        //     else if (maskOn != newMaskOn && !newMaskOn)
+        //         OnRemoveMask();
+        //
+        //     maskOn = newMaskOn;
+        // }
+        
         // Baja, pero NO cuando está en diálogo
         if (maskOn && !DialogueManager.Instance.dialogueOnCourse)
             sanity -= sanityDecreaseSpeed * Time.deltaTime;
