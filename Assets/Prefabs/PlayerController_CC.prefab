@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 1593974873030189324}
   - component: {fileID: 6653313437072446341}
   - component: {fileID: 3073265200000833542}
+  - component: {fileID: 1135915665898541372}
   - component: {fileID: 3559945752282547612}
   - component: {fileID: 2903632298911859457}
   - component: {fileID: 3105805416583236260}
@@ -281,6 +282,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6060eb3bfd964fb98f350cf44c96c340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionController
+--- !u!114 &1135915665898541372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815321770536838901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891b9d8e2ee041ebb1f5ccb8624bdaab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.MaskController
 --- !u!114 &3559945752282547612
 MonoBehaviour:
   m_ObjectHideFlags: 0

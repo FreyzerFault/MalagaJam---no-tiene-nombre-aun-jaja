@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class InteractionController: MonoBehaviour
 {
-    private LayerMask InteractibleLayerMask => LayerMask.GetMask("Interactable", "Character"); 
-    private Camera Cam => Camera.main;
+    private static LayerMask InteractibleLayerMask => LayerMask.GetMask("Interactable", "Character");
+    private static Camera Cam => Camera.main;
         
     private void Interact()
     {

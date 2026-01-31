@@ -1,8 +1,14 @@
 using UnityEngine;
+using Utils;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    private bool hasMask; 
+    private bool hasMask;
+
+    public int maskFragments;
+
+    public void AddMaskFragment() => maskFragments++;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
