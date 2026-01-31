@@ -1,18 +1,37 @@
+using System;
+using System.Collections.Generic;
+using Controllers;
 using UI;
+using UnityEngine.SceneManagement;
 using Utils;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : SingletonPersistent<GameManager>
 {
+    private void Start()
+    {
+        ResetGame();
+    }
 
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ToggleMaskController(false);
+        ResetMaskFragments();
+    }
+
+    
     #region PLAYER MASK
 
-    private bool hasMask;
-    
-    public bool HasMask => hasMask;
+    public bool HasMask => MaskController.Instance.enabled;
     
     public void OnPlayerTakeMask() {
-        hasMask = true;
-        HUDManager.Instance.ToggleInput(HUDManager.InputTypes.Mask, true);
+        ToggleMaskController(true);
+    }
+    
+    public void ToggleMaskController(bool activated)
+    {
+        MaskController.Instance.enabled = activated;
+        HUDManager.Instance.ToggleInput(HUDManager.InputTypes.Mask, activated);
     }
 
     #endregion
@@ -23,18 +42,8 @@ public class GameManager : Singleton<GameManager>
     public int maskFragments;
 
     public void AddMaskFragment() => maskFragments++;
+    public void ResetMaskFragments() => maskFragments = 0;
 
     #endregion
 
-
-    #region PUZZLES
-
-    public enum PuzzleType { Faisan = 0, Macaco = 1 }
-
-    private bool[] activePuzzles;
-    
-    public void ActivatePuzzle(PuzzleType puzzle) => activePuzzles[(int)puzzle] = true;
-    public void DeactivatePuzzle(PuzzleType puzzle) => activePuzzles[(int)puzzle] = false;
-
-    #endregion
 }
