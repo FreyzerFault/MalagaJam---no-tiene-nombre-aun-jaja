@@ -7,6 +7,7 @@ public class MaskScript : MonoBehaviour, IInteractable
     [SerializeField] private EventTrigger EventTrigger;
     [SerializeField] private GameManager gameManager;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,16 +21,17 @@ public class MaskScript : MonoBehaviour, IInteractable
 
     }
 
-    void Iluminar()
+    public void OnPlayerNear()
     {
-        
+        //Iluminar efectos
+   
     }
 
     public void OnInteract()
     {
         // TODO animacion
         gameManager.SetHasMask(true);
-      
+
         Destroy(gameObject);
     }
 }

@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 using Utils;
 
@@ -22,5 +23,9 @@ public class GameManager : Singleton<GameManager>
     } 
 
     public bool GetHasMask() => hasMask;
-    public void SetHasMask(bool value) {  hasMask = value; }
+    public void SetHasMask(bool value) {  
+        hasMask = value;
+        HUDManager.Instance.ShowInput(HUDManager.InputTypes.Mask);
+    
+    }
 }
