@@ -1,12 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-namespace DefaultNamespace
+public class MaskController: MonoBehaviour
 {
-    public class MaskController: MonoBehaviour
-    {
-        private void OnPutMask()
-        {
-            
-        }
-    }
+    private bool maskOn;
+        
+    private void OnPutMask(InputValue value) => maskOn = value.Get<float>() > 0;
 }

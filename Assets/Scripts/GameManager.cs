@@ -4,28 +4,36 @@ using Utils;
 
 public class GameManager : Singleton<GameManager>
 {
+    #region PLAYER MASK
+
     private bool hasMask;
+    
+    public bool HasMask => hasMask;
+    
+    public void OnPlayerTakeMask() {
+        hasMask = true;
+        HUDManager.Instance.ShowInput(HUDManager.InputTypes.Mask);
+    }
+
+    #endregion
+    
+
+    #region MASK FRAGMENTS
 
     public int maskFragments;
 
     public void AddMaskFragment() => maskFragments++;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    #endregion
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    } 
 
-    public bool GetHasMask() => hasMask;
-    public void SetHasMask(bool value) {  
-        hasMask = value;
-        HUDManager.Instance.ShowInput(HUDManager.InputTypes.Mask);
+    #region PUZZLES
+
+    public enum PuzzleType { Faisan = 0, Macaco = 1 }
+
+    private bool[] puzzlesActive;
     
-    }
+    public void ActivatePuzzle() => puzzlesActive = new bool[puzzlesActive.Length];
+
+    #endregion
 }
