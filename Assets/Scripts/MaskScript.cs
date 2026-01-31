@@ -27,7 +27,6 @@ public class MaskScript : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        throw new System.NotImplementedException();
         // TODO animacion
         gameManager.SetHasMask(true);
       
