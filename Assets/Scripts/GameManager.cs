@@ -31,9 +31,10 @@ public class GameManager : Singleton<GameManager>
 
     public enum PuzzleType { Faisan = 0, Macaco = 1 }
 
-    private bool[] puzzlesActive;
+    private bool[] activePuzzles;
     
-    public void ActivatePuzzle() => puzzlesActive = new bool[puzzlesActive.Length];
+    public void ActivatePuzzle(PuzzleType puzzle) => activePuzzles[(int)puzzle] = true;
+    public void DeactivatePuzzle(PuzzleType puzzle) => activePuzzles[(int)puzzle] = false;
 
     #endregion
 }

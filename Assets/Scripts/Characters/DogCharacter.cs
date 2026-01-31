@@ -1,16 +1,17 @@
-using UnityEngine;
-
-public class DogCharacter : MonoBehaviour
+namespace Characters
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class DogCharacter : AnimalCharacter
     {
-        
-    }
+        private void Start()
+        {
+            DialogueManager.Instance.OnDialogueEnd += OnDialogueEnd;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void OnDialogueEnd(DialogueManager.AnimalType currentDialogue)
+        {
+            if (currentDialogue != DialogueManager.AnimalType.Perro) return;
+            
+            // TODO Darle la mascara
+        }
     }
 }

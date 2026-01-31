@@ -1,12 +1,7 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MaskScript : MonoBehaviour, IInteractable
 {
-
-    [SerializeField] private EventTrigger EventTrigger;
-    [SerializeField] private GameManager gameManager;
-    
     public Material brightMaterial;
 
 
@@ -32,7 +27,9 @@ public class MaskScript : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         // TODO animacion
-        gameManager.OnPlayerTakeMask();
+        Debug.Log("ME HAS COGIDO");
+        
+        GameManager.Instance.OnPlayerTakeMask();
 
         Destroy(gameObject);
     }

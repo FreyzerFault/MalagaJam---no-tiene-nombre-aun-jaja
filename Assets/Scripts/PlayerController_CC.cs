@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using Utils;
 
-public class PlayerController_CC : MonoBehaviour
+public class PlayerControllerCc : Singleton<PlayerControllerCc>
 {
     public float speed = 5;
     public float runMultiplier = 2;
