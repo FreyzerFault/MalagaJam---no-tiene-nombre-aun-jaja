@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 6653313437072446341}
   - component: {fileID: 3073265200000833542}
   - component: {fileID: 1135915665898541372}
-  - component: {fileID: 3559945752282547612}
+  - component: {fileID: 233664920445644774}
   - component: {fileID: 2903632298911859457}
   - component: {fileID: 3105805416583236260}
   m_Layer: 0
@@ -294,7 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891b9d8e2ee041ebb1f5ccb8624bdaab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.MaskController
---- !u!114 &3559945752282547612
+  maxSanity: 100
+--- !u!114 &233664920445644774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: bee23f94071294a488a253d32eb3c5da, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:

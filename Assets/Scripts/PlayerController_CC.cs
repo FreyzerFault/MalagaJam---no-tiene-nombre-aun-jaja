@@ -44,6 +44,14 @@ public class PlayerControllerCc : Singleton<PlayerControllerCc>
     private void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
     private void OnRun(InputValue value) => isRunning = value.Get<float>() > 0.1f;
     private void OnJump() => Jump();
+    
+    private void OnInteract()
+    {
+        Debug.Log("INTERACTION");
+        
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, 10f, LayerMask.GetMask("Interactable")))
+            hit.transform.GetComponent<IInteractable>().OnInteract();
+    }
 
     
     #region DEBUGGING

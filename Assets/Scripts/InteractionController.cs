@@ -14,13 +14,12 @@ public class InteractionController: MonoBehaviour
             Debug.Log("BOTTON RATON");
     }
 
-    private void Interact()
+        
+    private void OnInteract()
     {
         Debug.Log("INTERACTION");
         
         if (Physics.Raycast(Cam.transform.position, Cam.transform.forward, out RaycastHit hit, 10f, InteractibleLayerMask.value))
             hit.transform.GetComponent<IInteractable>().OnInteract();
     }
-        
-    private void OnInteract(InputValue value) => Interact();
 }
