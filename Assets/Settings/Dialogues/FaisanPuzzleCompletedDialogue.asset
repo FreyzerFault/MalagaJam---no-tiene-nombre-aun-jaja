@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2fe59fd332c4cc47a7e6b9dc0ac5938, type: 3}
-  m_Name: Perro Dialogue
+  m_Name: FaisanPuzzleCompletedDialogue
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueSequence
   dialogues:
-  - character: 2
+  - character: 1
     mood: 0
-    text: SKHDLAJSDJHKSA
+    text: "\xA1Magn\xEDfico!\xA1Esplendido! Al fin mi hogar se ve devuelto a la gloria
+      de anta\xF1o. Te hago entrega de tu merecida recompensa Momotaro, pero espero
+      que hayas aprendido la lecci\xF3n mortal. \xA1No ser\xE9 tan benevolente la
+      pr\xF3xima vez!"
   - character: 3
-    mood: 2
-    text: ...
-  - character: 2
-    mood: 1
-    text: SKHDLAJSDJHKSA
+    mood: 3
+    text: 
