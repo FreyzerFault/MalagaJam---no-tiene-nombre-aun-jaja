@@ -1,3 +1,5 @@
+using Dialogue.Dialogue;
+
 namespace Characters
 {
     public class DogCharacter : AnimalCharacter
@@ -7,11 +9,11 @@ namespace Characters
             DialogueManager.Instance.OnDialogueEnd += OnDialogueEnd;
         }
 
-        public override void OnDialogueEnd(DialogueManager.DialogueTag currentDialogue)
+        public override void OnDialogueEnd()
         {
-            if (currentDialogue != DialogueManager.DialogueTag.Perro) return;
+            if (DialogueManager.Instance.CurrentCharacter != DialogueManager.Dialogue.Character.Perro) return;
             
-            // TODO Darle la mascara
+            GameManager.Instance.AddMaskFragment();
         }
     }
 }

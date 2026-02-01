@@ -15,8 +15,10 @@ namespace Controllers
         private Vector2 lookInput;
         private float xRotation;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             cam = Camera.main;
             UpdateLockState();
         } 

@@ -1,4 +1,7 @@
 using System;
+using Dialogue;
+using Dialogue.Dialogue;
+using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils;
@@ -21,8 +24,20 @@ namespace Controllers
         private void Start()
         {
             ResetSanity();
-            DialogueManager.Instance.OnDialogueStart += _ => ResetSanity();
         }
+
+        private void OnEnable()
+        {
+            DialogueManager.Instance.OnDialogueStart += OnDialogueEnd;
+            HUDManager.Instance.ToggleInput(HUDManager.InputTypes.Mask, true);
+        }
+        private void OnDisable()
+        {
+            DialogueManager.Instance.OnDialogueStart -= OnDialogueEnd;
+            HUDManager.Instance.ToggleInput(HUDManager.InputTypes.Mask, false);
+        }
+
+        private void OnDialogueEnd() => ResetSanity();
 
         private void Update()
         {

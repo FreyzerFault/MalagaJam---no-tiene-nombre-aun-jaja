@@ -7,10 +7,7 @@ using Utils;
 
 public class GameManager : SingletonPersistent<GameManager>
 {
-    private void Start()
-    {
-        ResetGame();
-    }
+    private void Start() => ResetGame();
 
     public void ResetGame()
     {
@@ -24,15 +21,9 @@ public class GameManager : SingletonPersistent<GameManager>
 
     public bool HasMask => MaskController.Instance.enabled;
     
-    public void OnPlayerTakeMask() {
-        ToggleMaskController(true);
-    }
-    
-    public void ToggleMaskController(bool activated)
-    {
-        MaskController.Instance.enabled = activated;
-        HUDManager.Instance.ToggleInput(HUDManager.InputTypes.Mask, activated);
-    }
+    public void OnPlayerTakeMask() => ToggleMaskController(true);
+
+    public void ToggleMaskController(bool activated) => MaskController.Instance.enabled = activated;
 
     #endregion
     
