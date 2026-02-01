@@ -15,6 +15,8 @@ namespace UI
 {
     public class HUDManager : Singleton<HUDManager>
     {
+        [SerializeField] private GameObject debugPanel;
+        
         private void Start() => ResetHUD();
         
         private void OnEnable()
@@ -50,6 +52,8 @@ namespace UI
             DeactivateMaskInput();
             HideDialogue();
             ResetMaskImage();
+            
+            debugPanel.SetActive(GameManager.Instance.debugMode); 
         }
 
         

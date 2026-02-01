@@ -50,12 +50,14 @@ namespace Controllers
         private void DecreaseSanity(float quantity)
         {
             sanity -= quantity;
+            sanity = Mathf.Max(0, sanity);
             OnSanityUpdate?.Invoke(sanity);
         }
 
         private void IncreaseSanity(float quantity)
         {
             sanity += quantity;
+            sanity = Mathf.Min(maxSanity, sanity);
             OnSanityUpdate?.Invoke(sanity);
         }
 

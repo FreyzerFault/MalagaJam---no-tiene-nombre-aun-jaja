@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5325918376479262253}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1700.5245, y: 106.4124, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,6 +47,4 @@ MonoBehaviour:
   puzzles:
     _serializedList:
     - Key: 0
-      Value: {fileID: 11400000, guid: 7e2b00f6250b13443a541eaf836d190e, type: 2}
     - Key: 1
-      Value: {fileID: 11400000, guid: c78c5561195c36648ae7681df577bab5, type: 2}
