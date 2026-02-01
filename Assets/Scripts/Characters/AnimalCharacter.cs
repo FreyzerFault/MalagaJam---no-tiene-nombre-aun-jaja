@@ -51,7 +51,8 @@ namespace Characters
         {
             if (NoPuzzleConfigured) return;
 
-            Puzzle.Start();
+            // TODO Antes de implementar los puzzles provisionalmente activamos que completa el puzzle
+            // Puzzle.Start();
         }
         
         private void OnCompletedPuzzleDialogueEnd() => GameManager.Instance.AddMaskFragment();
@@ -79,8 +80,8 @@ namespace Characters
         protected virtual PuzzleManager.PuzzleType PuzzleType => PuzzleManager.PuzzleType.None; 
         protected Puzzle Puzzle => PuzzleManager.Instance.GetPuzzle(PuzzleType);
         private bool NoPuzzleConfigured => PuzzleType == PuzzleManager.PuzzleType.None;
-        
-        private void OnCompletedPuzzle(PuzzleManager.PuzzleType type)
+
+        protected void OnCompletedPuzzle(PuzzleManager.PuzzleType type)
         {
             if (type != PuzzleType) return;
             
