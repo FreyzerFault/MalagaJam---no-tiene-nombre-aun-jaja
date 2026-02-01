@@ -4,7 +4,7 @@ using Utils;
 
 namespace Controllers
 {
-    public class FPSCamController: Singleton<FPSCamController>
+    public class FPSCamController: MonoBehaviour
     {
         public bool lockCursor = true;
         public float mouseSensitivity = 100f;
@@ -15,10 +15,8 @@ namespace Controllers
         private Vector2 lookInput;
         private float xRotation;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
-            
             cam = Camera.main;
             UpdateLockState();
         } 

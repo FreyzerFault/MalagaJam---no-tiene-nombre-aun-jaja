@@ -1,14 +1,12 @@
 using System;
-using Dialogue;
 using Dialogue.Dialogue;
-using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils;
 
 namespace Controllers
 {
-    public class MaskController: Singleton<MaskController>
+    public class MaskController: MonoBehaviour
     {
         [SerializeField] private float maxSanity = 100;
     
@@ -20,22 +18,12 @@ namespace Controllers
 
         public event Action OnMaskOn;
         public event Action OnMaskOff;
+        public event Action<float> OnSanityUpdate;
 
-        private void Start()
-        {
-            ResetSanity();
-        }
+        private void Start() => ResetSanity();
 
-        private void OnEnable()
-        {
-            DialogueManager.Instance.OnDialogueStart += OnDialogueEnd;
-            HUDManager.Instance.ToggleInput(HUDManager.InputTypes.Mask, true);
-        }
-        private void OnDisable()
-        {
-            DialogueManager.Instance.OnDialogueStart -= OnDialogueEnd;
-            HUDManager.Instance.ToggleInput(HUDManager.InputTypes.Mask, false);
-        }
+        private void OnEnable() => DialogueManager.Instance.OnDialogueStart += OnDialogueEnd;
+        private void OnDisable() => DialogueManager.Instance.OnDialogueStart -= OnDialogueEnd;
 
         private void OnDialogueEnd() => ResetSanity();
 
@@ -43,17 +31,34 @@ namespace Controllers
         {
             // Baja, pero NO cuando está en diálogo
             if (maskOn && !DialogueManager.Instance.dialogueOnCourse)
-                sanity -= sanityDecreaseSpeed * Time.deltaTime;
+                DecreaseSanity(sanityDecreaseSpeed * Time.deltaTime);
         
             // Cuando no tiene la máscara sube la cordura
             if (!maskOn)
-                sanity += sanityIncreaseSpeed * Time.deltaTime;
+                IncreaseSanity(sanityIncreaseSpeed * Time.deltaTime);
         
             if (sanity <= 0)
                 DeathSequence();
         }
 
+        #region SANITY
+
+        private void DecreaseSanity(float quantity)
+        {
+            sanity -= quantity;
+            OnSanityUpdate?.Invoke(sanity);
+        }
+
+        private void IncreaseSanity(float quantity)
+        {
+            sanity += quantity;
+            OnSanityUpdate?.Invoke(sanity);
+        }
+
         private void ResetSanity() => sanity = maxSanity;
+
+        #endregion
+        
     
         private void DeathSequence()
         {
@@ -66,6 +71,8 @@ namespace Controllers
 
         private void OnPutMask(InputValue value)
         {
+            if (!GameManager.Instance.HasMask) return;
+            
             bool newMaskOn = value.Get<float>() > 0;
         
             if (maskOn != newMaskOn && newMaskOn)

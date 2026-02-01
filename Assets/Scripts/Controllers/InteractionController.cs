@@ -5,7 +5,7 @@ using Utils;
 
 namespace Controllers
 {
-    public class InteractionController: Singleton<InteractionController>
+    public class InteractionController: MonoBehaviour
     {
         private static LayerMask InteractibleLayerMask => LayerMask.GetMask("Interactable");
         private static Camera Cam => Camera.main;
