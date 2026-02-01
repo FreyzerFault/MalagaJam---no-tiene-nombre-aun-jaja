@@ -312,9 +312,9 @@ GameObject:
   - component: {fileID: 3073265200000833542}
   - component: {fileID: 1135915665898541372}
   - component: {fileID: 233664920445644774}
+  - component: {fileID: 4999727912246638566}
   - component: {fileID: 2903632298911859457}
   - component: {fileID: 3105805416583236260}
-  - component: {fileID: 4999727912246638566}
   m_Layer: 12
   m_Name: PlayerController_CC
   m_TagString: Player
@@ -480,6 +480,29 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4999727912246638566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815321770536838901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bf25e829fc4f618ca7f139fbc14f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Controllers.PlayerSfxController
+  maskSanitySfx: {fileID: 2527076055823324386}
+  sfxDictionary:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 0}
+    - Key: 1
+      Value: {fileID: 0}
+    - Key: 2
+      Value: {fileID: 0}
+    - Key: 3
+      Value: {fileID: 0}
 --- !u!33 &2903632298911859457
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -537,29 +560,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4999727912246638566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3815321770536838901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bf25e829fc4f618ca7f139fbc14f38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Controllers.PlayerSfxController
-  maskSanitySfx: {fileID: 2527076055823324386}
-  sfxDictionary:
-    _serializedList:
-    - Key: 0
-      Value: {fileID: 0}
-    - Key: 1
-      Value: {fileID: 0}
-    - Key: 2
-      Value: {fileID: 0}
-    - Key: 3
-      Value: {fileID: 0}
 --- !u!1 &6669594557635899233
 GameObject:
   m_ObjectHideFlags: 0
