@@ -125,10 +125,16 @@ namespace UI
         [BoxGroup("Dialogue"), SerializeField] private GameObject dialoguePanel;
         [BoxGroup("Dialogue"), SerializeField] private Image characterImage;
         [BoxGroup("Dialogue"), SerializeField] private TMP_Text dialogueTxt;
+        [BoxGroup("Dialogue"), SerializeField] private Image skipDialogueIcon;
+        [BoxGroup("Dialogue"), SerializeField] private float spriteJumpEffectPower;
         
         public void HideDialogue() => dialoguePanel.SetActive(false);
-        public void ShowDialogue() => dialoguePanel.SetActive(true);
-        
+        public void ShowDialogue()
+        {
+            dialoguePanel.SetActive(true);
+            UpdateDialogue(DialogueManager.Instance.CurrentDialogue);
+        }
+
         public void ToggleDialogue(bool value) => dialoguePanel.SetActive(value);
 
         #region CHARACTER SPRITE
@@ -158,12 +164,18 @@ namespace UI
         public void UpdateDialogue (Dialogue.Dialogue dialogue) {
             Character character = dialogue.character;
             Mood mood = dialogue.mood;
-            string frase = dialogue.text;
+            string frase = dialogue.Text;
 
             List<Sprite> spriteList = spriteDictionary[character];
 
-            characterImage.sprite = spriteList[character == Character.Unknown ? 0 : (int)mood];
+            characterImage.sprite = spriteList[character != Character.Momotaro ? 0 : (int)mood];
             dialogueTxt.text = frase;
+
+            // TODO No funciona esta animacion de salto
+            characterImage.rectTransform.parent.GetComponent<RectTransform>()
+                .DOJumpAnchorPos(characterImage.rectTransform.anchoredPosition + Vector2.up, spriteJumpEffectPower, 1, .3f).Play();
+
+            skipDialogueIcon.enabled = !dialogue.IsAuto;
         }
 
         #endregion

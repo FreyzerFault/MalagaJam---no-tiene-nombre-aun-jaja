@@ -7,7 +7,7 @@ namespace Dialogue
     [CreateAssetMenu(fileName = "DialogueSequence", menuName = "Matsuri/DialogueSequence")]
     public class DialogueSequence : ScriptableObject
     {
-        public List<global::Dialogue.Dialogue> dialogues = new();
+        public List<Dialogue> dialogues = new();
         
         [HideInInspector] public bool hasEnded;
         
@@ -17,9 +17,9 @@ namespace Dialogue
         private void Awake() => AddDefaultDialogue();
 
         private void AddDefaultDialogue() => dialogues.Add(
-            new global::Dialogue.Dialogue {
-                character = global::Dialogue.Dialogue.Character.Momotaro,
-                mood =  global::Dialogue.Dialogue.Mood.Default,
+            new Dialogue {
+                character = Dialogue.Character.Momotaro,
+                mood =  Dialogue.Mood.Default,
                 text = "Texto del Dialogo"
             });
 

@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 
 namespace Dialogue
 {
@@ -11,5 +12,12 @@ namespace Dialogue
         public Character character;
         public Mood mood;
         public string text;
+        public bool auto;
+        [ShowIf("auto")] public int duration;
+
+        private string AutoTag => "[auto]";
+        public bool IsAuto => auto || text.StartsWith(AutoTag);
+
+        public string Text => IsAuto && text.StartsWith(AutoTag) ? text.Substring(AutoTag.Length, text.Length - AutoTag.Length) : text;
     }
 }

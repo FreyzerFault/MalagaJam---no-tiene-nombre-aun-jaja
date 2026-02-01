@@ -15,27 +15,37 @@ MonoBehaviour:
   dialogues:
   - character: 0
     mood: 0
-    text: "[auto]\xA1jijiji! \xA1Aqu\xED aqu\xED! \xA1Detr\xE1s de t\xED!"
+    text: "\xA1jijiji! \xA1Aqu\xED aqu\xED! \xA1Detr\xE1s de t\xED!"
+    auto: 1
+    duration: 2
   - character: 0
     mood: 0
-    text: "[auto]\xA1Ven ven jijiji!"
+    text: "\xA1Ven ven jijiji!"
+    auto: 1
+    duration: 2
   - character: 0
     mood: 0
     text: "\xA1Jijiji! Ay Momotaro\u2026 la que has liado\u2026 Te lo agradezco colega,
       todo estaba muy aburrido por aqu\xED. La vida de un esp\xEDritu es m\xE1s aburrida
       de lo que pueda parecer\u2026 lo de atravesar paredes y asustar humanos pierde
       la gracia muy pronto."
+    auto: 0
+    duration: 0
   - character: 3
     mood: 0
     text: (...)
+    auto: 0
+    duration: 0
   - character: 0
     mood: 0
     text: "Encontr\xE9 un pedazo de trasto antes, seguro que es lo que est\xE1s buscando
       \xA1jiji! \xA1Pues m\xE1s te vale atraparme Momotarao, porque es la \xFAnica
       forma en la que lo vas a conseguir!"
+    auto: 0
+    duration: 0
   - character: 3
     mood: 1
     text: (...)
-  - character: 3
-    mood: 0
-    text: Texto del Dialogo
+    auto: 0
+    duration: 0
+  hasEnded: 0

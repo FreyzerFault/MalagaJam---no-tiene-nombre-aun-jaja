@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils;
@@ -46,6 +47,8 @@ public class GameManager : SingletonPersistent<GameManager>
 
     #region MASK FRAGMENTS
 
+    [SerializeField] private AudioClip allMaskFragmentsCollectedSfx;
+
     private const int MaxMaskFragments = 3;
     [HideInInspector] public int maskFragments;
 
@@ -61,6 +64,7 @@ public class GameManager : SingletonPersistent<GameManager>
 
     private void StartEndGameSequence()
     {
+        AudioManager.Instance.PlaySFX(allMaskFragmentsCollectedSfx);
         // TODO La niebla se disipa
         // TODO Iluminacion cambia pa que se vea mas de dia
         // TODO Spawnear Perro al lado

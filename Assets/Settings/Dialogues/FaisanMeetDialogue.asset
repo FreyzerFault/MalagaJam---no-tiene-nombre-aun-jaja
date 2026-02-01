@@ -15,34 +15,51 @@ MonoBehaviour:
   dialogues:
   - character: 1
     mood: 0
-    text: "[auto]\xBFC\xF3mo osas perturbar la paz de los esp\xEDritus? \xA1M\xEDrame
-      cuando te hablo sucio mortal!"
+    text: "\xBFC\xF3mo osas perturbar la paz de los esp\xEDritus? \xA1M\xEDrame cuando
+      te hablo sucio mortal!"
+    auto: 0
+    duration: 0
   - character: 1
     mood: 0
     text: "Oh, eso est\xE1 mejor s\xED, es una falta de respeto no mirar cuando alguien
       te est\xE1 hablando!  "
+    auto: 0
+    duration: 0
   - character: 3
     mood: 4
     text: (...)
+    auto: 0
+    duration: 0
   - character: 1
     mood: 0
     text: "\xA1Qu\xE9 desastre has provocado mortal! Al despertar la rabia del demonio,
       no solo no provocaste la maldici\xF3n sobre los mortales, sino que tambi\xE9n
       has perturbado la paz de nosotros, nobles esp\xEDritus. "
+    auto: 0
+    duration: 0
   - character: 3
     mood: 4
     text: (...)
+    auto: 0
+    duration: 0
   - character: 1
     mood: 0
     text: "\xA1Mira en qu\xE9 estado se encuentran las puertas de mi glorioso hogar!
       El demonio destruye y arrasa sin control all\xE1 por donde pasa\u2026 todo
       por tu culpa mortal. Pero no te ir\xE1s de rositas, oh no se\xF1or no\u2026 "
+    auto: 0
+    duration: 0
   - character: 3
     mood: 1
     text: (...)
+    auto: 0
+    duration: 0
   - character: 1
     mood: 0
     text: "Si mis fuentes no me fallan Momotaro, pretendes reparar la m\xE1scara
       para restaurar la paz\u2026 Tengo un fragmento en mi poder, pero no te saldr\xE1
       gratis. Para pagar por tus ofensas deber\xE1s tambi\xE9n restaurar mi hermoso
       port\xF3n. "
+    auto: 0
+    duration: 0
+  hasEnded: 0

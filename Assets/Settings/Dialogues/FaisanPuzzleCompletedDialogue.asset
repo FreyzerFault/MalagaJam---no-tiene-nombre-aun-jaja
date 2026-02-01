@@ -19,9 +19,11 @@ MonoBehaviour:
       de anta\xF1o. Te hago entrega de tu merecida recompensa Momotaro, pero espero
       que hayas aprendido la lecci\xF3n mortal. \xA1No ser\xE9 tan benevolente la
       pr\xF3xima vez!"
+    auto: 0
+    duration: 0
   - character: 3
     mood: 3
     text: (...)
-  - character: 3
-    mood: 0
-    text: Texto del Dialogo
+    auto: 0
+    duration: 0
+  hasEnded: 0

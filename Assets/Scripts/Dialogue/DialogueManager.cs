@@ -1,4 +1,8 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using Audio;
+using AYellowpaper.SerializedCollections;
 using Controllers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +12,16 @@ namespace Dialogue
 {
     public class DialogueManager : Singleton<DialogueManager>
     {
+        [SerializeField, SerializedDictionary("Animal", "SFX")]
+        private SerializedDictionary<Dialogue.Character, AudioClip> characterSfxDictionary =  new(new List<KeyValuePair<Dialogue.Character, AudioClip>>()
+        {
+            new (Dialogue.Character.Perro, null),
+            new (Dialogue.Character.Faisan, null),
+            new (Dialogue.Character.Macaco, null),
+            new (Dialogue.Character.Momotaro, null),
+            new (Dialogue.Character.Ogro, null),
+        });
+        
         [HideInInspector] public bool dialogueOnCourse;
         private DialogueSequence currentDialogueSequence;
         private int dialogueIndex;
@@ -16,10 +30,10 @@ namespace Dialogue
         public event Action<Dialogue> OnDialogueContinue;
         public event Action OnDialogueEnd;
 
-        private Dialogue CurrentDialogue => currentDialogueSequence.dialogues[dialogueIndex];
+        public Dialogue CurrentDialogue => currentDialogueSequence.dialogues[dialogueIndex];
         public Dialogue.Character CurrentCharacter => CurrentDialogue.character;
         public Dialogue.Mood CurrentMood => CurrentDialogue.mood;
-        private bool HasEndedSequence => dialogueIndex >= currentDialogueSequence.dialogues.Count;
+        private bool HasEndedSequence => dialogueIndex >= currentDialogueSequence.dialogues.Count - 1;
 
 
         public void StartDialogue(DialogueSequence dialogueSequence)
@@ -30,7 +44,14 @@ namespace Dialogue
             currentDialogueSequence = dialogueSequence;
             currentDialogueSequence.Start();
             BlockPlayerMovement();
+            
+            // AUDIO
+            AudioManager.Instance.PlaySFX(characterSfxDictionary[currentDialogueSequence.dialogues[0].character]);
+            
             OnDialogueStart?.Invoke();
+
+            dialogueIndex = -1;
+            ContinueDialogue();
         }
 
         private void ContinueDialogue()
@@ -41,7 +62,12 @@ namespace Dialogue
             if (HasEndedSequence)
                 EndDialogue();
             else
-                OnDialogueContinue?.Invoke(CurrentDialogue);
+            {
+                Dialogue dialogue = CurrentDialogue;
+                if (dialogue.IsAuto)
+                    Invoke(nameof(ContinueDialogue), dialogue.duration);
+                OnDialogueContinue?.Invoke(dialogue);
+            }
         }
 
         private void EndDialogue()
@@ -60,7 +86,7 @@ namespace Dialogue
 
         private void OnInteract(InputValue value)
         {
-            if (value.Get<float>() > 0.1f) 
+            if (value.isPressed && !CurrentDialogue.IsAuto)
                 ContinueDialogue();
         }
 
