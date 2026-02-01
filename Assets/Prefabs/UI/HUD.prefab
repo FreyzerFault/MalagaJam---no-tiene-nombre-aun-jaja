@@ -588,6 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42afe1cffa26244f98a6db8fc5cc4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.HUDManager
+  debugPanel: {fileID: 4946327123752225658}
   inputPanels:
   - {fileID: 5746867563802125597}
   maskFragmentsSprites:

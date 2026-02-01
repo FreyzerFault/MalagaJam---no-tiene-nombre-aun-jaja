@@ -61,7 +61,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0.5
     - _ColorMask: 15
-    - _EffectIntensity: -2.2025373
+    - _EffectIntensity: 0
     - _FlickeringSpeed: 1
     - _QueueControl: 0
     - _QueueOffset: 0
