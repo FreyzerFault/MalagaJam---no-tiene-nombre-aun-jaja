@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Characters
 {
-    [RequireComponent(typeof(Billboard))]
+    [RequireComponent(typeof(Billboard), typeof(SpriteRenderer))]
     public abstract class AnimalCharacter : MonoBehaviour
     {
         public DialogueSequence meetSequence;

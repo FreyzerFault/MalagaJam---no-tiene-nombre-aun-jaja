@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Interactibles
 {
+    [RequireComponent(typeof(Collider))]
     public class Interactible : MonoBehaviour
     {
         public static readonly InteractibleState<Interactible> ActiveState = new ActiveInteractibleState();

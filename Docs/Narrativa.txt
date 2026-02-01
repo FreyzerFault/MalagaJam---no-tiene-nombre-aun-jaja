@@ -1,0 +1,122 @@
+“En un lugar de Japón, cuyo nombre ha sido olvidado, vivía hace mucho mucho tiempo una humilde pareja de ancianos. La afable pareja disfrutaba de la tranquilidad de su aldea, trabajaban la tierra de la que comían y lavaban en el río sus ropas. 
+Un día aconteció un extraño suceso… avistaron en el río un melocotón gigante viajando por las corrientes. Nunca antes habían visto una fruta de tal tamaño…De su interior emergió una niña, que los ancianos decidieron adoptar sin dudar. Momotaro la llamaron, y en la aldea creció sana y fuerte. 
+Todos los años, celebraban juntos en la aldea la llegada de Momotaro, agradecían a los dioses por su regalo y rogaban por la prosperidad de sus gentes…” lore?
+
+
+(Imagen templo fuera mapa)
+Momotaro como cada año paseaba feliz por el festival, escuchando las alegres risas de sus vecinos. 
+
+(Imagen máscara demonio entera)
+Un escalofrío recorrió su cuerpo, algo parecía no estar bien. Sin percatarse de ello, su cuerpo se dirigía al santuario, donde una máscara parecía llamarla. Alzó su mano para cogerla…
+
+(Imagen máscara demonio rota)
+
+¡Crash! La máscara se le resbaló de los dedos y se rompió en pedazos. Un denso humo negro  emanaba de los pedazos, formando una imponente figura. Momotaro salió del templo, corrió y corrió escaleras abajo, pero no escuchaba la música y risas del festival, tan solo un imponente silencio. Todo el mundo había desaparecido. 
+
+
+
+
+
+PERRO
+
+“[auto]Parece que has enfadado al grandullón, ¡qué dramático es a veces Woof!”
+“[auto]Woof qué despiste, no puedes verme Woof…se me olvida eso de que ahora soy un espíritu Woof Woof”
+“[auto]Debe haber una máscara por aquí cerca… prueba a ponértela, confía en mí Woof, te ayudaré”
+“[auto]¡¡¡¡Pero cuidado!!! No la vayas a romper también Woof… en bastante lío estamos ya”
+
+(Coge máscara)
+(Se pone máscara)
+
+
+
+
+
+
+
+
+-¡Woof Woof, aquí estoy! Soy perro, pero no Sánchez, ¿y tú…Woof?
+
++(...)Neutral
+
+-Momo… y después Taro… Mo.. Motaro. ¿Motaro? ¡Momotaro! Sí Momotaro, es el mejor nombre que he escuchado nunca. 
+
++(...)Neutral
+
+-Ah sí…¡el demonio se ha picado! Parece que ha soltado una maldición de las chungas petrungas Woof. Pero como decía mi madre…¡todo tiene arreglo en esta vida! Y en la muerte también Woof!…(¿lo pillas? porque soy un espíritu Woof…)
+
++(...) Enfado
+
+-Qué público más exigente tengo hoy Woof! Pero no te preocupes, me centro me centro… la maldición Woof… Parece que todos los humanos han desaparecido menos tú, y tampoco parece que puedas escapar…
+
++(...)Molesta
+
+-¡Woof Woof! Seguro que se le pasa si reparamos su máscara, si no nos sirve el super glue, podemos usar flexicinta…Solo tienes que encontrar todos los fragmentos, no han podido ir muy lejos… 
+
++(...)Feliz
+
+-¡Mira woof! Muy convenientemente para que los desarrolladores se ahorren un puzzle, acabo de encontrar un fragmento de la máscara…¡solo necesitas encontrar los otros dos! ¡Mucha suerte en la búsqueda Momotaro! ¡Puedes lograrlo woof!
+
++(...) Molesta
+
+(Aparece en interfaz)
+
+-
+
+
+
+
+FAISÁN
+
+-[auto]¿Cómo osas perturbar la paz de los espíritus? ¡Mírame cuando te hablo sucio mortal!
+
+(se pone la máscara)
+
+-Oh, eso está mejor sí, es una falta de respeto no mirar cuando alguien te está hablando! 
+
++(...) Molesto
+
+-¡Qué desastre has provocado mortal! Al despertar la rabia del demonio, no solo no provocaste la maldición sobre los mortales, sino que también has perturbado la paz de nosotros, nobles espíritus. 
+
++(...) Molesto
+
+-¡Mira en qué estado se encuentran las puertas de mi glorioso hogar! El demonio destruye y arrasa sin control allá por donde pasa… todo por tu culpa mortal. Pero no te irás de rositas, oh no señor no…
+
++(...)Enfadado
+
+-Si mis fuentes no me fallan Momotaro, pretendes reparar la máscara para restaurar la paz… Tengo un fragmento en mi poder, pero no te saldrá gratis. Para pagar por tus ofensas deberás también restaurar mi hermoso portón. 
+
+
+(Puzzle portón)
+
+-¡Magnífico!¡Esplendido! Al fin mi hogar se ve devuelto a la gloria de antaño. Te hago entrega de tu merecida recompensa Momotaro, pero espero que hayas aprendido la lección mortal. ¡No seré tan benevolente la próxima vez!
+
++(...)Feliz
+
+
+MONO
+
+-[auto]¡jijiji! ¡Aquí aquí! ¡Detrás de tí!
+
+-[auto]¡Ven ven jijiji!
+
+(Se pone la máscara)
+
+-¡Jijiji! Ay Momotaro… la que has liado… Te lo agradezco colega, todo estaba muy aburrido por aquí. La vida de un espíritu es más aburrida de lo que pueda parecer… lo de atravesar paredes y asustar humanos pierde la gracia muy pronto.
+
++(...)Neutral
+
+-Encontré un pedazo de trasto antes, seguro que es lo que estás buscando ¡jiji! ¡Pues más te vale atraparme Momotarao, porque es la única forma en la que lo vas a conseguir!
+
++(...)Enfado
+
+(Puzzle)
+
+- ¡Jijiji! ¿Has visto? ¡No era tan difícil! Toma este pedazo de trasto, no me sirve para nada de todas formas, ¡pero hacía años que no me divertía tanto! ¡Jiji!
+
+(CON LOS 3 FRAGMENTOS)
+
+
+PERRO
+-¡Woof woof! ¡Momotaro lo has conseguido! Ya solo tenemos que devolver la máscara completa a su lugar, ¡vamos al templo!
+
+
