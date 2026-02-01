@@ -32,7 +32,7 @@ namespace Controllers
             }
             else // No mira ningun Interactuable
             {
-                if (focusedInteractible)
+                if (focusedInteractible != null)
                     LoseFocus();
             }
         }
@@ -50,7 +50,7 @@ namespace Controllers
         
         private void LoseFocus()
         {
-            if (!focusedInteractible) return;
+            if (focusedInteractible == null) return;
             
             focusedInteractible.SwitchState(Interactible.ActiveState);
             focusedInteractible = null;
@@ -60,6 +60,7 @@ namespace Controllers
         private void OnInteract(InputValue value)
         {
             if (focusedInteractible == null) return;
+            
             if (value.isPressed)
             {
                 focusedInteractible.SwitchState(Interactible.InteractingState);

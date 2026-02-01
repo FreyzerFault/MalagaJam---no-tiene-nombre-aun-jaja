@@ -5,6 +5,8 @@ using Utils;
 
 public class GameManager : SingletonPersistent<GameManager>
 {
+    public bool debugMode;
+    
     public event Action OnMaskEnable; 
     public event Action OnMaskDisable; 
     public event Action OnFragmentCollected;
@@ -44,8 +46,8 @@ public class GameManager : SingletonPersistent<GameManager>
 
     #region MASK FRAGMENTS
 
-    public int maxMaskFragments = 3;
-    public int maskFragments;
+    private const int MaxMaskFragments = 3;
+    [HideInInspector] public int maskFragments;
 
     [ContextMenu("AddMaskFragment")]
     public void AddMaskFragment()
@@ -53,7 +55,7 @@ public class GameManager : SingletonPersistent<GameManager>
         maskFragments++;
         OnFragmentCollected?.Invoke();
         
-        if (maskFragments == maxMaskFragments)
+        if (maskFragments == MaxMaskFragments)
             StartEndGameSequence();
     }
 

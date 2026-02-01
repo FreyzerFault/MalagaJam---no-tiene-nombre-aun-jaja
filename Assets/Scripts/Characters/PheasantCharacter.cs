@@ -1,12 +1,9 @@
+using Puzzles;
+
 namespace Characters
 {
-    public class Pheasant : AnimalCharacter
+    public class PheasantCharacter : AnimalCharacter
     {
-        public override void OnDialogueEnd()
-        {
-            // TODO Empezar el puzzle
-            // Provisionalmente: Te da ya el trozo de Máscara
-            GameManager.Instance.AddMaskFragment();
-        }
+        protected override PuzzleManager.PuzzleType PuzzleType => PuzzleManager.PuzzleType.Faisan;
     }
 }

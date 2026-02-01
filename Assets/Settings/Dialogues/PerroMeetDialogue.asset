@@ -34,14 +34,14 @@ MonoBehaviour:
     text: "\xA1Woof Woof, aqu\xED estoy! Soy perro, pero no S\xE1nchez, \xBFy t\xFA\u2026Woof?"
   - character: 3
     mood: 0
-    text: ...
+    text: (...)
   - character: 2
     mood: 0
     text: "Momo\u2026 y despu\xE9s Taro\u2026 Mo.. Motaro. \xBFMotaro? \xA1Momotaro!
       S\xED Momotaro, es el mejor nombre que he escuchado nunca."
   - character: 3
     mood: 0
-    text: ...
+    text: (...)
   - character: 2
     mood: 0
     text: "Ah s\xED\u2026\xA1el demonio se ha picado! Parece que ha soltado una maldici\xF3n
@@ -50,7 +50,7 @@ MonoBehaviour:
       porque soy un esp\xEDritu Woof\u2026)"
   - character: 3
     mood: 1
-    text: ...
+    text: (...)
   - character: 2
     mood: 0
     text: "Qu\xE9 p\xFAblico m\xE1s exigente tengo hoy Woof! Pero no te preocupes,
@@ -58,7 +58,7 @@ MonoBehaviour:
       han desaparecido menos t\xFA, y tampoco parece que puedas escapar\u2026"
   - character: 3
     mood: 4
-    text: ...
+    text: (...)
   - character: 2
     mood: 0
     text: "\xA1Woof Woof! Seguro que se le pasa si reparamos su m\xE1scara, si no
@@ -66,7 +66,7 @@ MonoBehaviour:
       todos los fragmentos, no han podido ir muy lejos\u2026"
   - character: 3
     mood: 3
-    text: ...
+    text: (...)
   - character: 2
     mood: 0
     text: "\xA1Mira woof! Muy convenientemente para que los desarrolladores se ahorren
@@ -75,7 +75,7 @@ MonoBehaviour:
       lograrlo woof!"
   - character: 3
     mood: 4
-    text: ...
+    text: (...)
   - character: 2
     mood: 0
     text: "\xA1Mucha suerte en la b\xFAsqueda Momotaro! \xA1Puedes lograrlo woof!"

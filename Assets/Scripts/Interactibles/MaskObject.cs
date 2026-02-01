@@ -1,10 +1,24 @@
+using DG.Tweening;
+using Sirenix.OdinInspector;
+using UnityEngine;
+
 namespace Interactibles
 {
     public class MaskObject : Interactible
     {
+        [SerializeField, Required]
+        private Light lightOnPLayerNear;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            lightOnPLayerNear.enabled = false;
+        }
+
         public void OnPlayerNear()
         {
-            //Iluminar efectos para que llame la atención del player
+            lightOnPLayerNear.enabled = true;
         }
 
         public override void SwitchState(InteractibleState<Interactible> newState)
@@ -15,11 +29,15 @@ namespace Interactibles
             if (IsInteracting)
             {
                 GameManager.Instance.EnableMask();
-
-                // TODO Animacion coger Máscara
-
-                Destroy(gameObject);
+                DestroySequence();
             }
+        }
+        
+        public void DestroySequence()
+        {
+            lightOnPLayerNear.enabled = false;
+            Tweener destroyTween = transform.DOScale(0, .5f).OnComplete(() => Destroy(gameObject));
+            destroyTween.Play();
         }
     }
 }

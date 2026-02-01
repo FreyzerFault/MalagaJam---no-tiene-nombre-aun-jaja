@@ -1,25 +1,35 @@
 using System;
 using System.Collections.Generic;
-using Dialogue.Dialogue;
 using UnityEngine;
-using Character = Dialogue.Dialogue.DialogueManager.Dialogue.Character;
-using Mood = Dialogue.Dialogue.DialogueManager.Dialogue.Mood;
 
 namespace Dialogue
 {
     [CreateAssetMenu(fileName = "DialogueSequence", menuName = "Matsuri/DialogueSequence")]
     public class DialogueSequence : ScriptableObject
     {
-        public List<DialogueManager.Dialogue> dialogues = new();
+        public List<global::Dialogue.Dialogue> dialogues = new();
         
-        private void Start()
-        {
-            //Forma de añadir posicion
-            dialogues.Add(new DialogueManager.Dialogue {
-                character = Character.Macaco,
-                mood =  Mood.Enfadado,
-                text = "LOREM IPSUM MECAGO MUCHO SOCORROOOOOO"
+        [HideInInspector] public bool hasEnded;
+        
+        public event Action OnStart;
+        public event Action OnEnded;
+        
+        private void Awake() => AddDefaultDialogue();
+
+        private void AddDefaultDialogue() => dialogues.Add(
+            new global::Dialogue.Dialogue {
+                character = global::Dialogue.Dialogue.Character.Momotaro,
+                mood =  global::Dialogue.Dialogue.Mood.Default,
+                text = "Texto del Dialogo"
             });
+
+
+        public void Start() => OnStart?.Invoke();
+
+        public void End()
+        {
+            hasEnded = true;
+            OnEnded?.Invoke();
         }
     }
 }

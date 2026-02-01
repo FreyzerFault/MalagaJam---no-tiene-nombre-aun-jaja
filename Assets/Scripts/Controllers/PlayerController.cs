@@ -21,6 +21,8 @@ namespace Controllers
         private CharacterController controller;
         private CharacterController Controller => controller ??= GetComponent<CharacterController>();
 
+        public bool enabledMovement = true;
+
         protected override void Awake()
         {
             base.Awake();
@@ -28,10 +30,14 @@ namespace Controllers
             camController = GetComponent<FPSCamController>();
             interactionController = GetComponent<InteractionController>();
             maskController = GetComponent<MaskController>();
+
+            enabledMovement = true;
         }
 
         private void FixedUpdate()
         {
+            if (!enabledMovement) return;
+            
             float speedMultiplier = isRunning ? runMultiplier : 1;
             Vector3 moveInput3D = new(moveInput.x, 0, moveInput.y);
         
@@ -42,8 +48,13 @@ namespace Controllers
             Controller.Move(velocity * Time.deltaTime);
         }
     
-        private void Jump() => velocity.y = Controller.isGrounded ? Mathf.Sqrt(jumpHeight * -2f * gravity) : velocity.y;
-    
+        private void Jump()
+        {
+            if (!enabledMovement) return;
+            
+            velocity.y = Controller.isGrounded ? Mathf.Sqrt(jumpHeight * -2f * gravity) : velocity.y;
+        }
+
         private void ApplyGravity()
         {
             velocity.y += gravity * Time.deltaTime;
@@ -59,10 +70,10 @@ namespace Controllers
         
         #region OTHER CONTROLLERS
 
-        public FPSCamController camController;
-        public InteractionController interactionController;
-        public MaskController maskController;
-        public PlayerSfxController sfxController;
+        [HideInInspector] public FPSCamController camController;
+        [HideInInspector] public InteractionController interactionController;
+        [HideInInspector] public MaskController maskController;
+        [HideInInspector] public PlayerSfxController sfxController;
 
         #endregion
         

@@ -1,4 +1,3 @@
-using System;
 using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,27 +10,41 @@ namespace UI
         [SerializeField] private Sprite interactingSprite;
         
         private Image crosshairImg;
-        
+
+        private void Awake()
+        {
+            crosshairImg = GetComponent<Image>();
+            OnLostFocus();
+        }
+
         private void OnEnable()
         {
-            PlayerController.Instance.interactionController.OnInteractionStart += SetInteractingSprite;
-            PlayerController.Instance.interactionController.OnInteractionEnd += SetBaseSprite;
-            PlayerController.Instance.interactionController.OnFocusedSomething += ShowCrosshair;
-            PlayerController.Instance.interactionController.OnLostFocus += HideCrosshair;
+            InteractionController intController = PlayerController.Instance.interactionController;
+            intController.OnInteractionStart += OnInteractionStart;
+            intController.OnInteractionEnd += OnInteractionEnd;
+            intController.OnFocusedSomething += OnFocusedSomething;
+            intController.OnLostFocus += OnLostFocus;
         }
-
         private void OnDisable()
         {
-            PlayerController.Instance.interactionController.OnInteractionStart -= SetInteractingSprite;
-            PlayerController.Instance.interactionController.OnInteractionEnd -= SetBaseSprite;
-            PlayerController.Instance.interactionController.OnFocusedSomething -= ShowCrosshair;
-            PlayerController.Instance.interactionController.OnLostFocus -= HideCrosshair;
+            InteractionController intController = PlayerController.Instance.interactionController;
+            intController.OnInteractionStart -= OnInteractionStart;
+            intController.OnInteractionEnd -= OnInteractionEnd;
+            intController.OnFocusedSomething -= OnFocusedSomething;
+            intController.OnLostFocus -= OnLostFocus;
         }
 
-        private void ShowCrosshair() => crosshairImg.enabled = true;
-        private void HideCrosshair() => crosshairImg.enabled = false;
+        private void OnFocusedSomething() => crosshairImg.enabled = true;
+        private void OnLostFocus() => crosshairImg.enabled = false;
 
-        private void SetBaseSprite() => crosshairImg.sprite = baseSprite;
-        private void SetInteractingSprite() => crosshairImg.sprite = interactingSprite;
+        private void OnInteractionEnd()
+        {
+            crosshairImg.sprite = baseSprite;
+            
+            if (PlayerController.Instance.interactionController.focusedInteractible == null)
+                OnLostFocus();
+        }
+
+        private void OnInteractionStart() => crosshairImg.sprite = interactingSprite;
     }
 }

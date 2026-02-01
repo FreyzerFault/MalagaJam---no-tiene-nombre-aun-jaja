@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using Controllers;
 using DG.Tweening;
+using Dialogue;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
-using Utils;
-using Dialogue.Dialogue;
 using TMPro;
-using Character = Dialogue.Dialogue.DialogueManager.Dialogue.Character;
-using Mood = Dialogue.Dialogue.DialogueManager.Dialogue.Mood;
+using Utils;
+using Character = Dialogue.Dialogue.Character;
+using Mood = Dialogue.Dialogue.Mood;
 
 namespace UI
 {
@@ -57,7 +58,7 @@ namespace UI
         public enum InputTypes { Mask, Interact }
         
         // Panel de Inputs (poner máscara, y lo que sea...)
-        [SerializeField] private GameObject[] inputPanels;
+        [BoxGroup("Inputs"), SerializeField] private GameObject[] inputPanels;
         
         
         public void ToggleInput(InputTypes inputType, bool active)
@@ -95,8 +96,8 @@ namespace UI
         #region MASK FRAGMENTS
 
         // Fragmentos de Máscara Malvada
-        [SerializeField] private Sprite[] maskFragmentsSprites;
-        [SerializeField] private Image maskFragmentsSprite;
+        [BoxGroup("Mask Fragments"), SerializeField] private Sprite[] maskFragmentsSprites;
+        [BoxGroup("Mask Fragments"), SerializeField] private Image maskFragmentsSprite;
         
         private static int NumMasks => GameManager.Instance.maskFragments;
 
@@ -117,9 +118,9 @@ namespace UI
         #region DIALOGUE
         
         // DIALOGUE
-        [SerializeField] private GameObject dialoguePanel;
-        [SerializeField] private Image characterImage;
-        [SerializeField] private TMP_Text dialogueTxt;
+        [BoxGroup("Dialogue"), SerializeField] private GameObject dialoguePanel;
+        [BoxGroup("Dialogue"), SerializeField] private Image characterImage;
+        [BoxGroup("Dialogue"), SerializeField] private TMP_Text dialogueTxt;
         
         public void HideDialogue() => dialoguePanel.SetActive(false);
         public void ShowDialogue() => dialoguePanel.SetActive(true);
@@ -128,7 +129,7 @@ namespace UI
 
         #region CHARACTER SPRITE
 
-        [SerializeField, SerializedDictionary("Nombre", "Sprite")]
+        [BoxGroup("Dialogue"), SerializeField, SerializedDictionary("Nombre", "Sprite")]
         private SerializedDictionary<Character, List<Sprite>> spriteDictionary = new(
             new List<KeyValuePair<Character, List<Sprite>>>
             {
@@ -142,14 +143,15 @@ namespace UI
 
         public void HideCharacterSprite() => characterImage.sprite = spriteDictionary[Character.Unknown][0];
         public void ShowCharacterSprite() => 
-            GetSprite(DialogueManager.Instance.CurrentCharacter, DialogueManager.Instance.CurrentMood);
+            characterImage.sprite = 
+                GetSprite(DialogueManager.Instance.CurrentCharacter, DialogueManager.Instance.CurrentMood);
         
         private Sprite GetSprite(Character character, Mood mood) => spriteDictionary[character][(int)mood];
         
 
         #endregion
 
-        public void UpdateDialogue (DialogueManager.Dialogue dialogue) {
+        public void UpdateDialogue (Dialogue.Dialogue dialogue) {
             Character character = dialogue.character;
             Mood mood = dialogue.mood;
             string frase = dialogue.text;
@@ -165,11 +167,11 @@ namespace UI
 
         #region MASK IMAGE
         
-        [SerializeField] private Image maskImg;
-        [SerializeField] private Image maskVFXImg;
+        [BoxGroup("Mask"), SerializeField] private Image maskImg;
+        [BoxGroup("Mask"), SerializeField] private Image maskVFXImg;
         
-        [SerializeField] private float maskFadeDuration = .3f;
-        [SerializeField] private float maskFadeOffset = 4000;
+        [BoxGroup("Mask"), SerializeField] private float maskFadeDuration = .3f;
+        [BoxGroup("Mask"), SerializeField] private float maskFadeOffset = 4000;
 
         private Tweener maskFadeTween;
         private Tweener maskVFXFadeTween;
@@ -177,7 +179,12 @@ namespace UI
         private Tweener maskVFXPlaceTween;
         private bool IsFading => maskPlaceTween != null && maskPlaceTween.IsPlaying();
 
-        private void OnSanityUpdate(float sanityPercentage) => maskVFXImg.material.SetFloat(EffectIntensityID, 1 - sanityPercentage);
+        private void OnSanityUpdate(float sanity)
+        {
+            float sanityPercent = sanity / PlayerController.Instance.maskController.maxSanity;
+            maskVFXImg.material.SetFloat(EffectIntensityID, 1 - sanityPercent);
+            UpdateSanityTxt(sanity);
+        }
 
         private void ShowMask()
         {
@@ -238,6 +245,16 @@ namespace UI
                 () => mat.GetFloat(EffectIntensityID),
                 intensity => mat.SetFloat(EffectIntensityID, intensity),
                 0, duration);
+
+        #endregion
+
+
+        #region DEBUGGING
+
+        [SerializeField] private TMP_Text sanityValueTxt;
+
+        private void UpdateSanityTxt(float sanity) =>
+            sanityValueTxt.text = $"{sanity:F0} / {PlayerController.Instance.maskController.maxSanity}";
 
         #endregion
     }

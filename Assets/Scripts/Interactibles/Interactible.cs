@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using DG.Tweening;
@@ -35,7 +34,7 @@ namespace Interactibles
         
         }
     
-        private void Awake() => mr = GetComponent<MeshRenderer>();
+        protected virtual void Awake() => mr = GetComponent<MeshRenderer>();
 
         protected virtual void Start() => Reset();
         protected virtual void Update() => state.Execute(this);

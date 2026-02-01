@@ -5,7 +5,7 @@ namespace Audio
 {
     public class AudioManager : Singleton<AudioManager>
     {
-        private AudioSource sfxMonoSource;
+        [SerializeField] private AudioSource sfxMonoSource;
 
         private void Start()
         {

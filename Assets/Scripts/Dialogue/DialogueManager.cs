@@ -1,77 +1,69 @@
 using System;
 using Controllers;
-using UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Utils;
-namespace Dialogue{ 
 
 namespace Dialogue
 {
     public class DialogueManager : Singleton<DialogueManager>
     {
-        [Serializable]
-        public struct Dialogue 
-        {
-            public enum Character { Macaco, Faisan, Perro, Momotaro, Ogro, Unknown }
-            public enum Mood { Default = 0, Enfadado = 1, Asustado = 2, Feliz = 3, Molesto = 4, }
-            
-            public Character character;
-            public Mood mood;
-            public string text;
-        }
-
+        [HideInInspector] public bool dialogueOnCourse;
+        private DialogueSequence currentDialogueSequence;
+        private int dialogueIndex;
         
         public event Action OnDialogueStart;
         public event Action<Dialogue> OnDialogueContinue;
         public event Action OnDialogueEnd;
-    
-        public enum DialogueTag { None = -1, Perro, Faisan, Macaco }
 
-        private DialogueSequence currentDialogueSequence;
-        [HideInInspector] public bool dialogueOnCourse = false;
-        private int dialogueIndex;
-
-        public Dialogue CurrentDialogue => currentDialogueSequence.dialogues[dialogueIndex];
+        private Dialogue CurrentDialogue => currentDialogueSequence.dialogues[dialogueIndex];
         public Dialogue.Character CurrentCharacter => CurrentDialogue.character;
         public Dialogue.Mood CurrentMood => CurrentDialogue.mood;
+        private bool HasEndedSequence => dialogueIndex >= currentDialogueSequence.dialogues.Count;
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space))
-            {
-                ContinueDialogue();
-            }
-        }
 
         public void StartDialogue(DialogueSequence dialogueSequence)
         {
+            if (dialogueSequence.hasEnded)
+                Debug.LogWarning("Se está repitiendo un Diálogo que ya salió. Quizá sea un BUG");
+            
             currentDialogueSequence = dialogueSequence;
-            // TODO
-            // if (playerTieneQueQuedarseQuieto)
-            PlayerController.Instance.enabled = false;
+            currentDialogueSequence.Start();
+            BlockPlayerMovement();
             OnDialogueStart?.Invoke();
         }
 
-        public void ContinueDialogue()
+        private void ContinueDialogue()
         {
             dialogueIndex++;
 
             // Despues del ultimo dialogo
-            if (dialogueIndex >= currentDialogueSequence.dialogues.Count)
-            {
+            if (HasEndedSequence)
                 EndDialogue();
-                return;
-            }
-            
-            Dialogue dialogue = currentDialogueSequence.dialogues[dialogueIndex];
-            OnDialogueContinue?.Invoke(dialogue);
+            else
+                OnDialogueContinue?.Invoke(CurrentDialogue);
         }
 
-        public void EndDialogue()
+        private void EndDialogue()
         {
-            PlayerController.Instance.enabled = true;
+            currentDialogueSequence.End();
+            currentDialogueSequence = null;
+            EnablePlayerMovement();
             OnDialogueEnd?.Invoke();
         }
+        
+        private void BlockPlayerMovement() => PlayerController.Instance.enabled = false;
+        private void EnablePlayerMovement() => PlayerController.Instance.enabled = true;
+
+
+        #region INPUTS
+
+        private void OnInteract(InputValue value)
+        {
+            if (value.Get<float>() > 0.1f) 
+                ContinueDialogue();
+        }
+
+        #endregion
     }
-}
 }

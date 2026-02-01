@@ -1,19 +1,19 @@
 using System;
 using Dialogue;
-using Dialogue.Dialogue;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Utils;
 
 namespace Controllers
 {
     public class MaskController: MonoBehaviour
     {
-        [SerializeField] private float maxSanity = 100;
+        public float maxSanity = 100;
+        public float sanity = 100;
     
-        private float sanity = 100;
         private bool maskOn;
-        private bool isPossesed;
+        private bool isPossesed; // Poseido significa que la sanity está a 0 y la secuencia de muerte esta activa
+
+        public bool IsMaskOn => maskOn;
     
         [SerializeField] private float sanityDecreaseSpeed = 1;
         [SerializeField] private float sanityIncreaseSpeed = 1;
@@ -21,6 +21,8 @@ namespace Controllers
         public event Action OnMaskOn;
         public event Action OnMaskOff;
         public event Action<float> OnSanityUpdate;
+        public event Action OnStartDeathSequence;
+        public event Action OnEndDeathSequence;
 
         private void Start() => ResetSanity();
 
@@ -48,13 +50,13 @@ namespace Controllers
         private void DecreaseSanity(float quantity)
         {
             sanity -= quantity;
-            OnSanityUpdate?.Invoke(sanity / maxSanity);
+            OnSanityUpdate?.Invoke(sanity);
         }
 
         private void IncreaseSanity(float quantity)
         {
             sanity += quantity;
-            OnSanityUpdate?.Invoke(sanity / maxSanity);
+            OnSanityUpdate?.Invoke(sanity);
         }
 
         private void ResetSanity() => sanity = maxSanity;
@@ -70,6 +72,9 @@ namespace Controllers
         {
             isPossesed = true;
             maskOn = true;
+            
+            OnStartDeathSequence?.Invoke();
+            
             // TODO Sonido Muerte
             // TODO Niebla aparece
             DialogueManager.Instance.StartDialogue(deathDialogue);
@@ -84,6 +89,8 @@ namespace Controllers
             // TODO Niebla va desapareciendo
             isPossesed = false;
             maskOn = false;
+            
+            OnEndDeathSequence?.Invoke();
         }
 
         #endregion
