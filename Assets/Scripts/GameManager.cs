@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils;
 
@@ -6,6 +7,7 @@ public class GameManager : SingletonPersistent<GameManager>
 {
     public event Action OnMaskEnable; 
     public event Action OnMaskDisable; 
+    public event Action OnFragmentCollected;
     
     private void Start() => ResetGame();
 
@@ -22,12 +24,15 @@ public class GameManager : SingletonPersistent<GameManager>
     private bool hasMask;
     
     public bool HasMask => hasMask;
+
+    [ContextMenu("EnableMask")]
     public void EnableMask()
     {
         hasMask = true;
         OnMaskEnable?.Invoke();
     }
 
+    [ContextMenu("DisableMask")]
     public void DisableMask()
     {
         hasMask = false;
@@ -39,9 +44,28 @@ public class GameManager : SingletonPersistent<GameManager>
 
     #region MASK FRAGMENTS
 
+    public int maxMaskFragments = 3;
     public int maskFragments;
 
-    public void AddMaskFragment() => maskFragments++;
+    [ContextMenu("AddMaskFragment")]
+    public void AddMaskFragment()
+    {
+        maskFragments++;
+        OnFragmentCollected?.Invoke();
+        
+        if (maskFragments == maxMaskFragments)
+            StartEndGameSequence();
+    }
+
+    private void StartEndGameSequence()
+    {
+        // TODO La niebla se disipa
+        // TODO Iluminacion cambia pa que se vea mas de dia
+        // TODO Spawnear Perro al lado
+        // TODO Dialogo Perro final que te dira que vayas a la salida
+        // TODO Dirigir al Player a la salida
+    }
+
     public void ResetMaskFragments() => maskFragments = 0;
 
     #endregion

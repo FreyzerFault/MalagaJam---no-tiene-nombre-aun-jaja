@@ -61,7 +61,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0.5
     - _ColorMask: 15
-    - _EffectIntensity: 0
+    - _EffectIntensity: -0.8506758
     - _FlickeringSpeed: 1
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -75,9 +75,9 @@ Material:
     - _UIMaskSoftnessY: 1
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.9748427, g: 0.44450366, b: 0.44450366, a: 1}
+    - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 9.189588, g: 0, b: 0.7141374, a: 1}
-    - _EmissiveColor: {r: 7.3772106, g: 0.024923755, b: 0, a: 1}
+    - _EmissiveColor: {r: 0.5, g: 0.025453137, b: 0.023584843, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -1,7 +1,7 @@
+using System;
 using Interactibles;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Utils;
 
 namespace Controllers
 {
@@ -11,6 +11,11 @@ namespace Controllers
         private static Camera Cam => Camera.main;
         
         public Interactible focusedInteractible;
+
+        public event Action OnFocusedSomething;
+        public event Action OnLostFocus;
+        public event Action OnInteractionStart;
+        public event Action OnInteractionEnd;
 
         private void Update()
         {
@@ -37,7 +42,10 @@ namespace Controllers
             focusedInteractible = interactible;
             
             if (!interactible.IsFocused)
+            {
                 interactible.SwitchState(Interactible.FocusState);
+                OnFocusedSomething?.Invoke();
+            }
         }
         
         private void LoseFocus()
@@ -46,15 +54,22 @@ namespace Controllers
             
             focusedInteractible.SwitchState(Interactible.ActiveState);
             focusedInteractible = null;
+            OnLostFocus?.Invoke();
         }
 
         private void OnInteract(InputValue value)
         {
-            bool holdInteractionInput = value.isPressed;
-            if (focusedInteractible)
-                focusedInteractible.SwitchState(holdInteractionInput
-                    ? Interactible.InteractingState
-                    : Interactible.FocusState);
+            if (focusedInteractible == null) return;
+            if (value.isPressed)
+            {
+                focusedInteractible.SwitchState(Interactible.InteractingState);
+                OnInteractionStart?.Invoke();
+            }
+            else
+            {
+                focusedInteractible.SwitchState(Interactible.FocusState);
+                OnInteractionEnd?.Invoke();
+            }
         }
     }
 }

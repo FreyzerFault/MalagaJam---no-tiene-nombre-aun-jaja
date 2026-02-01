@@ -62,6 +62,7 @@ namespace Controllers
         public FPSCamController camController;
         public InteractionController interactionController;
         public MaskController maskController;
+        public PlayerSfxController sfxController;
 
         #endregion
         

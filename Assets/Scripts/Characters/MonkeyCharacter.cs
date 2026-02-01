@@ -1,19 +1,12 @@
-using UnityEngine;
-
 namespace Characters
 {
-    public class MonkeyCharacter : MonoBehaviour
+    public class MonkeyCharacter : AnimalCharacter
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        public override void OnDialogueEnd()
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            // TODO Empezar el puzzle
+            // Provisionalmente: Te da ya el trozo de Máscara
+            GameManager.Instance.AddMaskFragment();
         }
     }
 }

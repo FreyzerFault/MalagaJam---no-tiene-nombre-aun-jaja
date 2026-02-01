@@ -20,8 +20,10 @@ namespace UI
         {
             PlayerController.Instance.maskController.OnMaskOn += OnMaskOn;
             PlayerController.Instance.maskController.OnMaskOff += OnMaskOff;
+            PlayerController.Instance.maskController.OnSanityUpdate += OnSanityUpdate;
             
             GameManager.Instance.OnMaskEnable += ActivateMaskInput;
+            GameManager.Instance.OnFragmentCollected += UpdateMaskFragments;
 
             DialogueManager.Instance.OnDialogueStart += ShowDialogue;
             DialogueManager.Instance.OnDialogueContinue += UpdateDialogue;
@@ -31,8 +33,10 @@ namespace UI
         {
             PlayerController.Instance.maskController.OnMaskOn -= OnMaskOn;
             PlayerController.Instance.maskController.OnMaskOff -= OnMaskOff;
+            PlayerController.Instance.maskController.OnSanityUpdate -= OnSanityUpdate;
             
             GameManager.Instance.OnMaskEnable -= ActivateMaskInput;
+            GameManager.Instance.OnFragmentCollected -= UpdateMaskFragments;
             
             DialogueManager.Instance.OnDialogueStart -= ShowDialogue;
             DialogueManager.Instance.OnDialogueContinue -= UpdateDialogue;
@@ -91,19 +95,19 @@ namespace UI
         #region MASK FRAGMENTS
 
         // Fragmentos de Máscara Malvada
-        [SerializeField] private Sprite[] sprites;
+        [SerializeField] private Sprite[] maskFragmentsSprites;
         [SerializeField] private Image maskFragmentsSprite;
         
         private static int NumMasks => GameManager.Instance.maskFragments;
 
-        public void UpdateMaskFragments()
+        private void UpdateMaskFragments()
         {
             if (NumMasks == 0)
                 maskFragmentsSprite.color = new Color(0, 0, 0, 0);
             else
             {
                 maskFragmentsSprite.color = Color.white;
-                maskFragmentsSprite.sprite = sprites[NumMasks - 1];
+                maskFragmentsSprite.sprite = maskFragmentsSprites[NumMasks - 1];
             }
         }
 
@@ -121,11 +125,9 @@ namespace UI
         public void ShowDialogue() => dialoguePanel.SetActive(true);
         
         public void ToggleDialogue(bool value) => dialoguePanel.SetActive(value);
-        
-        public void HideCharacterSprite() => characterImage.sprite = spriteDictionary[Character.Unknown][0];
-        public void ShowCharacterSprite() => 
-            GetSprite(DialogueManager.Instance.CurrentCharacter, DialogueManager.Instance.CurrentMood);
-        
+
+        #region CHARACTER SPRITE
+
         [SerializeField, SerializedDictionary("Nombre", "Sprite")]
         private SerializedDictionary<Character, List<Sprite>> spriteDictionary = new(
             new List<KeyValuePair<Character, List<Sprite>>>
@@ -138,8 +140,14 @@ namespace UI
                 new(Character.Unknown, new List<Sprite>())
             });
 
+        public void HideCharacterSprite() => characterImage.sprite = spriteDictionary[Character.Unknown][0];
+        public void ShowCharacterSprite() => 
+            GetSprite(DialogueManager.Instance.CurrentCharacter, DialogueManager.Instance.CurrentMood);
+        
         private Sprite GetSprite(Character character, Mood mood) => spriteDictionary[character][(int)mood];
+        
 
+        #endregion
 
         public void UpdateDialogue (DialogueManager.Dialogue dialogue) {
             Character character = dialogue.character;
@@ -169,10 +177,7 @@ namespace UI
         private Tweener maskVFXPlaceTween;
         private bool IsFading => maskPlaceTween != null && maskPlaceTween.IsPlaying();
 
-        private void OnSanityUpdate(float sanity)
-        {
-            
-        }
+        private void OnSanityUpdate(float sanityPercentage) => maskVFXImg.material.SetFloat(EffectIntensityID, 1 - sanityPercentage);
 
         private void ShowMask()
         {
