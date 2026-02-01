@@ -15,11 +15,13 @@ namespace UI
     public class HUDManager : Singleton<HUDManager>
     {
         private void Start() => ResetHUD();
-
+        
         private void OnEnable()
         {
-            MaskController.Instance.OnMaskOn += OnMaskOn;
-            MaskController.Instance.OnMaskOff += OnMaskOff;
+            PlayerController.Instance.maskController.OnMaskOn += OnMaskOn;
+            PlayerController.Instance.maskController.OnMaskOff += OnMaskOff;
+            
+            GameManager.Instance.OnMaskEnable += ActivateMaskInput;
 
             DialogueManager.Instance.OnDialogueStart += ShowDialogue;
             DialogueManager.Instance.OnDialogueContinue += UpdateDialogue;
@@ -27,8 +29,10 @@ namespace UI
         }
         private void OnDisable()
         {
-            MaskController.Instance.OnMaskOn -= OnMaskOn;
-            MaskController.Instance.OnMaskOff -= OnMaskOff;
+            PlayerController.Instance.maskController.OnMaskOn -= OnMaskOn;
+            PlayerController.Instance.maskController.OnMaskOff -= OnMaskOff;
+            
+            GameManager.Instance.OnMaskEnable -= ActivateMaskInput;
             
             DialogueManager.Instance.OnDialogueStart -= ShowDialogue;
             DialogueManager.Instance.OnDialogueContinue -= UpdateDialogue;
@@ -37,12 +41,13 @@ namespace UI
 
         private void ResetHUD()
         {
-            ResetMaskImage();
-            HideDialogue();
             UpdateMaskFragments();
-            ToggleInput(InputTypes.Mask, false);
+            DeactivateMaskInput();
+            HideDialogue();
+            ResetMaskImage();
         }
 
+        
         #region INPUT PANEL
 
         public enum InputTypes { Mask, Interact }
@@ -53,16 +58,32 @@ namespace UI
         
         public void ToggleInput(InputTypes inputType, bool active)
         {
-            inputPanels[inputType switch
+            int inputIndex = inputType switch
             {
                 InputTypes.Mask => 0,
                 InputTypes.Interact => 1,
                 _ => 0
-            }].SetActive(active);
+            };
+            inputPanels[inputIndex].SetActive(active);
         }
 
-        private void OnMaskOn() => HideCharacterSprite();
-        private void OnMaskOff() => ShowCharacterSprite();
+        public void ActivateMaskInput() => ToggleInput(InputTypes.Mask, true);
+        public void DeactivateMaskInput() => ToggleInput(InputTypes.Mask, false);
+
+        private void OnMaskOn()
+        {
+            ShowMask();
+            
+            if (DialogueManager.Instance.dialogueOnCourse)
+                HideCharacterSprite();
+        }
+
+        private void OnMaskOff()
+        {
+            HideMask();
+            if (DialogueManager.Instance.dialogueOnCourse)
+                ShowCharacterSprite();
+        }
 
         #endregion
         
@@ -135,49 +156,83 @@ namespace UI
 
 
         #region MASK IMAGE
-
+        
         [SerializeField] private Image maskImg;
+        [SerializeField] private Image maskVFXImg;
+        
         [SerializeField] private float maskFadeDuration = .3f;
+        [SerializeField] private float maskFadeOffset = 4000;
 
         private Tweener maskFadeTween;
+        private Tweener maskVFXFadeTween;
         private Tweener maskPlaceTween;
-        private bool IsFading => maskFadeTween.IsPlaying();
-        
-        public void ShowMask()
+        private Tweener maskVFXPlaceTween;
+        private bool IsFading => maskPlaceTween != null && maskPlaceTween.IsPlaying();
+
+        private void OnSanityUpdate(float sanity)
         {
-            if (IsFading) // Lo para y empieza el Fade correspondiente
-            {
-                maskFadeTween.Kill();
-                maskPlaceTween.Kill();
-            }
             
-            maskFadeTween = FadeInTween.Play();
-            maskPlaceTween = PlaceInTween.Play();
         }
 
-        public void HideMask()
+        private void ShowMask()
         {
             if (IsFading) // Lo para y empieza el Fade correspondiente
             {
-                maskFadeTween.Kill();
+                // maskFadeTween.Kill();
+                maskVFXFadeTween.Kill();
                 maskPlaceTween.Kill();
+                maskVFXPlaceTween.Kill();
             }
             
-            maskFadeTween = FadeOutTween.Play();
-            maskPlaceTween = PlaceOutTween.Play();
+            // maskFadeTween = FadeInTween(maskImg, maskFadeDuration).Play();
+            maskPlaceTween = PlaceInTween(maskImg, maskFadeDuration).Play();
+            maskVFXFadeTween = IncreaseIntensityTween(maskVFXImg.material, maskFadeDuration).Play();
+            maskVFXPlaceTween = PlaceInTween(maskVFXImg, maskFadeDuration).Play();
+        }
+
+        private void HideMask()
+        {
+            if (IsFading) // Lo para y empieza el Fade correspondiente
+            {
+                // maskFadeTween.Kill();
+                maskVFXFadeTween.Kill();
+                maskPlaceTween.Kill();
+                maskVFXPlaceTween.Kill();
+            }
+            
+            // maskFadeTween = FadeOutTween(maskImg, maskFadeDuration).Play();
+            maskPlaceTween = PlaceOutTween(maskImg, maskFadeDuration).Play();
+            maskVFXFadeTween = DecreaseIntensityTween(maskVFXImg.material, maskFadeDuration).Play();
+            maskVFXPlaceTween = PlaceOutTween(maskVFXImg, maskFadeDuration).Play();
         }
 
         private void ResetMaskImage()
         {
-            maskImg.color = new Color(maskImg.color.r, maskImg.color.g, maskImg.color.b, 0);
-            maskImg.rectTransform.anchoredPosition = new (maskImg.rectTransform.anchoredPosition.x, Screen.height);
+            // maskImg.color = new Color(maskImg.color.r, maskImg.color.g, maskImg.color.b, 0);
+            maskVFXImg.material.SetFloat(EffectIntensityID, 0);
+            maskImg.rectTransform.anchoredPosition = new Vector2(maskImg.rectTransform.anchoredPosition.x, maskFadeOffset);
+            maskVFXImg.rectTransform.anchoredPosition = new Vector2(maskImg.rectTransform.anchoredPosition.x, maskFadeOffset);
         }
 
-        private Tweener FadeInTween => maskImg.DOFade(endValue: 1, duration: maskFadeDuration);
-        private Tweener FadeOutTween => maskImg.DOFade(endValue: 0, duration: maskFadeDuration);
+        private Tweener FadeInTween(Image img, float duration = .3f) => img.DOFade(endValue: 1, duration);
+        private Tweener FadeOutTween(Image img, float duration = .3f) => img.DOFade(endValue: 0, duration);
+        private Tweener PlaceInTween(Image img, float duration = .3f) => img.rectTransform.DOAnchorPosY(endValue: 0, duration);
+        private Tweener PlaceOutTween(Image img, float duration = .3f) => img.rectTransform.DOAnchorPosY(endValue: maskFadeOffset, duration);
         
-        private Tweener PlaceInTween => maskImg.rectTransform.DOAnchorPosY(endValue: 0, duration: maskFadeDuration);
-        private Tweener PlaceOutTween => maskImg.rectTransform.DOAnchorPosY(endValue: Screen.height, duration: maskFadeDuration);
+        
+        private static readonly int EffectIntensityID = Shader.PropertyToID("_EffectIntensity");
+        
+        private Tweener IncreaseIntensityTween(Material mat, float duration = .3f) =>
+            DOTween.To(
+                () => mat.GetFloat(EffectIntensityID), 
+                intensity => mat.SetFloat(EffectIntensityID, intensity), 
+                1, duration);
+
+        private Tweener DecreaseIntensityTween(Material mat, float duration = .3f) =>
+            DOTween.To(
+                () => mat.GetFloat(EffectIntensityID),
+                intensity => mat.SetFloat(EffectIntensityID, intensity),
+                0, duration);
 
         #endregion
     }

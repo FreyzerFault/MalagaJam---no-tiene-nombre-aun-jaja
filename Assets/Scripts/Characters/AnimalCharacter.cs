@@ -1,6 +1,5 @@
 using Dialogue;
 using UnityEngine;
-using Dialogue;
 using Dialogue.Dialogue;
 
 namespace Characters

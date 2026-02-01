@@ -1,29 +1,38 @@
 using System;
-using System.Collections.Generic;
-using Controllers;
-using UI;
 using UnityEngine.SceneManagement;
 using Utils;
 
 public class GameManager : SingletonPersistent<GameManager>
 {
+    public event Action OnMaskEnable; 
+    public event Action OnMaskDisable; 
+    
     private void Start() => ResetGame();
 
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        ToggleMaskController(false);
+        DisableMask();
         ResetMaskFragments();
     }
 
     
     #region PLAYER MASK
 
-    public bool HasMask => MaskController.Instance.enabled;
+    private bool hasMask;
     
-    public void OnPlayerTakeMask() => ToggleMaskController(true);
+    public bool HasMask => hasMask;
+    public void EnableMask()
+    {
+        hasMask = true;
+        OnMaskEnable?.Invoke();
+    }
 
-    public void ToggleMaskController(bool activated) => MaskController.Instance.enabled = activated;
+    public void DisableMask()
+    {
+        hasMask = false;
+        OnMaskDisable?.Invoke();
+    }
 
     #endregion
     

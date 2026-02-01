@@ -14,7 +14,7 @@ namespace Interactibles
             // Cuando interaccione con la mascara
             if (IsInteracting)
             {
-                GameManager.Instance.OnPlayerTakeMask();
+                GameManager.Instance.EnableMask();
 
                 // TODO Animacion coger Máscara
 

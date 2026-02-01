@@ -21,6 +21,15 @@ namespace Controllers
         private CharacterController controller;
         private CharacterController Controller => controller ??= GetComponent<CharacterController>();
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            camController = GetComponent<FPSCamController>();
+            interactionController = GetComponent<InteractionController>();
+            maskController = GetComponent<MaskController>();
+        }
+
         private void FixedUpdate()
         {
             float speedMultiplier = isRunning ? runMultiplier : 1;
@@ -46,6 +55,16 @@ namespace Controllers
         private void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
         private void OnRun(InputValue value) => isRunning = value.Get<float>() > 0.1f;
         private void OnJump() => Jump();
+
+        
+        #region OTHER CONTROLLERS
+
+        public FPSCamController camController;
+        public InteractionController interactionController;
+        public MaskController maskController;
+
+        #endregion
+        
     
         #region DEBUGGING
 
