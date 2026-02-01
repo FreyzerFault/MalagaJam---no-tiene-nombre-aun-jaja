@@ -16316,17 +16316,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47aee0d1f3642338bdc1aeaf26092fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  brightnessEffectIntensityTarget:
+  brightnessTargetValues:
     _serializedList:
-    - Key: 0
+    - Key: Active
       Value: 0.1
-    - Key: 1
+    - Key: Focus
       Value: 0.6
-    - Key: 2
-      Value: 0.9
-    - Key: 3
+    - Key: Interacting
+      Value: 0.8
+    - Key: Inactive
       Value: 0
-  brightIntensityAnimDuration: 0.5
 --- !u!4 &535947929 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 631610597456352118, guid: ae332e7c805be614590a09ab54ae5bfd, type: 3}
