@@ -21,7 +21,10 @@ public class GameManager : SingletonPersistent<GameManager>
         ResetMaskFragments();
     }
 
-    
+    public void LoadGame() => SceneManager.LoadScene(1);
+    public void LoadMenu() => SceneManager.LoadScene(0);
+
+
     #region PLAYER MASK
 
     private bool hasMask;
