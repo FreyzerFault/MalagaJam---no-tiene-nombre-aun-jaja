@@ -65,7 +65,7 @@ namespace Controllers
         private void Update()
         {
             // Actualiza el Zoom segun la Sanity pero espera a que las animaciones de Zoom al poner o quitar la mascara terminen
-            if (maskController.IsMaskOn && !zoomTween.IsPlaying()) 
+            if (maskController.IsMaskOn && !IsZoomPlaying) 
                 cam.fieldOfView = ZoomBySanity;
 
 
@@ -99,12 +99,12 @@ namespace Controllers
 
         private Tweener zoomTween;
         private Tweener shakeTween;
-        private bool IsPlaying => zoomTween != null && zoomTween.IsPlaying();
+        private bool IsZoomPlaying => zoomTween != null && zoomTween.IsActive() && zoomTween.IsPlaying();
 
         private void OnMaskOn()
         {
             // Zoom IN
-            if (IsPlaying)
+            if (IsZoomPlaying)
                 zoomTween.Kill();
             
             zoomTween = cam.DOFieldOfView(ZoomBySanity, zoomSmoothDuration);
@@ -117,7 +117,7 @@ namespace Controllers
         private void OnMaskOff()
         {
             // Zoom OUT
-            if (IsPlaying)
+            if (IsZoomPlaying)
                 zoomTween.Kill();
             
             zoomTween = cam.DOFieldOfView(standardFoV, zoomSmoothDuration);

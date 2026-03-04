@@ -132,6 +132,7 @@ namespace UI
         public void ShowDialogue()
         {
             dialoguePanel.SetActive(true);
+            
             UpdateDialogue(DialogueManager.Instance.CurrentDialogue);
         }
 
@@ -153,9 +154,9 @@ namespace UI
 
         public void HideCharacterSprite() => characterImage.sprite = spriteDictionary[Character.Unknown][0];
         public void ShowCharacterSprite() => 
-            characterImage.sprite = 
+            characterImage.sprite =
                 GetSprite(DialogueManager.Instance.CurrentCharacter, DialogueManager.Instance.CurrentMood);
-        
+
         private Sprite GetSprite(Character character, Mood mood) => spriteDictionary[character][(int)mood];
         
 
@@ -193,7 +194,7 @@ namespace UI
         private Tweener maskVFXFadeTween;
         private Tweener maskPlaceTween;
         private Tweener maskVFXPlaceTween;
-        private bool IsFading => maskPlaceTween != null && maskPlaceTween.IsPlaying();
+        private bool IsFading => maskPlaceTween != null && maskPlaceTween.IsActive() && maskPlaceTween.IsPlaying();
 
         private void OnSanityUpdate(float sanity)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Dialogue
 {
     [CreateAssetMenu(fileName = "DialogueSequence", menuName = "Matsuri/DialogueSequence")]
-    public class DialogueSequence : ScriptableObject
+    public class DialogueSequenceSO : ScriptableObject
     {
         public List<Dialogue> dialogues = new();
         

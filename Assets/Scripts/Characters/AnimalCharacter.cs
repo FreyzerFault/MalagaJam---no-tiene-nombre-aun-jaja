@@ -9,8 +9,8 @@ namespace Characters
     [RequireComponent(typeof(Billboard), typeof(SpriteRenderer))]
     public abstract class AnimalCharacter : MonoBehaviour
     {
-        public DialogueSequence meetSequence;
-        public DialogueSequence puzzleCompletedSequence;
+        public DialogueSequenceSO meetSequenceSO;
+        public DialogueSequenceSO puzzleCompletedSequenceSO;
         
         private SpriteRenderer sr;
 
@@ -18,8 +18,8 @@ namespace Characters
 
         protected virtual void Start()
         {
-            meetSequence.OnEnded += OnMeetDialogueEnd;
-            puzzleCompletedSequence.OnEnded += OnCompletedPuzzleDialogueEnd;
+            meetSequenceSO.OnEnded += OnMeetDialogueEnd;
+            puzzleCompletedSequenceSO.OnEnded += OnCompletedPuzzleDialogueEnd;
             
             Visible = false;
         }
@@ -44,7 +44,7 @@ namespace Characters
         public virtual void OnPlayerNear()
         {
             if (!DialogueManager.Instance.dialogueOnCourse) 
-                DialogueManager.Instance.StartDialogue(meetSequence);
+                DialogueManager.Instance.StartDialogue(meetSequenceSO);
         }
 
         protected virtual void OnMeetDialogueEnd()
@@ -85,7 +85,7 @@ namespace Characters
         {
             if (type != PuzzleType) return;
             
-            DialogueManager.Instance.StartDialogue(puzzleCompletedSequence);
+            DialogueManager.Instance.StartDialogue(puzzleCompletedSequenceSO);
         }
 
         #endregion

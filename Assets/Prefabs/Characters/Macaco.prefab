@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8391072624740274947}
   - component: {fileID: 4233367953997706709}
   - component: {fileID: 909546343485931279}
+  - component: {fileID: 2369460024540855103}
   m_Layer: 0
   m_Name: Macaco
   m_TagString: Untagged
@@ -45,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a843fa6b5e305164fa81a06fa8302b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Characters.MonkeyCharacter
-  meetSequence: {fileID: 11400000, guid: 4f29bfa453327b04181a950af5fbe1ff, type: 2}
-  puzzleCompletedSequence: {fileID: 11400000, guid: e7a8fb982db014e4595b1abde584845f, type: 2}
+  meetSequenceSO: {fileID: 11400000, guid: 3ba5be78e685edb4fb4bdf3ca63f87f6, type: 2}
+  puzzleCompletedSequenceSO: {fileID: 11400000, guid: e7a8fb982db014e4595b1abde584845f, type: 2}
 --- !u!212 &909546343485931279
 SpriteRenderer:
   serializedVersion: 2
@@ -106,3 +107,15 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 1
+--- !u!114 &2369460024540855103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716020805811787131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379a7be24d702db4f8a361e436ee0a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Billboard

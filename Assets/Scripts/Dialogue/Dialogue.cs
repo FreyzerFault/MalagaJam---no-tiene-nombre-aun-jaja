@@ -1,5 +1,6 @@
 using System;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Dialogue
 {
@@ -11,7 +12,7 @@ namespace Dialogue
             
         public Character character;
         public Mood mood;
-        public string text;
+        [TextArea(2, 6)] public string text;
         public bool auto;
         [ShowIf("auto")] public int duration;
 

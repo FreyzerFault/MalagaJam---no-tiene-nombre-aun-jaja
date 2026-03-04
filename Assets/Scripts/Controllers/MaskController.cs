@@ -68,7 +68,7 @@ namespace Controllers
         
         #region DEATH SEQUENCE
 
-        [SerializeField] private DialogueSequence deathDialogue;
+        [SerializeField] private DialogueSequenceSO deathDialogue;
 
         private void StartDeathSequence()
         {

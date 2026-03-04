@@ -23,7 +23,7 @@ namespace Dialogue
         });
         
         [HideInInspector] public bool dialogueOnCourse;
-        private DialogueSequence currentDialogueSequence;
+        private DialogueSequenceSO currentDialogueSequence;
         private int dialogueIndex;
         
         public event Action OnDialogueStart;
@@ -36,7 +36,7 @@ namespace Dialogue
         private bool HasEndedSequence => dialogueIndex >= currentDialogueSequence.dialogues.Count - 1;
 
 
-        public void StartDialogue(DialogueSequence dialogueSequence)
+        public void StartDialogue(DialogueSequenceSO dialogueSequence)
         {
             if (dialogueSequence.hasEnded)
                 Debug.LogWarning("Se está repitiendo un Diálogo que ya salió. Quizá sea un BUG");
@@ -63,10 +63,9 @@ namespace Dialogue
                 EndDialogue();
             else
             {
-                Dialogue dialogue = CurrentDialogue;
-                if (dialogue.IsAuto)
-                    Invoke(nameof(ContinueDialogue), dialogue.duration);
-                OnDialogueContinue?.Invoke(dialogue);
+                if (CurrentDialogue.IsAuto)
+                    Invoke(nameof(ContinueDialogue), CurrentDialogue.duration);
+                OnDialogueContinue?.Invoke(CurrentDialogue);
             }
         }
 
@@ -86,7 +85,7 @@ namespace Dialogue
 
         private void OnInteract(InputValue value)
         {
-            if (value.isPressed && !CurrentDialogue.IsAuto)
+            if (dialogueOnCourse && value.isPressed && !CurrentDialogue.IsAuto)
                 ContinueDialogue();
         }
 

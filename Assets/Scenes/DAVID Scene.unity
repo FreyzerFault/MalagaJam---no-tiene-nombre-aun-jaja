@@ -771,22 +771,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerController_CC
       objectReference: {fileID: 0}
-    - target: {fileID: 4999727912246638566, guid: e3b282ea462135f4086acaa418a4b4a7, type: 3}
-      propertyPath: sfxDictionary._serializedList.Array.data[2].Value
-      value: 
-      objectReference: {fileID: 8300000, guid: ded3cd644dfdab946ab5e9e47399a1c6, type: 3}
-    - target: {fileID: 4999727912246638566, guid: e3b282ea462135f4086acaa418a4b4a7, type: 3}
-      propertyPath: sfxDictionary._serializedList.Array.data[3].Value
-      value: 
-      objectReference: {fileID: 8300000, guid: d2af9bc2fddd4a342895e1099560b713, type: 3}
-    - target: {fileID: 6653313437072446341, guid: e3b282ea462135f4086acaa418a4b4a7, type: 3}
-      propertyPath: shakeVibrato
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653313437072446341, guid: e3b282ea462135f4086acaa418a4b4a7, type: 3}
-      propertyPath: shakeMaxStrength
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 7515821600857089795, guid: e3b282ea462135f4086acaa418a4b4a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.817337
@@ -1219,6 +1203,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2648608838218757906, guid: a292fbdce1a9fd744840d34b1db95973, type: 3}
+      propertyPath: sfxMixer
+      value: 
+      objectReference: {fileID: -5351128618761194178, guid: d7a80d09569b18c4e9d646632e947a80, type: 2}
+    - target: {fileID: 2648608838218757906, guid: a292fbdce1a9fd744840d34b1db95973, type: 3}
+      propertyPath: musicMixer
+      value: 
+      objectReference: {fileID: -8713493940641948433, guid: d7a80d09569b18c4e9d646632e947a80, type: 2}
+    - target: {fileID: 2648608838218757906, guid: a292fbdce1a9fd744840d34b1db95973, type: 3}
+      propertyPath: masterMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: c223bfb5ac778cb43b7c7d4eb0ea1011, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

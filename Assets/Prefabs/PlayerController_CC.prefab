@@ -412,9 +412,9 @@ MonoBehaviour:
   zoomMaxFoV: 70
   zoomMinFoV: 40
   zoomSmoothDuration: 0.2
-  shakeVibrato: 2
+  shakeVibrato: 1
   shakeMinStrength: 0
-  shakeMaxStrength: 3
+  shakeMaxStrength: 0.1
   shakeThresholds:
   - 0.8
   - 0.5
@@ -496,13 +496,13 @@ MonoBehaviour:
   sfxDictionary:
     _serializedList:
     - Key: 0
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: 985b0a93e1ca01a4880d46a0932b2bf3, type: 3}
     - Key: 1
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: bc623943b690cd04b93a748aa38c02a3, type: 3}
     - Key: 2
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: ded3cd644dfdab946ab5e9e47399a1c6, type: 3}
     - Key: 3
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: d2af9bc2fddd4a342895e1099560b713, type: 3}
 --- !u!33 &2903632298911859457
 MeshFilter:
   m_ObjectHideFlags: 0

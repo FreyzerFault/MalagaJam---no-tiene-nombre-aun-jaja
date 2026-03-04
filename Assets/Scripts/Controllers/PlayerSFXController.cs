@@ -1,19 +1,42 @@
+using System;
 using System.Collections.Generic;
 using Audio;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Controllers
 {
     public class PlayerSfxController : MonoBehaviour
     {
         [SerializeField] private AudioSource maskSanitySfx;
+        [SerializeField] private float maxPitchWhenMaskOn = 0.9f;
+        [SerializeField] private float minPitchWhenMaskOn = 0.5f;
+        private float defaultPitch;
         
         private MaskController maskController;
 
-        private void Awake() => maskController = GetComponent<MaskController>();
+        private void Awake()
+        {
+            maskController = GetComponent<MaskController>();
+            defaultPitch = AudioManager.Instance.MasterPitch;
+        }
 
-        
+        private void Update()
+        {
+            UpdatePitch();
+        }
+
+        /// <summary>
+        /// Hace que se escuche to más grave cuanta peor sanity tienes
+        /// </summary>
+        private void UpdatePitch()
+        {
+            float sanityPercent = maskController.sanity / maskController.maxSanity;
+            AudioManager.Instance.MasterPitch = Mathf.Lerp(minPitchWhenMaskOn, maxPitchWhenMaskOn, sanityPercent);
+        }
+
+
         #region EVENTOS
 
         private void OnEnable()
@@ -35,6 +58,7 @@ namespace Controllers
         
         private void OnMaskOn() => PlayAudio(SfxTag.MaskOn);
         private void OnMaskOff() => PlayAudio(SfxTag.MaskOff);
+
         private void OnDeath() => PlayAudio(SfxTag.OnDeath);
         private void OnRespawn() => PlayAudio(SfxTag.OnRespawn);
         
