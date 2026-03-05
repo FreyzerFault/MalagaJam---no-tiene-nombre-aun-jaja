@@ -20,10 +20,19 @@ MonoBehaviour:
       de anta\xF1o. Te hago entrega de tu merecida recompensa Momotaro, pero espero
       que hayas aprendido la lecci\xF3n mortal. \xA1No ser\xE9 tan benevolente la
       pr\xF3xima vez!"
+    textEn: Magnificent! Splendid! At last my home is restored to its former glory.
+      I present you with your well-deserved reward, Momotaro, but I hope you have
+      learned your mortal lesson. I will not be so lenient next time!
+    textFr: "Magnifique ! Splendide ! Enfin, ma demeure a retrouv\xE9 sa splendeur
+      d'antan. Je te pr\xE9sente ta r\xE9compense bien m\xE9rit\xE9e, Momotaro, mais
+      j'esp\xE8re que tu as retenu la le\xE7on. Je ne serai pas aussi cl\xE9ment
+      la prochaine fois !"
     auto: 0
     duration: 0
   - character: 0
     mood: 3
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0

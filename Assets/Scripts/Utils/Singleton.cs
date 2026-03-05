@@ -33,7 +33,6 @@ namespace Utils
 
 		private void DestroyMyself()
 		{
-			Debug.Log($"I am destroying myself. Type:{typeof(T).Name}, InstanceID: {GetInstanceID()}", this);
 			if (Application.isPlaying)
 				Destroy(gameObject);
 			else

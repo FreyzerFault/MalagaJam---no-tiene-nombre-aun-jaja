@@ -19,10 +19,17 @@ MonoBehaviour:
     text: "\xA1Jijiji! \xBFHas visto? \xA1No era tan dif\xEDcil! Toma este pedazo
       de trasto, no me sirve para nada de todas formas, \xA1pero hac\xEDa a\xF1os
       que no me divert\xEDa tanto! \xA1Jiji!"
+    textEn: Hehehe! See? It wasn't so hard! Take this piece of junk, it's useless
+      to me anyway, but I haven't had this much fun in years! Hehehe!
+    textFr: "H\xE9h\xE9h\xE9 ! Tu vois ? C'\xE9tait pas si difficile ! Tiens, prends
+      ce truc, il ne me sert \xE0 rien de toute fa\xE7on, mais je ne me suis pas
+      autant amus\xE9 depuis des ann\xE9es ! H\xE9h\xE9h\xE9 !"
     auto: 0
     duration: 0
   - character: 3
     mood: 4
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0

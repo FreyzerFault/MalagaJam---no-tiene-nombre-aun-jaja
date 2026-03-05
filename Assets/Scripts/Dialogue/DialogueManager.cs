@@ -8,9 +8,6 @@ using Utils;
 
 namespace Dialogue
 {
-    using Character = Character;
-    using Mood = Mood;
-
     public class DialogueManager : Singleton<DialogueManager>
     {
         [SerializeField] public DialogueDataSO dialogueData;

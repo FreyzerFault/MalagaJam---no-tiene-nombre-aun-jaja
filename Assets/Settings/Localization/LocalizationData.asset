@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddeeba9f2314451cb54d5fb08327203e, type: 3}
+  m_Name: LocalizationData
+  m_EditorClassIdentifier: Assembly-CSharp::UI.LocalizationDataSO
+  translationDictionary:
+    _serializedList:
+    - Key: skip_input_label
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Continuar
+        - Key: 1
+          Value: Next
+        - Key: 2
+          Value: Continuer
+    - Key: settings_btn
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: "Configuraci\xF3n"
+        - Key: 1
+          Value: Settings
+        - Key: 2
+          Value: Configuration
+    - Key: main_menu_btn
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: "Salir al Men\xFA"
+        - Key: 1
+          Value: Quit to Menu
+        - Key: 2
+          Value: Retour au menu
+    - Key: continue_btn
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Continuar
+        - Key: 1
+          Value: Resume
+        - Key: 2
+          Value: "R\xE9sumer"

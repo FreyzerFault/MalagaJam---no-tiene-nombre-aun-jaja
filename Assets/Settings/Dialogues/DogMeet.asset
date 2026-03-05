@@ -18,45 +18,71 @@ MonoBehaviour:
     mood: 0
     text: "Parece que has enfadado al grandull\xF3n, \xA1qu\xE9 dram\xE1tico es a
       veces Woof!"
+    textEn: Looks like you've angered the big guy, Woof can be so dramatic sometimes!
+    textFr: "On dirait que tu as mis le gros bonhomme en col\xE8re, Woof peut \xEAtre
+      tellement dramatique parfois !"
     auto: 1
     duration: 4
   - character: 2
     mood: 0
     text: "Woof qu\xE9 despiste, no puedes verme Woof\u2026se me olvida eso de que
       ahora soy un esp\xEDritu Woof Woof"
+    textEn: "Woof, what a blunder, you can't see me Woof\u2026I forgot that I'm a
+      spirit now Woof Woof"
+    textFr: "Ouaf, quelle gaffe, tu ne peux pas me voir Ouaf\u2026 J'avais oubli\xE9
+      que je suis un esprit maintenant Ouaf Ouaf"
     auto: 1
     duration: 4
   - character: 2
     mood: 0
     text: "Debe haber una m\xE1scara por aqu\xED cerca\u2026 prueba a pon\xE9rtela,
       conf\xEDa en m\xED Woof, te ayudar\xE9"
+    textEn: "There must be a mask around here somewhere\u2026 try putting it on,
+      trust me Woof, I'll help you"
+    textFr: "Il doit bien y avoir un masque quelque part par ici\u2026 essaie de
+      le mettre, crois-moi. Ouaf, je vais t'aider."
     auto: 1
     duration: 4
   - character: 2
     mood: 0
     text: "\xA1\xA1\xA1\xA1Pero cuidado!!! No la vayas a romper tambi\xE9n Woof\u2026
       en bastante l\xEDo estamos ya"
+    textEn: "But be careful!!! Don't break it too, Woof\u2026 we're in enough trouble
+      already."
+    textFr: "Mais attention !!! Ne le casse pas aussi, Woof\u2026 on a d\xE9j\xE0
+      assez de probl\xE8mes comme \xE7a."
     auto: 1
     duration: 4
   - character: 2
     mood: 0
     text: "\xA1Woof Woof, aqu\xED estoy! Soy perro, pero no S\xE1nchez, \xBFy t\xFA\u2026Woof?"
+    textEn: "Woof Woof, here I am! I'm a dog, but not a Sanchez, and you\u2026Woof?"
+    textFr: "Ouaf Ouaf, me voil\xE0 ! Je suis un chien, mais pas un Sanchez, et vous\u2026
+      Ouaf ?"
     auto: 0
     duration: 0
   - character: 3
     mood: 0
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
   - character: 2
     mood: 0
     text: "Momo\u2026 y despu\xE9s Taro\u2026 Mo.. Motaro. \xBFMotaro? \xA1Momotaro!
       S\xED Momotaro, es el mejor nombre que he escuchado nunca."
+    textEn: "Momo\u2026 and then Taro\u2026 Mo\u2026 Motaro. Motaro? Momotaro! Yes,
+      Momotaro, it's the best name I've ever heard."
+    textFr: "Momo\u2026 et puis Taro\u2026 Mo\u2026 Motaro. Motaro\_? Momotaro\_!
+      Oui, Momotaro, c\u2019est le plus beau nom que j\u2019aie jamais entendu."
     auto: 0
     duration: 0
   - character: 3
     mood: 0
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
   - character: 2
@@ -65,11 +91,20 @@ MonoBehaviour:
       de las chungas petrungas Woof. Pero como dec\xEDa mi madre\u2026\xA1todo tiene
       arreglo en esta vida! Y en la muerte tambi\xE9n Woof!\u2026(\xBFlo pillas?
       porque soy un esp\xEDritu Woof\u2026)"
+    textEn: "Ah yes\u2026the devil's gone mad! Looks like he's unleashed a nasty
+      curse, Woof. But like my mother used to say\u2026everything can be fixed in
+      this life! And in death too, Woof!\u2026(get it? Because I'm a spirit, Woof\u2026)"
+    textFr: "Ah oui\u2026 le diable est devenu fou ! On dirait qu'il a lanc\xE9 une
+      terrible mal\xE9diction, Ouaf. Mais comme disait ma m\xE8re\u2026 tout peut
+      s'arranger dans cette vie ! Et m\xEAme apr\xE8s la mort, Ouaf !\u2026 (Tu comprends
+      ? Parce que je suis un esprit, Ouaf\u2026)"
     auto: 0
     duration: 0
   - character: 3
     mood: 0
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
   - character: 2
@@ -77,11 +112,20 @@ MonoBehaviour:
     text: "Qu\xE9 p\xFAblico m\xE1s exigente tengo hoy Woof! Pero no te preocupes,
       me centro me centro\u2026 la maldici\xF3n Woof\u2026 Parece que todos los humanos
       han desaparecido menos t\xFA, y tampoco parece que puedas escapar\u2026"
+    textEn: "What a demanding audience I have today, Woof! But don't worry, I'll
+      focus, I'll focus\u2026 the Woof curse\u2026 It seems all humans have disappeared
+      except for you, and it doesn't look like you can escape either\u2026"
+    textFr: "Quel public exigeant j'ai aujourd'hui, Woof ! \u200B\u200BMais ne t'inqui\xE8te
+      pas, je vais me concentrer, je vais me concentrer\u2026 la mal\xE9diction de
+      Woof\u2026 Il semble que tous les humains aient disparu sauf toi, et il ne
+      semble pas que tu puisses t'\xE9chapper non plus\u2026"
     auto: 0
     duration: 0
   - character: 3
     mood: 0
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
   - character: 2
@@ -89,11 +133,20 @@ MonoBehaviour:
     text: "\xA1Woof Woof! Seguro que se le pasa si reparamos su m\xE1scara, si no
       nos sirve el super glue, podemos usar flexicinta\u2026Solo tienes que encontrar
       todos los fragmentos, no han podido ir muy lejos\u2026"
+    textEn: Woof Woof! I'm sure it'll go away if we fix his mask. If super glue doesn't
+      work, we can use flexible tape... You just have to find all the fragments;
+      they couldn't have gone very far...
+    textFr: "Ouaf ouaf ! Je suis s\xFBre que \xE7a dispara\xEEtra si on r\xE9pare
+      son masque. Si la super glue ne marche pas, on peut utiliser du ruban adh\xE9sif
+      souple\u2026 Il faut juste retrouver tous les morceaux ; ils n'ont pas pu aller
+      bien loin\u2026"
     auto: 0
     duration: 0
   - character: 3
     mood: 0
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
   - character: 2
@@ -102,5 +155,12 @@ MonoBehaviour:
       un puzzle, acabo de encontrar un fragmento de la m\xE1scara\u2026\xA1solo necesitas
       encontrar los otros dos! \xA1Mucha suerte en la b\xFAsqueda Momotaro! \xA1Puedes
       lograrlo woof!"
+    textEn: "Look, woof! Conveniently enough for the developers to save themselves
+      a puzzle, I just found one fragment of the mask\u2026 you just need to find
+      the other two! Good luck on your quest, Momotaro! You can do it, woof!"
+    textFr: "Regarde, ouaf ! Comme par hasard, pour \xE9viter aux d\xE9veloppeurs
+      de se creuser la t\xEAte, je viens de trouver un fragment du masque\u2026 Il
+      ne te reste plus qu'\xE0 trouver les deux autres ! Bonne chance dans ta qu\xEAte,
+      Momotaro ! Tu peux le faire, ouaf !"
     auto: 0
     duration: 0

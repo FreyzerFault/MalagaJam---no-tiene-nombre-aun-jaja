@@ -1,15 +1,10 @@
-using System;
-using System.Linq;
 using Controllers;
 using DG.Tweening;
-using Dialogue;
-using Dialogue.Data;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Utils;
-using Character = Dialogue.Data.Character;
 
 namespace UI
 {
@@ -20,25 +15,14 @@ namespace UI
         protected override void Awake()
         {
             base.Awake();
-            Debug.Log("AWAKE" + GetInstanceID(), this);
 
             inputPanels = GetComponentsInChildren<InputPanel>();
         }
 
-        private void Start()
-        {
-            Debug.Log("START" + GetInstanceID(), this);
-            ResetHUD();
-        }
-
-        private void OnDestroy()
-        {
-            Debug.Log("ONDESTROY" + GetInstanceID(), this);
-        }
+        private void Start() => ResetHUD();
 
         private void OnEnable()
         {
-            Debug.Log("ONENABLE" + GetInstanceID(), this);
             if (PlayerController.Instance == null) return;
             
             PlayerController.Instance.maskController.OnMaskOn += OnMaskOn;
@@ -47,14 +31,9 @@ namespace UI
             
             GameManager.Instance.OnMaskEnable += ActivateMaskInput;
             GameManager.Instance.OnFragmentCollected += UpdateMaskFragments;
-
-            DialogueManager.Instance.OnDialogueStart += OnDialogueStart;
-            DialogueManager.Instance.OnDialogueContinue += OnDialogueContinue;
-            DialogueManager.Instance.OnDialogueEnd += OnDialogueEnd;
         }
         private void OnDisable()
         {
-            Debug.Log("ONDISABLE" + GetInstanceID(), this);
             if (PlayerController.Instance == null) return;
             
             PlayerController.Instance.maskController.OnMaskOn -= OnMaskOn;
@@ -63,17 +42,12 @@ namespace UI
             
             GameManager.Instance.OnMaskEnable -= ActivateMaskInput;
             GameManager.Instance.OnFragmentCollected -= UpdateMaskFragments;
-            
-            DialogueManager.Instance.OnDialogueStart -= OnDialogueStart;
-            DialogueManager.Instance.OnDialogueContinue -= OnDialogueContinue;
-            DialogueManager.Instance.OnDialogueEnd -= OnDialogueEnd;
         }
 
         private void ResetHUD()
         {
             UpdateMaskFragments();
             DeactivateMaskInput();
-            HideDialogue();
             ResetMaskImage();
             
             debugPanel.SetActive(GameManager.Instance.debugMode); 
@@ -102,21 +76,6 @@ namespace UI
         public void ActivateMaskInput() => ToggleInput(InputTypes.Mask, true);
         public void DeactivateMaskInput() => ToggleInput(InputTypes.Mask, false);
 
-        private void OnMaskOn()
-        {
-            ShowMask();
-            
-            if (DialogueManager.Instance.DialogueOnCourse)
-                SwapSprite();
-        }
-
-        private void OnMaskOff()
-        {
-            HideMask();
-            if (DialogueManager.Instance.DialogueOnCourse)
-                SwapSprite();
-        }
-
         #endregion
         
         
@@ -141,71 +100,7 @@ namespace UI
 
         #endregion
         
-
-        #region DIALOGUE
         
-        // DIALOGUE
-        [BoxGroup("Dialogue"), SerializeField] private GameObject dialoguePanel;
-        [BoxGroup("Dialogue"), SerializeField] private Image characterImage;
-        [BoxGroup("Dialogue"), SerializeField] private Image characterImageAux;
-        [BoxGroup("Dialogue"), SerializeField] private TMP_Text dialogueTxt;
-        [BoxGroup("Dialogue"), SerializeField] private Image skipDialogueIcon;
-        [BoxGroup("Dialogue"), SerializeField] private float spriteJumpEffectPower;
-
-        private void OnDialogueStart(SequenceSO sequenceSO) => ShowDialogue(sequenceSO.FirstMsg);
-        private void OnDialogueContinue(Message message) => UpdateDialogue(message);
-        private void OnDialogueEnd(SequenceSO sequenceSO) => HideDialogue();
-        
-        public void HideDialogue() =>
-            dialoguePanel.SetActive(false);
-        
-        public void ShowDialogue(Message msg)
-        {
-            dialoguePanel.SetActive(true);
-            UpdateDialogue(msg);
-        }
-
-        public void ToggleDialogue(bool value) => dialoguePanel.SetActive(value);
-
-        public void UpdateDialogue (Message msg) {
-            SwapSprite();
-            
-            dialogueTxt.text = msg.Text;
-
-            // TODO No funciona esta animacion de salto
-            characterImage.rectTransform.parent.GetComponent<RectTransform>()
-                .DOJumpAnchorPos(characterImage.rectTransform.anchoredPosition + Vector2.up, spriteJumpEffectPower, 1, .3f).Play();
-
-            // Si no es auto se puede skippear => Mostramos el icono de skipeo
-            skipDialogueIcon.enabled = !msg.IsAuto;
-        }
-
-        private bool isUsingImageAux;
-        private void SwapSprite()
-        {
-            Sprite newSprite = 
-                PlayerController.Instance.maskController.IsMaskOn
-                || DialogueManager.Instance.CurrentCharacter == Character.Momotaro
-                    ? DialogueManager.Instance.dialogueData.GetSprite(DialogueManager.Instance.CurrentMsg)
-                    : DialogueManager.Instance.dialogueData.GetUnknownSprite(DialogueManager.Instance.CurrentMsg.character);
-            
-            if (isUsingImageAux)
-            {
-                characterImageAux.DOFade(0, .3f);
-                characterImage.DOFade(1, .3f);
-                characterImage.sprite = newSprite;
-            }
-            else
-            {
-                characterImage.DOFade(0, .3f);
-                characterImageAux.DOFade(1, .3f);
-                characterImageAux.sprite = newSprite;
-            }
-        }
-
-        #endregion
-
-
         #region MASK IMAGE
         
         [BoxGroup("Mask"), SerializeField] private Image maskImg;
@@ -220,6 +115,9 @@ namespace UI
         private Tweener maskVFXPlaceTween;
         private bool IsFading => maskPlaceTween != null && maskPlaceTween.IsActive() && maskPlaceTween.IsPlaying();
 
+        private void OnMaskOn() => ShowMask();
+        private void OnMaskOff() => HideMask();
+        
         private void OnSanityUpdate(float sanity)
         {
             float sanityPercent = sanity / PlayerController.Instance.maskController.maxSanity;

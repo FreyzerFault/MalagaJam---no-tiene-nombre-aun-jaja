@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Utils;
 
@@ -10,23 +12,42 @@ namespace UI
 
         private bool IsPaused => pausePanel.activeSelf;
 
-        private void Update()
-        {
-            if (Input.GetKey(KeyCode.Escape))
-                TogglePause(!IsPaused);
-        }
+        public void Pause() => SetPause(true);
+        public void Unpause() => SetPause(false);
+        public void TogglePause() => SetPause(!IsPaused);
 
-        public void Pause() => TogglePause(true);
-        public void Unpause() => TogglePause(false);
-
-        private void TogglePause(bool pause)
+        private void SetPause(bool pause)
         {
             pausePanel.SetActive(pause);
             Time.timeScale = pause ? 0 : 1;
+            Cursor.lockState = pause ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = pause;
         }
         
-        public void QuitGame() => SceneManager.LoadScene(0);
+        public void GoToMainMenu() => SceneManager.LoadScene(0);
         
         public void RestartGame() => GameManager.Instance.ResetGame();
+
+        
+        #region INPUTS
+
+        [SerializeField] private InputAction pauseAction;
+
+        private void OnEnable()
+        {
+            pauseAction.Enable();
+            pauseAction.performed += OnPause;
+        }
+
+        private void OnDisable()
+        {
+            pauseAction.Disable();
+            pauseAction.performed -= OnPause;
+        }
+
+        private void OnPause(InputAction.CallbackContext obj) => TogglePause();
+
+        #endregion
+        
     }
 }

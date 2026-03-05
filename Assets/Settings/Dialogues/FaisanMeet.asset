@@ -18,17 +18,27 @@ MonoBehaviour:
     mood: 0
     text: "\xBFC\xF3mo osas perturbar la paz de los esp\xEDritus? \xA1M\xEDrame cuando
       te hablo sucio mortal!"
+    textEn: How dare you disturb the peace of spirits? Look at me when I speak to
+      you, filthy mortal!
+    textFr: "Comment oses-tu troubler la paix des esprits ? Regarde-moi quand je
+      te parle, mis\xE9rable mortel !"
     auto: 0
     duration: 0
   - character: 1
     mood: 0
     text: "Oh, eso est\xE1 mejor s\xED, es una falta de respeto no mirar cuando alguien
       te est\xE1 hablando!  "
+    textEn: Oh, that's better, yes, it's disrespectful not to look when someone is
+      talking to you!
+    textFr: "Ah, c'est mieux comme \xE7a ! Oui, c'est irrespectueux de ne pas regarder
+      quand quelqu'un vous parle !"
     auto: 0
     duration: 0
   - character: 3
     mood: 4
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
   - character: 1
@@ -36,11 +46,19 @@ MonoBehaviour:
     text: "\xA1Qu\xE9 desastre has provocado mortal! Al despertar la rabia del demonio,
       no solo no provocaste la maldici\xF3n sobre los mortales, sino que tambi\xE9n
       has perturbado la paz de nosotros, nobles esp\xEDritus. "
+    textEn: What a disaster you have caused, mortal! By awakening the demon's rage,
+      you not only failed to bring a curse upon mortals, but you have also disturbed
+      the peace of us noble spirits.
+    textFr: "Quel d\xE9sastre tu as provoqu\xE9, mortel ! En r\xE9veillant la rage
+      du d\xE9mon, non seulement tu as \xE9chou\xE9 \xE0 maudire les mortels, mais
+      tu as aussi troubl\xE9 la paix des nobles esprits."
     auto: 0
     duration: 0
   - character: 3
     mood: 4
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
   - character: 1
@@ -48,11 +66,19 @@ MonoBehaviour:
     text: "\xA1Mira en qu\xE9 estado se encuentran las puertas de mi glorioso hogar!
       El demonio destruye y arrasa sin control all\xE1 por donde pasa\u2026 todo
       por tu culpa mortal. Pero no te ir\xE1s de rositas, oh no se\xF1or no\u2026 "
+    textEn: "Look at the state of the gates of my glorious home! The devil is destroying
+      and laying waste to everything in his path\u2026 all because of your mortal
+      sins. But you won't get away scot-free, oh no sir, no\u2026"
+    textFr: "Voyez l'\xE9tat des portes de ma glorieuse demeure ! Le diable d\xE9truit
+      et ravage tout sur son passage\u2026 \xE0 cause de vos p\xE9ch\xE9s mortels.
+      Mais vous ne vous en tirerez pas impun\xE9ment, oh non monsieur, non\u2026"
     auto: 0
     duration: 0
   - character: 0
     mood: 1
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
   - character: 1
@@ -61,5 +87,13 @@ MonoBehaviour:
       para restaurar la paz\u2026 Tengo un fragmento en mi poder, pero no te saldr\xE1
       gratis. Para pagar por tus ofensas deber\xE1s tambi\xE9n restaurar mi hermoso
       port\xF3n. "
+    textEn: "If my sources are correct, Momotaro, you intend to repair the mask to
+      restore peace\u2026 I have a fragment in my possession, but it won't come without
+      a price. To atone for your transgressions, you must also restore my beautiful
+      gate."
+    textFr: "Si mes sources sont exactes, Momotaro, tu comptes r\xE9parer le masque
+      pour r\xE9tablir la paix\u2026 J'en poss\xE8de un fragment, mais il ne sera
+      pas gratuit. Pour expier tes m\xE9faits, tu devras aussi restaurer ma magnifique
+      porte."
     auto: 0
     duration: 0

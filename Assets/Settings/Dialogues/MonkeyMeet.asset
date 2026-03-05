@@ -17,11 +17,15 @@ MonoBehaviour:
   - character: 0
     mood: 0
     text: "\xA1jijiji! \xA1Aqu\xED aqu\xED! \xA1Detr\xE1s de t\xED!"
+    textEn: Hee hee hee! Here here! Behind you!
+    textFr: "H\xE9 h\xE9 h\xE9 ! Ici ici ! Derri\xE8re vous !"
     auto: 1
     duration: 2
   - character: 0
     mood: 0
     text: "\xA1Ven ven jijiji!"
+    textEn: Come here, come here, hee hee hee!
+    textFr: Viens ici, viens ici, hi hi hi !
     auto: 1
     duration: 2
   - character: 0
@@ -30,11 +34,20 @@ MonoBehaviour:
       todo estaba muy aburrido por aqu\xED. La vida de un esp\xEDritu es m\xE1s aburrida
       de lo que pueda parecer\u2026 lo de atravesar paredes y asustar humanos pierde
       la gracia muy pronto."
+    textEn: "Hehehe! Oh, Momotaro\u2026 what a mess you've made\u2026 Thanks, mate,
+      it was so boring around here. A spirit's life is more boring than it seems\u2026
+      walking through walls and scaring humans gets old pretty quickly."
+    textFr: "\xA1Jijiji\_! Ay Momotaro\u2026 la que has liado\u2026 Te lo agradezco
+      colega, todo estaba muy aburrido por aqu\xED. La vie d'un esprit est la plus
+      abrutissante de celui qui peut para\xEEtre\u2026 celui de traverser des murs
+      et d'assumer des humains pierde la gr\xE2ce tr\xE8s bient\xF4t."
     auto: 0
     duration: 0
   - character: 3
     mood: 0
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
   - character: 0
@@ -42,10 +55,18 @@ MonoBehaviour:
     text: "Encontr\xE9 un pedazo de trasto antes, seguro que es lo que est\xE1s buscando
       \xA1jiji! \xA1Pues m\xE1s te vale atraparme Momotarao, porque es la \xFAnica
       forma en la que lo vas a conseguir!"
+    textEn: I found a piece of junk earlier, I'm sure it's what you're looking for,
+      hee hee! Well, you'd better catch me, Momotarao, because that's the only way
+      you're going to get it!
+    textFr: "J'ai trouv\xE9 un truc tout \xE0 l'heure, je suis s\xFBre que c'est
+      ce que tu cherches, hi hi ! Bon, tu ferais mieux de m'attraper, Momotarao,
+      parce que c'est la seule fa\xE7on de l'avoir !"
     auto: 0
     duration: 0
   - character: 0
     mood: 1
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0

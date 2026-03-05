@@ -18,10 +18,16 @@ MonoBehaviour:
     mood: 0
     text: "\xA1Woof woof! \xA1Momotaro lo has conseguido! Ya solo tenemos que devolver
       la m\xE1scara completa a su lugar, \xA1vamos al templo!"
+    textEn: Woof woof! Momotaro, you did it! Now we just have to put the complete
+      mask back in its place, let's go to the temple!
+    textFr: "Ouaf ouaf ! Momotaro, tu as r\xE9ussi ! Maintenant, il ne nous reste
+      plus qu'\xE0 remettre le masque en place. Allons au temple !"
     auto: 0
     duration: 0
   - character: 3
     mood: 3
     text: (...)
+    textEn: 
+    textFr: 
     auto: 0
     duration: 0
