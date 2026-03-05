@@ -99,8 +99,8 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 
-# Datos de carpeta de Windows (icono y tal)
-/desktop.ini
-
 # Modelos gigantes
 Assets/Scenery/
+
+# Datos de carpeta de Windows (icono y tal)
+desktop.ini

@@ -1,4 +1,4 @@
-# No tiene nombre todavía jaja
+# Momotaro - MalagaJam 2026
 
 Jueguito creado para la [Malaga Jam XX](https://malagajam.com)
 
@@ -9,6 +9,8 @@ Hecho en Unity (6.3.2f1)
 - Nora
 - Paola
 - David
+- Rebeca
+- Pablo
 
 ## Paquetes de Unity usados
 
