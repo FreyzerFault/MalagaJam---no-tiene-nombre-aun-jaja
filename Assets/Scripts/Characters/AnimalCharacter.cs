@@ -9,41 +9,56 @@ namespace Characters
     [RequireComponent(typeof(Billboard), typeof(SpriteRenderer))]
     public abstract class AnimalCharacter : MonoBehaviour
     {
-        public DialogueSequenceSO meetSequenceSO;
-        public DialogueSequenceSO puzzleCompletedSequenceSO;
+        public Dialogue.Data.SequenceSO meetSequenceSO;
+        public Dialogue.Data.SequenceSO puzzleCompletedSequenceSO;
         
         private SpriteRenderer sr;
 
         private void Awake() => sr = GetComponent<SpriteRenderer>();
 
-        protected virtual void Start()
-        {
-            meetSequenceSO.OnEnded += OnMeetDialogueEnd;
-            puzzleCompletedSequenceSO.OnEnded += OnCompletedPuzzleDialogueEnd;
-            
-            Visible = false;
-        }
+        protected virtual void Start() => Visible = false;
 
         private void OnEnable()
         {
-            PlayerController.Instance.maskController.OnMaskOn += OnMaskOn;
-            PlayerController.Instance.maskController.OnMaskOff += OnMaskOff;
-
-            PuzzleManager.Instance.OnCompletedPuzzle += OnCompletedPuzzle;
+            if (PlayerController.Instance != null)
+            {
+                PlayerController.Instance.maskController.OnMaskOn += OnMaskOn;
+                PlayerController.Instance.maskController.OnMaskOff += OnMaskOff;
+            }
+            
+            if (PuzzleManager.Instance != null)
+                PuzzleManager.Instance.OnCompletedPuzzle += OnCompletedPuzzle;
+            
+            if (DialogueManager.Instance != null)
+                DialogueManager.Instance.OnDialogueEnd += OnDialogueEnd;
         }
         private void OnDisable()
         {
-            PlayerController.Instance.maskController.OnMaskOn -= OnMaskOn;
-            PlayerController.Instance.maskController.OnMaskOff -= OnMaskOff;
+            if (PlayerController.Instance != null)
+            {
+                PlayerController.Instance.maskController.OnMaskOn -= OnMaskOn;
+                PlayerController.Instance.maskController.OnMaskOff -= OnMaskOff;
+            }
+            
+            if (PuzzleManager.Instance != null) 
+                PuzzleManager.Instance.OnCompletedPuzzle -= OnCompletedPuzzle;
+            
+            if (DialogueManager.Instance != null) 
+                DialogueManager.Instance.OnDialogueEnd -= OnDialogueEnd;
         }
 
         
-        
         #region DIALOGUE
 
+        private void OnDialogueEnd(Dialogue.Data.SequenceSO sequenceSO)
+        {
+            if (sequenceSO.name == meetSequenceSO.name) OnMeetDialogueEnd();
+            else if (sequenceSO.name == puzzleCompletedSequenceSO.name) OnCompletedPuzzleDialogueEnd();
+        }
+        
         public virtual void OnPlayerNear()
         {
-            if (!DialogueManager.Instance.dialogueOnCourse) 
+            if (!DialogueManager.Instance.DialogueOnCourse && !meetSequenceSO.HasEnded) 
                 DialogueManager.Instance.StartDialogue(meetSequenceSO);
         }
 

@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a1eff8cf12412aa5cb65fdaafbf788, type: 3}
+  m_Name: DogMeet
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.Data.SequenceSO
+  name: Dog Meet
+  messages:
+  - character: 2
+    mood: 0
+    text: "Parece que has enfadado al grandull\xF3n, \xA1qu\xE9 dram\xE1tico es a
+      veces Woof!"
+    auto: 1
+    duration: 4
+  - character: 2
+    mood: 0
+    text: "Woof qu\xE9 despiste, no puedes verme Woof\u2026se me olvida eso de que
+      ahora soy un esp\xEDritu Woof Woof"
+    auto: 1
+    duration: 4
+  - character: 2
+    mood: 0
+    text: "Debe haber una m\xE1scara por aqu\xED cerca\u2026 prueba a pon\xE9rtela,
+      conf\xEDa en m\xED Woof, te ayudar\xE9"
+    auto: 1
+    duration: 4
+  - character: 2
+    mood: 0
+    text: "\xA1\xA1\xA1\xA1Pero cuidado!!! No la vayas a romper tambi\xE9n Woof\u2026
+      en bastante l\xEDo estamos ya"
+    auto: 1
+    duration: 4
+  - character: 2
+    mood: 0
+    text: "\xA1Woof Woof, aqu\xED estoy! Soy perro, pero no S\xE1nchez, \xBFy t\xFA\u2026Woof?"
+    auto: 0
+    duration: 0
+  - character: 3
+    mood: 0
+    text: (...)
+    auto: 0
+    duration: 0
+  - character: 2
+    mood: 0
+    text: "Momo\u2026 y despu\xE9s Taro\u2026 Mo.. Motaro. \xBFMotaro? \xA1Momotaro!
+      S\xED Momotaro, es el mejor nombre que he escuchado nunca."
+    auto: 0
+    duration: 0
+  - character: 3
+    mood: 0
+    text: (...)
+    auto: 0
+    duration: 0
+  - character: 2
+    mood: 0
+    text: "Ah s\xED\u2026\xA1el demonio se ha picado! Parece que ha soltado una maldici\xF3n
+      de las chungas petrungas Woof. Pero como dec\xEDa mi madre\u2026\xA1todo tiene
+      arreglo en esta vida! Y en la muerte tambi\xE9n Woof!\u2026(\xBFlo pillas?
+      porque soy un esp\xEDritu Woof\u2026)"
+    auto: 0
+    duration: 0
+  - character: 3
+    mood: 0
+    text: (...)
+    auto: 0
+    duration: 0
+  - character: 2
+    mood: 0
+    text: "Qu\xE9 p\xFAblico m\xE1s exigente tengo hoy Woof! Pero no te preocupes,
+      me centro me centro\u2026 la maldici\xF3n Woof\u2026 Parece que todos los humanos
+      han desaparecido menos t\xFA, y tampoco parece que puedas escapar\u2026"
+    auto: 0
+    duration: 0
+  - character: 3
+    mood: 0
+    text: (...)
+    auto: 0
+    duration: 0
+  - character: 2
+    mood: 0
+    text: "\xA1Woof Woof! Seguro que se le pasa si reparamos su m\xE1scara, si no
+      nos sirve el super glue, podemos usar flexicinta\u2026Solo tienes que encontrar
+      todos los fragmentos, no han podido ir muy lejos\u2026"
+    auto: 0
+    duration: 0
+  - character: 3
+    mood: 0
+    text: (...)
+    auto: 0
+    duration: 0
+  - character: 2
+    mood: 0
+    text: "\xA1Mira woof! Muy convenientemente para que los desarrolladores se ahorren
+      un puzzle, acabo de encontrar un fragmento de la m\xE1scara\u2026\xA1solo necesitas
+      encontrar los otros dos! \xA1Mucha suerte en la b\xFAsqueda Momotaro! \xA1Puedes
+      lograrlo woof!"
+    auto: 0
+    duration: 0

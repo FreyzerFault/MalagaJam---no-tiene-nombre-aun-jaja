@@ -19,7 +19,8 @@ namespace UI
 
         private void OnEnable()
         {
-            InteractionController intController = PlayerController.Instance.interactionController;
+            InteractionController intController = PlayerController.Instance?.interactionController;
+            if (intController == null) return;
             intController.OnInteractionStart += OnInteractionStart;
             intController.OnInteractionEnd += OnInteractionEnd;
             intController.OnFocusedSomething += OnFocusedSomething;
@@ -27,7 +28,8 @@ namespace UI
         }
         private void OnDisable()
         {
-            InteractionController intController = PlayerController.Instance.interactionController;
+            InteractionController intController = PlayerController.Instance?.interactionController;
+            if (intController == null) return;
             intController.OnInteractionStart -= OnInteractionStart;
             intController.OnInteractionEnd -= OnInteractionEnd;
             intController.OnFocusedSomething -= OnFocusedSomething;

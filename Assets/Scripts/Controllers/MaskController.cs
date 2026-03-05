@@ -1,5 +1,6 @@
 using System;
 using Dialogue;
+using Dialogue.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,12 +10,11 @@ namespace Controllers
     {
         public float maxSanity = 100;
         public float sanity = 100;
-    
-        private bool maskOn;
+
         private bool isPossesed; // Poseido significa que la sanity está a 0 y la secuencia de muerte esta activa
 
-        public bool IsMaskOn => maskOn;
-    
+        public bool IsMaskOn { get; private set; }
+
         [SerializeField] private float sanityDecreaseSpeed = 1;
         [SerializeField] private float sanityIncreaseSpeed = 1;
 
@@ -27,17 +27,17 @@ namespace Controllers
         private void Start() => ResetSanity();
 
         // Resetea la Sanity cada vez que inicia un diálogo
-        private void OnEnable() => DialogueManager.Instance.OnDialogueStart += ResetSanity;
-        private void OnDisable() => DialogueManager.Instance.OnDialogueStart -= ResetSanity;
+        private void OnEnable() => DialogueManager.Instance.OnDialogueStart += OnDialogueStart;
+        private void OnDisable() => DialogueManager.Instance.OnDialogueStart -= OnDialogueStart;
 
         private void Update()
         {
             // Baja, pero NO cuando está en diálogo
-            if (maskOn && !DialogueManager.Instance.dialogueOnCourse)
+            if (IsMaskOn && !DialogueManager.Instance.DialogueOnCourse)
                 DecreaseSanity(sanityDecreaseSpeed * Time.deltaTime);
         
             // Cuando no tiene la máscara sube la cordura
-            if (!maskOn)
+            if (!IsMaskOn)
                 IncreaseSanity(sanityIncreaseSpeed * Time.deltaTime);
         
             if (sanity <= 0)
@@ -61,6 +61,7 @@ namespace Controllers
             OnSanityUpdate?.Invoke(sanity);
         }
 
+        private void OnDialogueStart(SequenceSO _) => ResetSanity();
         private void ResetSanity() => sanity = maxSanity;
 
         #endregion
@@ -68,18 +69,18 @@ namespace Controllers
         
         #region DEATH SEQUENCE
 
-        [SerializeField] private DialogueSequenceSO deathDialogue;
+        [SerializeField] private SequenceSO deathDialogueSequenceSO;
 
         private void StartDeathSequence()
         {
             isPossesed = true;
-            maskOn = true;
+            IsMaskOn = true;
             
             OnStartDeathSequence?.Invoke();
             
             // TODO Sonido Muerte
             // TODO Niebla aparece
-            DialogueManager.Instance.StartDialogue(deathDialogue);
+            DialogueManager.Instance.StartDialogue(deathDialogueSequenceSO);
             ResetSanity();
         }
         
@@ -90,7 +91,7 @@ namespace Controllers
             transform.position = SpawnPointT.position;
             // TODO Niebla va desapareciendo
             isPossesed = false;
-            maskOn = false;
+            IsMaskOn = false;
             
             OnEndDeathSequence?.Invoke();
         }
@@ -107,14 +108,12 @@ namespace Controllers
         {
             if (!GameManager.Instance.HasMask || isPossesed) return;
             
-            bool newMaskOn = value.Get<float>() > 0;
+            IsMaskOn = value.Get<float>() > 0;
         
-            if (maskOn != newMaskOn && newMaskOn)
+            if (IsMaskOn)
                 PutMaskOn();
-            else if (maskOn != newMaskOn && !newMaskOn)
+            else
                 RemoveMask();
-        
-            maskOn = newMaskOn;
         }
 
         #endregion

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7d136cd14bff247b46838210765c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DogCharacter
-  meetSequenceSO: {fileID: 11400000, guid: 4f29bfa453327b04181a950af5fbe1ff, type: 2}
-  puzzleCompletedSequenceSO: {fileID: 11400000, guid: d894eecfde724a14792ba66747cd2edd, type: 2}
+  meetSequenceSO: {fileID: 11400000, guid: 8913f4eea643e1e43bce21b81613e646, type: 2}
+  puzzleCompletedSequenceSO: {fileID: 11400000, guid: 09d0555e80dffe442991bd1ab5634e27, type: 2}
 --- !u!212 &909546343485931279
 SpriteRenderer:
   serializedVersion: 2

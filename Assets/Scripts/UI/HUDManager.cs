@@ -1,26 +1,46 @@
-using System.Collections.Generic;
-using AYellowpaper.SerializedCollections;
+using System;
+using System.Linq;
 using Controllers;
 using DG.Tweening;
 using Dialogue;
+using Dialogue.Data;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Utils;
-using Character = Dialogue.Dialogue.Character;
-using Mood = Dialogue.Dialogue.Mood;
+using Character = Dialogue.Data.Character;
 
 namespace UI
 {
     public class HUDManager : Singleton<HUDManager>
     {
         [SerializeField] private GameObject debugPanel;
-        
-        private void Start() => ResetHUD();
-        
+
+        protected override void Awake()
+        {
+            base.Awake();
+            Debug.Log("AWAKE" + GetInstanceID(), this);
+
+            inputPanels = GetComponentsInChildren<InputPanel>();
+        }
+
+        private void Start()
+        {
+            Debug.Log("START" + GetInstanceID(), this);
+            ResetHUD();
+        }
+
+        private void OnDestroy()
+        {
+            Debug.Log("ONDESTROY" + GetInstanceID(), this);
+        }
+
         private void OnEnable()
         {
+            Debug.Log("ONENABLE" + GetInstanceID(), this);
+            if (PlayerController.Instance == null) return;
+            
             PlayerController.Instance.maskController.OnMaskOn += OnMaskOn;
             PlayerController.Instance.maskController.OnMaskOff += OnMaskOff;
             PlayerController.Instance.maskController.OnSanityUpdate += OnSanityUpdate;
@@ -28,12 +48,15 @@ namespace UI
             GameManager.Instance.OnMaskEnable += ActivateMaskInput;
             GameManager.Instance.OnFragmentCollected += UpdateMaskFragments;
 
-            DialogueManager.Instance.OnDialogueStart += ShowDialogue;
-            DialogueManager.Instance.OnDialogueContinue += UpdateDialogue;
-            DialogueManager.Instance.OnDialogueEnd += HideDialogue;
+            DialogueManager.Instance.OnDialogueStart += OnDialogueStart;
+            DialogueManager.Instance.OnDialogueContinue += OnDialogueContinue;
+            DialogueManager.Instance.OnDialogueEnd += OnDialogueEnd;
         }
         private void OnDisable()
         {
+            Debug.Log("ONDISABLE" + GetInstanceID(), this);
+            if (PlayerController.Instance == null) return;
+            
             PlayerController.Instance.maskController.OnMaskOn -= OnMaskOn;
             PlayerController.Instance.maskController.OnMaskOff -= OnMaskOff;
             PlayerController.Instance.maskController.OnSanityUpdate -= OnSanityUpdate;
@@ -41,9 +64,9 @@ namespace UI
             GameManager.Instance.OnMaskEnable -= ActivateMaskInput;
             GameManager.Instance.OnFragmentCollected -= UpdateMaskFragments;
             
-            DialogueManager.Instance.OnDialogueStart -= ShowDialogue;
-            DialogueManager.Instance.OnDialogueContinue -= UpdateDialogue;
-            DialogueManager.Instance.OnDialogueEnd -= HideDialogue;
+            DialogueManager.Instance.OnDialogueStart -= OnDialogueStart;
+            DialogueManager.Instance.OnDialogueContinue -= OnDialogueContinue;
+            DialogueManager.Instance.OnDialogueEnd -= OnDialogueEnd;
         }
 
         private void ResetHUD()
@@ -62,7 +85,7 @@ namespace UI
         public enum InputTypes { Mask, Interact }
         
         // Panel de Inputs (poner máscara, y lo que sea...)
-        [BoxGroup("Inputs"), SerializeField] private GameObject[] inputPanels;
+        [BoxGroup("Inputs"), SerializeField] private InputPanel[] inputPanels;
         
         
         public void ToggleInput(InputTypes inputType, bool active)
@@ -73,7 +96,7 @@ namespace UI
                 InputTypes.Interact => 1,
                 _ => 0
             };
-            inputPanels[inputIndex].SetActive(active);
+            inputPanels[inputIndex].gameObject.SetActive(active);
         }
 
         public void ActivateMaskInput() => ToggleInput(InputTypes.Mask, true);
@@ -83,15 +106,15 @@ namespace UI
         {
             ShowMask();
             
-            if (DialogueManager.Instance.dialogueOnCourse)
-                HideCharacterSprite();
+            if (DialogueManager.Instance.DialogueOnCourse)
+                SwapSprite();
         }
 
         private void OnMaskOff()
         {
             HideMask();
-            if (DialogueManager.Instance.dialogueOnCourse)
-                ShowCharacterSprite();
+            if (DialogueManager.Instance.DialogueOnCourse)
+                SwapSprite();
         }
 
         #endregion
@@ -124,59 +147,60 @@ namespace UI
         // DIALOGUE
         [BoxGroup("Dialogue"), SerializeField] private GameObject dialoguePanel;
         [BoxGroup("Dialogue"), SerializeField] private Image characterImage;
+        [BoxGroup("Dialogue"), SerializeField] private Image characterImageAux;
         [BoxGroup("Dialogue"), SerializeField] private TMP_Text dialogueTxt;
         [BoxGroup("Dialogue"), SerializeField] private Image skipDialogueIcon;
         [BoxGroup("Dialogue"), SerializeField] private float spriteJumpEffectPower;
+
+        private void OnDialogueStart(SequenceSO sequenceSO) => ShowDialogue(sequenceSO.FirstMsg);
+        private void OnDialogueContinue(Message message) => UpdateDialogue(message);
+        private void OnDialogueEnd(SequenceSO sequenceSO) => HideDialogue();
         
-        public void HideDialogue() => dialoguePanel.SetActive(false);
-        public void ShowDialogue()
+        public void HideDialogue() =>
+            dialoguePanel.SetActive(false);
+        
+        public void ShowDialogue(Message msg)
         {
             dialoguePanel.SetActive(true);
-            
-            UpdateDialogue(DialogueManager.Instance.CurrentDialogue);
+            UpdateDialogue(msg);
         }
 
         public void ToggleDialogue(bool value) => dialoguePanel.SetActive(value);
 
-        #region CHARACTER SPRITE
-
-        [BoxGroup("Dialogue"), SerializeField, SerializedDictionary("Nombre", "Sprite")]
-        private SerializedDictionary<Character, List<Sprite>> spriteDictionary = new(
-            new List<KeyValuePair<Character, List<Sprite>>>
-            {
-                new(Character.Macaco, new List<Sprite>()),
-                new(Character.Faisan, new List<Sprite>()),
-                new(Character.Perro, new List<Sprite>()),
-                new(Character.Momotaro, new List<Sprite>()),
-                new(Character.Ogro, new List<Sprite>()),
-                new(Character.Unknown, new List<Sprite>())
-            });
-
-        public void HideCharacterSprite() => characterImage.sprite = spriteDictionary[Character.Unknown][0];
-        public void ShowCharacterSprite() => 
-            characterImage.sprite =
-                GetSprite(DialogueManager.Instance.CurrentCharacter, DialogueManager.Instance.CurrentMood);
-
-        private Sprite GetSprite(Character character, Mood mood) => spriteDictionary[character][(int)mood];
-        
-
-        #endregion
-
-        public void UpdateDialogue (Dialogue.Dialogue dialogue) {
-            Character character = dialogue.character;
-            Mood mood = dialogue.mood;
-            string frase = dialogue.Text;
-
-            List<Sprite> spriteList = spriteDictionary[character];
-
-            characterImage.sprite = spriteList[character != Character.Momotaro ? 0 : (int)mood];
-            dialogueTxt.text = frase;
+        public void UpdateDialogue (Message msg) {
+            SwapSprite();
+            
+            dialogueTxt.text = msg.Text;
 
             // TODO No funciona esta animacion de salto
             characterImage.rectTransform.parent.GetComponent<RectTransform>()
                 .DOJumpAnchorPos(characterImage.rectTransform.anchoredPosition + Vector2.up, spriteJumpEffectPower, 1, .3f).Play();
 
-            skipDialogueIcon.enabled = !dialogue.IsAuto;
+            // Si no es auto se puede skippear => Mostramos el icono de skipeo
+            skipDialogueIcon.enabled = !msg.IsAuto;
+        }
+
+        private bool isUsingImageAux;
+        private void SwapSprite()
+        {
+            Sprite newSprite = 
+                PlayerController.Instance.maskController.IsMaskOn
+                || DialogueManager.Instance.CurrentCharacter == Character.Momotaro
+                    ? DialogueManager.Instance.dialogueData.GetSprite(DialogueManager.Instance.CurrentMsg)
+                    : DialogueManager.Instance.dialogueData.GetUnknownSprite(DialogueManager.Instance.CurrentMsg.character);
+            
+            if (isUsingImageAux)
+            {
+                characterImageAux.DOFade(0, .3f);
+                characterImage.DOFade(1, .3f);
+                characterImage.sprite = newSprite;
+            }
+            else
+            {
+                characterImage.DOFade(0, .3f);
+                characterImageAux.DOFade(1, .3f);
+                characterImageAux.sprite = newSprite;
+            }
         }
 
         #endregion

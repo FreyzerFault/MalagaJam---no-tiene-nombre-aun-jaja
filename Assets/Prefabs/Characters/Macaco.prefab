@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a843fa6b5e305164fa81a06fa8302b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Characters.MonkeyCharacter
-  meetSequenceSO: {fileID: 11400000, guid: 3ba5be78e685edb4fb4bdf3ca63f87f6, type: 2}
-  puzzleCompletedSequenceSO: {fileID: 11400000, guid: e7a8fb982db014e4595b1abde584845f, type: 2}
+  meetSequenceSO: {fileID: 11400000, guid: cecb04d10315baa4da75de5819c56882, type: 2}
+  puzzleCompletedSequenceSO: {fileID: 11400000, guid: 5fc6ccaed69823d46beee3d5f5c037ac, type: 2}
 --- !u!212 &909546343485931279
 SpriteRenderer:
   serializedVersion: 2

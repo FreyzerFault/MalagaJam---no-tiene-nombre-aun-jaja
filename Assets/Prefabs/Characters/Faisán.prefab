@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3af9925225d2d44890a88f33751ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Characters.Pheasant
-  meetSequenceSO: {fileID: 11400000, guid: 3039583f2ed69b4478ff06b2e1ac45cd, type: 2}
-  puzzleCompletedSequenceSO: {fileID: 11400000, guid: 539aac937da5158498c372948112f80e, type: 2}
+  meetSequenceSO: {fileID: 11400000, guid: 107714167f8e8604487a88e710a42c5b, type: 2}
+  puzzleCompletedSequenceSO: {fileID: 11400000, guid: cd52527657a6b8f45849e7eef0d68554, type: 2}
 --- !u!212 &909546343485931279
 SpriteRenderer:
   serializedVersion: 2

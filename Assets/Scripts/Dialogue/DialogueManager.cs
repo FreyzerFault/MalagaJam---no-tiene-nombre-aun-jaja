@@ -1,93 +1,122 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Audio;
-using AYellowpaper.SerializedCollections;
 using Controllers;
+using Dialogue.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils;
 
 namespace Dialogue
 {
+    using Character = Character;
+    using Mood = Mood;
+
     public class DialogueManager : Singleton<DialogueManager>
     {
-        [SerializeField, SerializedDictionary("Animal", "SFX")]
-        private SerializedDictionary<Dialogue.Character, AudioClip> characterSfxDictionary =  new(new List<KeyValuePair<Dialogue.Character, AudioClip>>()
-        {
-            new (Dialogue.Character.Perro, null),
-            new (Dialogue.Character.Faisan, null),
-            new (Dialogue.Character.Macaco, null),
-            new (Dialogue.Character.Momotaro, null),
-            new (Dialogue.Character.Ogro, null),
-        });
+        [SerializeField] public DialogueDataSO dialogueData;
         
-        [HideInInspector] public bool dialogueOnCourse;
-        private DialogueSequenceSO currentDialogueSequence;
-        private int dialogueIndex;
+        public event Action<SequenceSO> OnDialogueStart;
+        public event Action<Message> OnDialogueContinue;
+        public event Action<SequenceSO> OnDialogueEnd;
+
+        private SequenceSO currentSequence;
         
-        public event Action OnDialogueStart;
-        public event Action<Dialogue> OnDialogueContinue;
-        public event Action OnDialogueEnd;
+        public Message CurrentMsg => currentSequence.CurrentMsg;
+        public Character CurrentCharacter => CurrentMsg.character;
+        public Mood CurrentMood => CurrentMsg.mood;
+        private bool HasEndedSequence => currentSequence == null || currentSequence.HasEnded;
+        public bool DialogueOnCourse => !HasEndedSequence;
 
-        public Dialogue CurrentDialogue => currentDialogueSequence.dialogues[dialogueIndex];
-        public Dialogue.Character CurrentCharacter => CurrentDialogue.character;
-        public Dialogue.Mood CurrentMood => CurrentDialogue.mood;
-        private bool HasEndedSequence => dialogueIndex >= currentDialogueSequence.dialogues.Count - 1;
+        private Timer dialogueTimer;
 
+        private void Start() => dialogueData.ResetProgress();
 
-        public void StartDialogue(DialogueSequenceSO dialogueSequence)
-        {
-            if (dialogueSequence.hasEnded)
-                Debug.LogWarning("Se está repitiendo un Diálogo que ya salió. Quizá sea un BUG");
-            
-            currentDialogueSequence = dialogueSequence;
-            currentDialogueSequence.Start();
-            BlockPlayerMovement();
-            
-            // AUDIO
-            AudioManager.Instance.PlaySFX(characterSfxDictionary[currentDialogueSequence.dialogues[0].character]);
-            
-            OnDialogueStart?.Invoke();
+        private void Update() => dialogueTimer?.Update(Time.deltaTime);
 
-            dialogueIndex = -1;
-            ContinueDialogue();
-        }
-
-        private void ContinueDialogue()
-        {
-            dialogueIndex++;
-
-            // Despues del ultimo dialogo
-            if (HasEndedSequence)
-                EndDialogue();
-            else
-            {
-                if (CurrentDialogue.IsAuto)
-                    Invoke(nameof(ContinueDialogue), CurrentDialogue.duration);
-                OnDialogueContinue?.Invoke(CurrentDialogue);
-            }
-        }
-
-        private void EndDialogue()
-        {
-            currentDialogueSequence.End();
-            currentDialogueSequence = null;
-            EnablePlayerMovement();
-            OnDialogueEnd?.Invoke();
-        }
         
+        #region PLAYER CONTROL
+
         private void BlockPlayerMovement() => PlayerController.Instance.enabled = false;
         private void EnablePlayerMovement() => PlayerController.Instance.enabled = true;
 
+        #endregion
+
+        
+        #region DIALOGUE FLOW
+
+        public void StartDialogue(SequenceSO sequence)
+        {
+            if (sequence.HasEnded)
+                Debug.LogWarning("Se está repitiendo un Diálogo que ya salió. Quizá sea un BUG");
+            
+            // Empezamos la secuencia de dialogo
+            currentSequence = sequence;
+            sequence.Start();
+            
+            // AUDIO de Inicio segun el personaje
+            AudioManager.Instance.PlaySFX(dialogueData.GetSfx(sequence.FirstMsg.character));
+            
+            OnDialogueStart?.Invoke(sequence);
+            
+            ContinueDialogue();
+        }
+
+
+        private void ContinueDialogue()
+        {
+            if (currentSequence == null) return;
+            
+            currentSequence.Continue();
+            
+            if (HasEndedSequence)
+            {
+                EndDialogue();
+                return;
+            }
+            
+            if (CurrentMsg.IsAuto)
+            {
+                dialogueTimer = new Timer(CurrentMsg.duration);
+                dialogueTimer.OnTimerEnd += ContinueDialogue;
+                
+                EnablePlayerMovement();
+            }
+            else
+            {
+                dialogueTimer.enabled = false;
+                BlockPlayerMovement();
+            }
+            
+            OnDialogueContinue?.Invoke(CurrentMsg);
+        }
+        
+        private void EndDialogue()
+        {
+            OnDialogueEnd?.Invoke(currentSequence);
+            currentSequence = null;
+            
+            EnablePlayerMovement();
+        }
+
+        #endregion
+        
 
         #region INPUTS
+        
+        [SerializeField] private InputAction continueAction;
 
-        private void OnInteract(InputValue value)
+        private void OnEnable()
         {
-            if (dialogueOnCourse && value.isPressed && !CurrentDialogue.IsAuto)
-                ContinueDialogue();
+            continueAction.Enable();
+            continueAction.performed += OnContinue;
         }
+        private void OnDisable()
+        {
+            continueAction.performed -= OnContinue;
+            continueAction.Disable();
+        }
+
+        private void OnContinue(InputAction.CallbackContext ctx) => ContinueDialogue();
 
         #endregion
     }

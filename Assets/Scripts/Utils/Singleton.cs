@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Utils
@@ -15,17 +16,28 @@ namespace Utils
 		{
 			T thisInstance = gameObject.GetComponent<T>();
 
-			if (Instance != null && Instance != thisInstance)
-			{
-				if (Application.isPlaying)
-					Destroy(gameObject);
-				else
-					DestroyImmediate(gameObject);
-				return;
-			}
+			if (Instance != null && Instance != thisInstance) 
+				DestroyMyself();
 
 			// First Initialization
 			Instance = thisInstance;
+		}
+
+		// private void OnDestroy()
+		// {
+		// 	Debug.Log($"I am being destroy. Type:{typeof(T).Name}, InstanceID: {GetInstanceID()}", this);
+		// 	T thisInstance = gameObject.GetComponent<T>();
+		// 	if (thisInstance == Instance)
+		// 		Instance = null;
+		// } 
+
+		private void DestroyMyself()
+		{
+			Debug.Log($"I am destroying myself. Type:{typeof(T).Name}, InstanceID: {GetInstanceID()}", this);
+			if (Application.isPlaying)
+				Destroy(gameObject);
+			else
+				DestroyImmediate(gameObject);
 		}
 	}
 

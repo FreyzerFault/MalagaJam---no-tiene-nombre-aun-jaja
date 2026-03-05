@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a1eff8cf12412aa5cb65fdaafbf788, type: 3}
+  m_Name: MonkeyPuzzle
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.Data.SequenceSO
+  name: Monkey Puzzle
+  messages:
+  - character: 0
+    mood: 0
+    text: "\xA1Jijiji! \xBFHas visto? \xA1No era tan dif\xEDcil! Toma este pedazo
+      de trasto, no me sirve para nada de todas formas, \xA1pero hac\xEDa a\xF1os
+      que no me divert\xEDa tanto! \xA1Jiji!"
+    auto: 0
+    duration: 0
+  - character: 3
+    mood: 4
+    text: (...)
+    auto: 0
+    duration: 0

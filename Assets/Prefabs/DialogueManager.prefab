@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3732280440000278608}
   - component: {fileID: 8472717419793174474}
-  - component: {fileID: 3280333256733411748}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -45,34 +44,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ffa5d4f17c4200bc4a0b0ee1f1bf06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  characterSfxDictionary:
+    _serializedList:
+    - Key: 2
+      Value: {fileID: 8300000, guid: c8785ac3f3ef4214daf41115ce076329, type: 3}
+    - Key: 1
+      Value: {fileID: 8300000, guid: f51f6756bbbb3fa4a96fcc727c158472, type: 3}
+    - Key: 0
+      Value: {fileID: 8300000, guid: b6be00c858d52404998fc9edade74c1c, type: 3}
+    - Key: 3
+      Value: {fileID: 0}
+    - Key: 4
+      Value: {fileID: 0}
   dialogueOnCourse: 0
---- !u!114 &3280333256733411748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4995206156166447776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: bee23f94071294a488a253d32eb3c5da, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  continueAction:
+    m_Name: Continue
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 39670373-21a5-4b65-8636-dcb0b0ea3b93
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 263910bc-1104-464a-8746-6e1af9783281
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Continue
+      m_Flags: 0
+    - m_Name: 
+      m_Id: ba78c2a8-9285-4133-81d5-9eb17d7f22d6
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Continue
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 8fd8f5de-c632-4762-b381-4126f4091e66
+      m_Path: <Mouse>/rightButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Continue
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 7e1dd068-4321-461b-b3b6-9087691cbdce
+      m_Path: <Gamepad>/buttonNorth
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Continue
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 76e0c8c8-ebb3-4e11-a2ed-0511397a9f0e
+      m_Path: <Gamepad>/buttonSouth
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Continue
+      m_Flags: 0
+    - m_Name: 
+      m_Id: b8f335de-039f-482c-a3e7-db0796f0af75
+      m_Path: <Gamepad>/buttonEast
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Continue
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 2d74a352-3214-4572-b074-c16dd652f624
+      m_Path: <Gamepad>/buttonWest
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Continue
+      m_Flags: 0
+    m_Flags: 0

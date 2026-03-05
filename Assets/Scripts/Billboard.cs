@@ -9,6 +9,9 @@ public class Billboard : MonoBehaviour
 
     void Update()
     {
+        if (cam == null)
+            return;
+        
         transform.rotation =
             Quaternion.LookRotation(Vector3.ProjectOnPlane(cam.transform.forward, Vector3.up).normalized,
                 cam.transform.up);

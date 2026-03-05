@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9a726c09a64ab59d14a1e7f228461a, type: 3}
+  m_Name: DialogueData
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueDataSO
+  sequences:
+  - {fileID: 11400000, guid: 09d0555e80dffe442991bd1ab5634e27, type: 2}
+  - {fileID: 11400000, guid: 107714167f8e8604487a88e710a42c5b, type: 2}
+  - {fileID: 11400000, guid: cd52527657a6b8f45849e7eef0d68554, type: 2}
+  - {fileID: 11400000, guid: cecb04d10315baa4da75de5819c56882, type: 2}
+  - {fileID: 11400000, guid: 5fc6ccaed69823d46beee3d5f5c037ac, type: 2}
+  - {fileID: 11400000, guid: 8913f4eea643e1e43bce21b81613e646, type: 2}
+  sfxDictionary:
+    _serializedList:
+    - Key: 2
+      Value: {fileID: 8300000, guid: c8785ac3f3ef4214daf41115ce076329, type: 3}
+    - Key: 0
+      Value: {fileID: 8300000, guid: b6be00c858d52404998fc9edade74c1c, type: 3}
+    - Key: 1
+      Value: {fileID: 8300000, guid: f51f6756bbbb3fa4a96fcc727c158472, type: 3}
+  spriteDictionary:
+    _serializedList:
+    - Key: 3
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: {fileID: 21300000, guid: 66a73c18b27c57c478724d4a2b756ec9, type: 3}
+        - Key: 1
+          Value: {fileID: 21300000, guid: 7d204d003cc70694687d230748ff3060, type: 3}
+        - Key: 2
+          Value: {fileID: 21300000, guid: 5eac8de816fab53498d9e35b0836ad0b, type: 3}
+        - Key: 3
+          Value: {fileID: 21300000, guid: dfed7055ff96fb748a7337103269d746, type: 3}
+        - Key: 4
+          Value: {fileID: 21300000, guid: 50b6c8128fa30a545b76fa20f9435b60, type: 3}
+    - Key: 2
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: {fileID: 21300000, guid: b13140a4d0c693d4eab1415a0f505414, type: 3}
+    - Key: 0
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: {fileID: 21300000, guid: 90a2a7943b541aa448f42e500dfa49ba, type: 3}
+    - Key: 1
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: {fileID: 21300000, guid: 17bedcb3c35debf4ea1d4b271bd8c69e, type: 3}
+        - Key: 5
+          Value: {fileID: 21300000, guid: 78d09608b8e70e445ba1ae9285568a57, type: 3}
+  unknownSpriteDictionary:
+    _serializedList:
+    - Key: 2
+      Value: {fileID: 21300000, guid: 89875a3a99dfdc44bada498799d13b00, type: 3}
+    - Key: 0
+      Value: {fileID: 21300000, guid: e03d2f3a62cf7d24bb3a74cd105e4121, type: 3}
+    - Key: 1
+      Value: {fileID: 21300000, guid: 08fd13a2a33b96447ab9a5bcc139384d, type: 3}

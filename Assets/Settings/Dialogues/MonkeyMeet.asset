@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a1eff8cf12412aa5cb65fdaafbf788, type: 3}
+  m_Name: MonkeyMeet
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.Data.SequenceSO
+  name: Monkey Meet
+  messages:
+  - character: 0
+    mood: 0
+    text: "\xA1jijiji! \xA1Aqu\xED aqu\xED! \xA1Detr\xE1s de t\xED!"
+    auto: 1
+    duration: 2
+  - character: 0
+    mood: 0
+    text: "\xA1Ven ven jijiji!"
+    auto: 1
+    duration: 2
+  - character: 0
+    mood: 0
+    text: "\xA1Jijiji! Ay Momotaro\u2026 la que has liado\u2026 Te lo agradezco colega,
+      todo estaba muy aburrido por aqu\xED. La vida de un esp\xEDritu es m\xE1s aburrida
+      de lo que pueda parecer\u2026 lo de atravesar paredes y asustar humanos pierde
+      la gracia muy pronto."
+    auto: 0
+    duration: 0
+  - character: 3
+    mood: 0
+    text: (...)
+    auto: 0
+    duration: 0
+  - character: 0
+    mood: 0
+    text: "Encontr\xE9 un pedazo de trasto antes, seguro que es lo que est\xE1s buscando
+      \xA1jiji! \xA1Pues m\xE1s te vale atraparme Momotarao, porque es la \xFAnica
+      forma en la que lo vas a conseguir!"
+    auto: 0
+    duration: 0
+  - character: 0
+    mood: 1
+    text: (...)
+    auto: 0
+    duration: 0
