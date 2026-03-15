@@ -27,11 +27,20 @@ namespace Localization
         public string ToEnglish(string tag) => ToLanguage(tag, Language.English);
         public string ToFrench(string tag) => ToLanguage(tag, Language.French);
 
+        
+        #region FINDING Localized Elements
+
+        public LocalizedText[] GetAllLocalizedElementsOnScene() => 
+            FindObjectsByType<LocalizedText>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        
+        public LocalizedDropdown[] GetAllLocalizedDropdownsOnScene() => 
+            FindObjectsByType<LocalizedDropdown>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+
+        
         [Button("Add All Localized Text From Scene", ButtonSizes.Medium)]
         private void AddAllLocalizedTextsFromScene()
         {
-            LocalizedText[] texts =
-                FindObjectsByType<LocalizedText>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+            LocalizedText[] texts = GetAllLocalizedElementsOnScene();
             foreach (LocalizedText text in texts)
             {
                 if (!translationDictionary.ContainsKey(text.tag))
@@ -43,5 +52,23 @@ namespace Localization
                     });
             }
         }
+        
+        [Button("Add All Localized Dropdowns From Scene", ButtonSizes.Medium)]
+        private void AddAllLocalizedDropdownsFromScene()
+        {
+            LocalizedDropdown[] dropdowns = GetAllLocalizedDropdownsOnScene();
+            foreach (LocalizedDropdown dd in dropdowns)
+            {
+                if (!translationDictionary.ContainsKey(dd.tag))
+                    translationDictionary.Add(dd.tag, new SerializedDictionary<Language, string>()
+                    {
+                        [Language.Spanish] = "Opción1 , Opción2 , Opción3",
+                        [Language.English] = "Option1 , Option2 , Option3",
+                        [Language.French] = "Option1 , Option2 , Option3",
+                    });
+            }
+        }
+
+        #endregion
     }
 }

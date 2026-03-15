@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e465ec45dc4942ff81b197bc48ffa8d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.LocalizationManager
-  currentLanguage: 1
+  currentLanguage: 0
   localizationData: {fileID: 11400000, guid: 3536f2bd84ecb4b468806a5a056553aa, type: 2}
 --- !u!4 &2081816862
 Transform:

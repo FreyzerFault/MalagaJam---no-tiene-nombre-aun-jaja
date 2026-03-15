@@ -1,4 +1,6 @@
-﻿using Sirenix.OdinInspector;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,7 +13,7 @@ namespace Localization
         [SerializeField] private Language currentLanguage;
         [SerializeField] private LocalizationDataSO localizationData;
 
-        [ShowInInspector] private LocalizedText[] localizedTexts;
+        [ShowInInspector] private List<LocalizedElement> localizedElements;
 
         public Language Language
         {
@@ -25,15 +27,16 @@ namespace Localization
 
         private void TranslateAllTo(Language lang)
         {
-            localizedTexts = GetAllLocalizedTextsOnScene();
-            foreach (LocalizedText localizedText in localizedTexts)
+            localizedElements = new List<LocalizedElement>();
+            localizedElements.AddRange(localizationData.GetAllLocalizedElementsOnScene());
+            localizedElements.AddRange(localizationData.GetAllLocalizedDropdownsOnScene());
+            
+            foreach (LocalizedElement localizedElement in
+                     localizedElements.Where(localizedElement => localizedElement != null))
             {
-                if (localizedText)
-                    localizedText.UpdateLanguage(lang);
+                localizedElement.UpdateLanguage(lang);
             }
         }
         
-        private LocalizedText[] GetAllLocalizedTextsOnScene() => 
-            FindObjectsByType<LocalizedText>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
     }
 }
