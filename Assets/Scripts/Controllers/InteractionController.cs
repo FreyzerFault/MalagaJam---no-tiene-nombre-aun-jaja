@@ -1,5 +1,4 @@
 using System;
-using Interactibles;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,52 +6,51 @@ namespace Controllers
 {
     public class InteractionController: MonoBehaviour
     {
-        private static LayerMask InteractibleLayerMask => LayerMask.GetMask("Interactable");
+        private static LayerMask InteractibleLayerMask => LayerMask.GetMask("Interactible");
         private static Camera Cam => Camera.main;
         
-        public Interactible focusedInteractible;
+        [SerializeField] private float range = 5f;
+        
+        [HideInInspector] public InteractibleObject focusedInteractible;
 
         public event Action OnFocusedSomething;
         public event Action OnLostFocus;
         public event Action OnInteractionStart;
         public event Action OnInteractionEnd;
 
+        private Ray CameraRay => new(Cam.transform.position, Cam.transform.forward * range);
+
         private void Update()
         {
-            if (Physics.Raycast(Cam.transform.position, Cam.transform.forward, out RaycastHit hit, 10f, InteractibleLayerMask.value))
+            if (Physics.Raycast(CameraRay, out RaycastHit hit, range, InteractibleLayerMask.value))
             {
-                Interactible interactible = hit.transform.GetComponent<Interactible>();
+                InteractibleObject interactible = hit.transform.GetComponent<InteractibleObject>();
                 
                 if (!interactible) return;
-                
-                if (focusedInteractible != interactible)
-                    LoseFocus();
                 
                 Focus(interactible);
             }
             else // No mira ningun Interactuable
             {
-                if (focusedInteractible != null)
-                    LoseFocus();
+                LoseFocus();
             }
         }
 
-        private void Focus(Interactible interactible)
+        private void Focus(InteractibleObject newInteractible)
         {
-            focusedInteractible = interactible;
+            if (focusedInteractible == newInteractible) return;
             
-            if (!interactible.IsFocused)
-            {
-                interactible.SwitchState(Interactible.FocusState);
-                OnFocusedSomething?.Invoke();
-            }
+            LoseFocus();
+            focusedInteractible = newInteractible;
+            focusedInteractible.OnFocus();
+            OnFocusedSomething?.Invoke();
         }
         
         private void LoseFocus()
         {
             if (focusedInteractible == null) return;
             
-            focusedInteractible.SwitchState(Interactible.ActiveState);
+            focusedInteractible.OnLostFocus();
             focusedInteractible = null;
             OnLostFocus?.Invoke();
         }
@@ -60,15 +58,15 @@ namespace Controllers
         private void OnInteract(InputValue value)
         {
             if (focusedInteractible == null) return;
-            
+
             if (value.isPressed)
             {
-                focusedInteractible.SwitchState(Interactible.InteractingState);
+                focusedInteractible.OnInteract();
                 OnInteractionStart?.Invoke();
             }
             else
             {
-                focusedInteractible.SwitchState(Interactible.FocusState);
+                focusedInteractible.OnEndInteraction();
                 OnInteractionEnd?.Invoke();
             }
         }

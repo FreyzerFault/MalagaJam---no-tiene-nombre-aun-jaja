@@ -80,7 +80,8 @@ namespace Dialogue
             }
             else
             {
-                dialogueTimer.enabled = false;
+                if (dialogueTimer != null)
+                    dialogueTimer.enabled = false;
                 BlockPlayerMovement();
             }
             

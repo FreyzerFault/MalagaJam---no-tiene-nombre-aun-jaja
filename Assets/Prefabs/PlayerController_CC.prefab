@@ -311,8 +311,8 @@ GameObject:
   - component: {fileID: 6653313437072446341}
   - component: {fileID: 3073265200000833542}
   - component: {fileID: 1135915665898541372}
-  - component: {fileID: 233664920445644774}
   - component: {fileID: 4999727912246638566}
+  - component: {fileID: 233664920445644774}
   - component: {fileID: 2903632298911859457}
   - component: {fileID: 3105805416583236260}
   m_Layer: 12
@@ -432,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6060eb3bfd964fb98f350cf44c96c340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionController
+  range: 5
   focusedInteractible: {fileID: 0}
 --- !u!114 &1135915665898541372
 MonoBehaviour:
@@ -449,7 +450,32 @@ MonoBehaviour:
   sanity: 100
   sanityDecreaseSpeed: 6
   sanityIncreaseSpeed: 12
-  deathDialogue: {fileID: 0}
+  deathDialogueSequenceSO: {fileID: 0}
+--- !u!114 &4999727912246638566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815321770536838901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bf25e829fc4f618ca7f139fbc14f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Controllers.PlayerSfxController
+  maskSanitySfx: {fileID: 2527076055823324386}
+  maxPitchWhenMaskOn: 0.9
+  minPitchWhenMaskOn: 0.5
+  sfxDictionary:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 8300000, guid: 985b0a93e1ca01a4880d46a0932b2bf3, type: 3}
+    - Key: 1
+      Value: {fileID: 8300000, guid: bc623943b690cd04b93a748aa38c02a3, type: 3}
+    - Key: 2
+      Value: {fileID: 8300000, guid: ded3cd644dfdab946ab5e9e47399a1c6, type: 3}
+    - Key: 3
+      Value: {fileID: 8300000, guid: d2af9bc2fddd4a342895e1099560b713, type: 3}
 --- !u!114 &233664920445644774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,29 +506,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4999727912246638566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3815321770536838901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bf25e829fc4f618ca7f139fbc14f38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Controllers.PlayerSfxController
-  maskSanitySfx: {fileID: 2527076055823324386}
-  sfxDictionary:
-    _serializedList:
-    - Key: 0
-      Value: {fileID: 8300000, guid: 985b0a93e1ca01a4880d46a0932b2bf3, type: 3}
-    - Key: 1
-      Value: {fileID: 8300000, guid: bc623943b690cd04b93a748aa38c02a3, type: 3}
-    - Key: 2
-      Value: {fileID: 8300000, guid: ded3cd644dfdab946ab5e9e47399a1c6, type: 3}
-    - Key: 3
-      Value: {fileID: 8300000, guid: d2af9bc2fddd4a342895e1099560b713, type: 3}
 --- !u!33 &2903632298911859457
 MeshFilter:
   m_ObjectHideFlags: 0

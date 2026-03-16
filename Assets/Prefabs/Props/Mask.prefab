@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9040685351035651376}
-  - component: {fileID: 3627090012915836060}
+  - component: {fileID: 6271218765947198936}
+  - component: {fileID: 4199022981457800759}
   - component: {fileID: 482025795246333259}
   - component: {fileID: 2915768608511505999}
   - component: {fileID: 1388200799078567896}
@@ -30,13 +31,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.55, y: 2.82, z: 0.61}
-  m_LocalScale: {x: 0.46, y: 0.46, z: 0.46}
+  m_LocalScale: {x: 0.893688, y: 0.893688, z: 0.893688}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9083960926473173766}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3627090012915836060
+--- !u!114 &6271218765947198936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,20 +46,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 98285046249381470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b080df50d1e4acb4388a147e99bfcae4, type: 3}
+  m_Script: {fileID: 11500000, guid: c383a91413ca430ebba6668b50e1fee2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MaskScript
-  brightnessTargetValues:
-    _serializedList:
-    - Key: Active
-      Value: 0.1
-    - Key: Focus
-      Value: 0.6
-    - Key: Interacting
-      Value: 0.8
-    - Key: Inactive
-      Value: 0
+  m_EditorClassIdentifier: Assembly-CSharp::MaskObject
   lightOnPLayerNear: {fileID: 6234937961268971951}
+--- !u!114 &4199022981457800759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98285046249381470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 0.9339623, g: 0.8539741, b: 0.083704144, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!33 &482025795246333259
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92,7 +101,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 256a9544641ca7e4187f18a27df6c15e, type: 2}
+  - {fileID: 2100000, guid: fbc62e33368914c4a9855e623632aad3, type: 2}
+  - {fileID: 2100000, guid: 631b08d62709e55458eeadc6f78f5054, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

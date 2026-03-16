@@ -104,15 +104,6 @@ MonoBehaviour:
           Value: Music
         - Key: 2
           Value: Musique
-    - Key: settings_tag
-      Value:
-        _serializedList:
-        - Key: 0
-          Value: Ajustes
-        - Key: 1
-          Value: Settings
-        - Key: 2
-          Value: "Param\xE8tres"
     - Key: sfx_tag
       Value:
         _serializedList:
@@ -149,3 +140,30 @@ MonoBehaviour:
           Value: DEFAULT
         - Key: 2
           Value: DEFAULT
+    - Key: achievements_tag
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Logros
+        - Key: 1
+          Value: Achievements
+        - Key: 2
+          Value: "R\xE9alisations"
+    - Key: credits_tag
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: "Cr\xE9ditos"
+        - Key: 1
+          Value: Credits
+        - Key: 2
+          Value: "Cr\xE9dits"
+    - Key: start_btn
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Jugar
+        - Key: 1
+          Value: Start
+        - Key: 2
+          Value: Commencer

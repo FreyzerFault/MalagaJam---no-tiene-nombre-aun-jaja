@@ -12,6 +12,13 @@ namespace UI
 
         private bool IsPaused => pausePanel.activeSelf;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            Unpause();
+        }
+
         public void Pause() => SetPause(true);
         public void Unpause() => SetPause(false);
         public void TogglePause() => SetPause(!IsPaused);

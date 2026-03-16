@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 701007629766328435}
-  - component: {fileID: 6085818614778502681}
+  - component: {fileID: 7088737326449638590}
+  - component: {fileID: 7210392884231776585}
   - component: {fileID: 5706260517256280120}
   - component: {fileID: 1626762013436294696}
   - component: {fileID: 6157823670935987193}
@@ -35,7 +36,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6085818614778502681
+--- !u!114 &7088737326449638590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,15 +45,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1736270143400186793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d47aee0d1f3642338bdc1aeaf26092fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ef3dd8546b4cd8458b1789c831acc7f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactible
-  brightnessTargetValues:
-    _serializedList:
-    - Value: 0.1
-    - Value: 0.6
-    - Value: 0.8
-    - Value: 0
+  m_EditorClassIdentifier: Assembly-CSharp::Controllers.InteractibleObject
+--- !u!114 &7210392884231776585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736270143400186793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 0.9245283, g: 0.8538839, b: 0.12646852, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!33 &5706260517256280120
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -86,7 +99,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 256a9544641ca7e4187f18a27df6c15e, type: 2}
+  - {fileID: 2100000, guid: d821a148528f9da4cae566a91ca3393d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
