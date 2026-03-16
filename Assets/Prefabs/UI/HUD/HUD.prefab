@@ -355,11 +355,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2355243197926554998, guid: 84340a45caddb94409d3dad87a02c7a5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4096949223897671948, guid: 84340a45caddb94409d3dad87a02c7a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2838041812859327182}
   m_SourcePrefab: {fileID: 100100000, guid: 84340a45caddb94409d3dad87a02c7a5, type: 3}
+--- !u!1 &3947983252282582219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4096949223897671948, guid: 84340a45caddb94409d3dad87a02c7a5, type: 3}
+  m_PrefabInstance: {fileID: 1013666454585019847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2838041812859327182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947983252282582219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e01b3463ae0041199648251ecff80321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Localization.LocalizedText
+  tag: skip_input_label
+  localizationData: {fileID: 11400000, guid: 3536f2bd84ecb4b468806a5a056553aa, type: 2}
 --- !u!4 &4224816678616458832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3796767752129178519, guid: 84340a45caddb94409d3dad87a02c7a5, type: 3}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8618476645321309698}
   - component: {fileID: 1591758224544476388}
-  - component: {fileID: 6691715437219705628}
+  - component: {fileID: 5200986746530753536}
   - component: {fileID: 1041588275855551296}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -46,7 +46,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427215082319778887}
   m_CullTransparentMesh: 1
---- !u!114 &6691715437219705628
+--- !u!114 &5200986746530753536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,10 +55,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 427215082319778887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a128a77c18b483f9f3591ff2868ae3f, type: 3}
+  m_Script: {fileID: 11500000, guid: e01b3463ae0041199648251ecff80321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Localization.LocalizedText
-  tag: continue_btn
+  tag: default_tag
   localizationData: {fileID: 11400000, guid: 3536f2bd84ecb4b468806a5a056553aa, type: 2}
 --- !u!114 &1041588275855551296
 MonoBehaviour:
@@ -82,15 +82,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c75d32c98ecef324eb12a830e409ba0f, type: 2}
+  m_sharedMaterial: {fileID: 4647042018867991916, guid: c75d32c98ecef324eb12a830e409ba0f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280635614
-  m_fontColor: {r: 0.8705883, g: 0.3137255, b: 0.14509805, a: 1}
+    rgba: 4279781344
+  m_fontColor: {r: 0.8773585, g: 0.27698758, b: 0.09518514, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -189,7 +189,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 85.113}
+  m_SizeDelta: {x: 268.8, y: 85.113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3673103112716164128
 CanvasRenderer:

@@ -14,6 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI.LocalizationDataSO
   translationDictionary:
     _serializedList:
+    - Key: language_lbl
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Idioma
+        - Key: 1
+          Value: Language
+        - Key: 2
+          Value: Langue
+    - Key: pause_tag
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Pausa
+        - Key: 1
+          Value: Pause
+        - Key: 2
+          Value: Pause
+    - Key: return_to_menu_btn
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Vuelve a menear tu Chapa
+        - Key: 1
+          Value: Return to Move your Chapa
+        - Key: 2
+          Value: "Retour au d\xE9place ton Chapa"
+    - Key: play_btn
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Menea tu Chapa
+        - Key: 1
+          Value: Move your Chapa
+        - Key: 2
+          Value: "D\xE9place ton Chapa"
     - Key: skip_input_label
       Value:
         _serializedList:
@@ -50,3 +86,66 @@ MonoBehaviour:
           Value: Resume
         - Key: 2
           Value: "R\xE9sumer"
+    - Key: global_tag
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Global
+        - Key: 1
+          Value: Global
+        - Key: 2
+          Value: Global
+    - Key: music_tag
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: "M\xFAsica"
+        - Key: 1
+          Value: Music
+        - Key: 2
+          Value: Musique
+    - Key: settings_tag
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Ajustes
+        - Key: 1
+          Value: Settings
+        - Key: 2
+          Value: "Param\xE8tres"
+    - Key: sfx_tag
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Efectos de Sonido
+        - Key: 1
+          Value: Sound Effects
+        - Key: 2
+          Value: Effets sonores
+    - Key: sound_tag
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: Sonido
+        - Key: 1
+          Value: Audio
+        - Key: 2
+          Value: Audio
+    - Key: language_dropdown
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: "Espa\xF1ol, Ingl\xE9s, Franc\xE9s"
+        - Key: 1
+          Value: Spanish, English, French
+        - Key: 2
+          Value: "Espagnol, Anglais, Fran\xE7ais"
+    - Key: default_tag
+      Value:
+        _serializedList:
+        - Key: 0
+          Value: DEFAULT
+        - Key: 1
+          Value: DEFAULT
+        - Key: 2
+          Value: DEFAULT

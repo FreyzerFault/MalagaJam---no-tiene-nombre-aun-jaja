@@ -10,11 +10,12 @@ namespace Localization
         [SerializeField] private LocalizationDataSO localizationData;
 
         private TMP_Text txtComp;
+        private TMP_Text TxtComp => txtComp ??= GetComponent<TMP_Text>();
 
         protected override string Text
         {
-            get => txtComp.text;
-            set => txtComp.text = value;
+            get => TxtComp.text;
+            set => TxtComp.text = value;
         }
 
         private void Awake() => txtComp = GetComponent<TMP_Text>();
