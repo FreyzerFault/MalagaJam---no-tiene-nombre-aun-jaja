@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8544057825693247992}
   - component: {fileID: 162582811540938763}
-  - component: {fileID: 2355243197926554998}
+  - component: {fileID: 7426653999835561933}
   - component: {fileID: 5931890188594377691}
   m_Layer: 5
   m_Name: Skip Txt
@@ -261,7 +261,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4096949223897671948}
   m_CullTransparentMesh: 1
---- !u!114 &2355243197926554998
+--- !u!114 &7426653999835561933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,10 +270,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4096949223897671948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a128a77c18b483f9f3591ff2868ae3f, type: 3}
+  m_Script: {fileID: 11500000, guid: e01b3463ae0041199648251ecff80321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Localization.LocalizedText
   tag: skip_input_label
+  localizationData: {fileID: 11400000, guid: 3536f2bd84ecb4b468806a5a056553aa, type: 2}
 --- !u!114 &5931890188594377691
 MonoBehaviour:
   m_ObjectHideFlags: 0
